@@ -30,9 +30,9 @@ function App() {
   return (
     <ApolloProvider client= {client}>
       <Router>
-      <div className='flex-column justify-flex-start min-100-vh'>
+      <div>
         <Header />
-          <div className='container'>
+          <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
