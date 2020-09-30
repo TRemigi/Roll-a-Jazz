@@ -57,7 +57,7 @@ const resolvers = {
     // ADD CARD
     addCard: async (parent, args) => {
       const card = await Card.create(args);
-      return { card };
+      return card;
     },
 
     // UPDATE CARD
