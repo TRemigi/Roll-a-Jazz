@@ -23,3 +23,19 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_CARD = gql`
+mutation addCard($logoUrl: String, $companyName: String, $tagline: String, $name: String!, $jobTitle: String!, $website: String, $phone: String!, $email: String!) {
+  addCard(logoUrl: $logoUrl, companyName: $companyName, tagline: $tagline, name: $name, jobTitle: $jobTitle, website: $website, phone: $phone, email: $email ) {
+      _id
+      logoUrl
+      companyName
+      tagline
+      name
+      jobTitle
+      website
+      phone
+      email
+    }
+  }
+`;

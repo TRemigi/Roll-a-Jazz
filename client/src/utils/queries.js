@@ -15,3 +15,15 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_CARDS = gql`
+  query card($id: ID!) {
+    card(_id: $id) {
+      _id
+      name
+      jobTitle
+      phone
+      email
+    }
+  }
+`;
