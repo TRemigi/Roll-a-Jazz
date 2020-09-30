@@ -19,6 +19,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  createdCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Card'
+    }
+  ],
+  collectedCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Card'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password
