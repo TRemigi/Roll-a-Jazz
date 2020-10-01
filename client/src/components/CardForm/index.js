@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_CARD } from '../../utils/mutations';
 import { QUERY_CARDS, QUERY_USER } from '../../utils/queries';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const CardForm = () => {
     const [formState, setFormState] = useState({ logoUrl: '', companyName: '', tagline: '', name: '', jobTitle: '', website: '', phone: '', email: ''});
-    // const [addCard, { error }] = useMutation(ADD_CARD);
 
     const [addCard, { error }] = useMutation(ADD_CARD, {
         update(cache, { data: { addCard } }) {
@@ -57,160 +56,117 @@ const CardForm = () => {
     return (
         <div>
 
-            {/* <Form onSubmit={handleFormSubmit}>
+        <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
 
-                <Form.Group>
-                    <Form.File id="logoUrl" type="logoUrl" name="logoUrl" value={formState.logoUrl} onChange={handleChange} label="Import Logo File" />
-                </Form.Group>
+            <h3 className="pb-4">Create a Business Card!</h3>
 
-                <Form.Group >
-                    <Form.Label>Company Name</Form.Label>
-                    <Form.Control id="companyName" type="companyName" name="companyName" value={formState.companyName} onChange={handleChange} placeholder="Enter your company name" />
-                    <Form.Text className="text-muted" >
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="tagline">
-                    <Form.Label>Tagline</Form.Label>
-                    <Form.Control type="tagline" name="tagline" placeholder="Enter your company's tagline" />
-                    <Form.Text className="text-muted" value={formState.tagline} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="name">
-                    <Form.Label>Full Name</Form.Label>
-                    <Form.Control type="name" name="name" placeholder="Enter your full name" />
-                    <Form.Text className="text-muted" value={formState.name} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="jobTitle">
-                    <Form.Label>Job Title</Form.Label>
-                    <Form.Control type="jobTitle" name="jobTitle" placeholder="Enter your job title" />
-                    <Form.Text className="text-muted" value={formState.jobTitle} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="website">
-                    <Form.Label>Website</Form.Label>
-                    <Form.Control type="website" name="website" placeholder="Enter your website url" />
-                    <Form.Text className="text-muted" value={formState.website} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="phone">
-                    <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="phone" name="phone" placeholder="Enter phone number" />
-                    <Form.Text className="text-muted" value={formState.phone} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group id="email">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" placeholder="Enter email address" />
-                    <Form.Text className="text-muted" value={formState.email} onChange={handleChange}>
-                    </Form.Text>
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-
-            </Form> */}
-
-        <Form onSubmit={handleFormSubmit}>
-
-            <Form.Group>
-            <label for="logoUrl">Upload Company Logo:</label>
-            <input
-                type="file"
-                id="logoUrl"
-                name="logoUrl"
-                value={formState.logoUrl}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Upload Company Logo:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        type="file"
+                        id="logoUrl"
+                        name="logoUrl"
+                        value={formState.logoUrl}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder='Your company name'
-                name='companyName'
-                type='companyName'
-                id='companyName'
-                value={formState.companyName}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Company Name:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='companyName'
+                        type='companyName'
+                        id='companyName'
+                        value={formState.companyName}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder="Your company's tagline"
-                name='tagline'
-                type='tagline'
-                id='tagline'
-                value={formState.tagline}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Company's Tagline:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='tagline'
+                        type='tagline'
+                        id='tagline'
+                        value={formState.tagline}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder='Your full name'
-                name='name'
-                type='name'
-                id='name'
-                value={formState.name}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Your Full Name:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='name'
+                        type='name'
+                        id='name'
+                        value={formState.name}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder='Your job title'
-                name='jobTitle'
-                type='jobTitle'
-                id='jobTitle'
-                value={formState.jobTitle}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">You Job Title:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='jobTitle'
+                        type='jobTitle'
+                        id='jobTitle'
+                        value={formState.jobTitle}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder="Your company's website"
-                name='website'
-                type='website'
-                id='website'
-                value={formState.website}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Company Website:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='website'
+                        type='website'
+                        id='website'
+                        value={formState.website}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input
-                placeholder="Your phone number"
-                name='phone'
-                type='phone'
-                id='phone'
-                value={formState.phone}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Phone Number:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='phone'
+                        type='phone'
+                        id='phone'
+                        value={formState.phone}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-            <input   
-                placeholder="Your email address"
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-            />
+            <Form.Group as={Row}>
+            <Form.Label column sm="2">Email Address:</Form.Label>
+                <Col sm="10">
+                    <Form.Control
+                        name='email'
+                        type='email'
+                        id='email'
+                        value={formState.email}
+                        onChange={handleChange}
+                    ></Form.Control>
+                </Col>
            </Form.Group>
 
-            <button type='submit'>
+            <Button type='submit'>
                 Submit
-            </button>
+            </Button>
 
             </Form>
 

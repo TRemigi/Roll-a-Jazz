@@ -8,6 +8,7 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        cards: [Card]
     }
     
     type Auth {
@@ -25,6 +26,7 @@ const typeDefs = gql`
         website: String
         phone: String!
         email: String!
+        createdAt: String
     }
 
     input CardInput {

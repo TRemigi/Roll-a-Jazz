@@ -17,11 +17,31 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_CARDS = gql`
-  query card($id: ID!) {
-    card(_id: $id) {
+  query cards ($username: String) {
+    cards (username: $username) {
       _id
+      logoUrl
+      companyName
+      tagline
       name
       jobTitle
+      website
+      phone
+      email
+    }
+  }
+`;
+
+export const QUERY_CARD = gql`
+  query cards ($username: String!) {
+    cards (username: $username) {
+      _id
+      logoUrl
+      companyName
+      tagline
+      name
+      jobTitle
+      website
       phone
       email
     }

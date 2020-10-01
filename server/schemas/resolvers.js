@@ -28,8 +28,11 @@ const resolvers = {
     card: async (parent, { _id }) => {
       return Card.findOne({ id: _id }).select("-__v");
     },
-
     // CARDS
+    cards: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Card.find(params).sort({ createdAt: -1 });
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
