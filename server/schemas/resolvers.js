@@ -16,7 +16,7 @@ const resolvers = {
     },
 
     users: async () => {
-      return await User.find().select("-__v -password").populate("Card");
+      return await User.find().select("-__v -password").populate("createdCards");
     },
 
     user: async (parent, { username }) => {
