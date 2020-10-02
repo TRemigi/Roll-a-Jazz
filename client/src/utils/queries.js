@@ -1,9 +1,18 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const EXAMPLE = gql`
-    query {
-        example
+  query {
+    example
+  }
+`;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      email
     }
+  }
 `;
 
 export const QUERY_USER = gql`
@@ -12,9 +21,28 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      cards {
+        _id
+        companyName
+      }
     }
   }
 `;
+
+export const QUERY_USERS = gql`
+  {
+    users {
+      _id
+      username
+      email
+      createdCards {
+        _id
+        companyName
+      }
+    }
+  }
+`;
+
 
 export const QUERY_CARDS = gql`
   query cards ($username: String) {
@@ -32,6 +60,7 @@ export const QUERY_CARDS = gql`
   }
 `;
 
+
 export const QUERY_CARD = gql`
   query cards ($username: String!) {
     cards (username: $username) {
@@ -47,3 +76,4 @@ export const QUERY_CARD = gql`
     }
   }
 `;
+
