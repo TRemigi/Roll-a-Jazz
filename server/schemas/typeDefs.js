@@ -39,6 +39,7 @@ const typeDefs = gql`
     email: String
   }
 
+
   type Query {
     helloWorld: String
     me: User

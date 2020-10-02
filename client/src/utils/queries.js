@@ -47,6 +47,7 @@ export const QUERY_USERS = gql`
 export const QUERY_CARDS = gql`
   query cards ($username: String) {
     cards (username: $username) {
+
       _id
       logoUrl
       companyName
@@ -76,4 +77,3 @@ export const QUERY_CARD = gql`
     }
   }
 `;
-
