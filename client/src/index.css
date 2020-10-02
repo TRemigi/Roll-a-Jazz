@@ -1,40 +1,96 @@
-/* animations and keyframes */
-@-webkit-keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0)
-  }
-
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg)
-  }
+@font-face {
+  font-family: 'ciutadella';
+  src: url('./fonts/CiutadellaSlabDEMO-Rg/font.woff2') format('woff2'), url('./fonts/CiutadellaSlabDEMO-Rg/font.woff') format('woff');
 }
 
-@keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0)
-  }
-
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg)
-  }
+@font-face {
+  font-family: 'nexa';
+  src: local('nexa'), url(./fonts/Nexa-Font/NexaRegular.otf) format('opentype');
 }
 
-.flip {
-  animation-name: flip-horizontal-bottom;
-  animation-duration: .5s;
-  animation-iteration-count: 1;
-}
-/* end animations and keyframes */
-
-* {
-  box-sizing: border-box;
+:root {
+  --background-color: rgb(27, 27, 27);
+  --accent-color: #d4af37;
+  --text-color: whitesmoke;
 }
 
-body {
-  background-color: azure;
+/* dark mode */
+body, main {
+  background-color: var(--background-color) !important;
+  font-family: 'nexa' !important;
+  color: var(--text-color) !important;
+}
+
+.navbar-css {
+  border-bottom: 1px solid var(--accent-color) !important; 
+}
+
+.nav {
+  color: var(--text-color) !important;
+}
+
+.nav:focus, .nav:hover {
+  color: var(--accent-color) !important;
+}
+
+.title {
+  color: var(--text-color) !important;
+  font-size: 6rem !important;
+}
+
+.title span {
+  color: var(--accent-color) !important;
+  text-shadow: 0 0 10px var(--accent-color);
+  font-family: 'ciutadella';
+  font-style: italic;
+}
+
+.form-css {
+  font-family: 'nexa' !important;
+  color: var(--text-color) !important;
+}
+
+footer {
+  color: var(--text-color);
+}
+
+/* light mode */
+body.dark, main.dark {
+  background-color: var(--background-color) !important;
+  font-family: 'nexa' !important;
+  color: var(--text-color) !important;
+}
+
+.navbar-css-dark {
+  border-bottom: 1px solid var(--accent-color) !important; 
+}
+
+.nav-dark {
+  color: var(--text-color) !important;
+}
+
+.nav-dark:focus, .nav-dark:hover {
+  color: var(--accent-color) !important;
+}
+
+.title-dark {
+  color: var(--text-color) !important;
+  font-size: 6rem !important;
+}
+
+.title-dark span {
+  color: var(--accent-color) !important;
+  text-shadow: 0 0 10px var(--accent-color);
+  font-family: 'ciutadella';
+  font-style: italic;
+}
+
+.form-css-dark {
+  font-family: 'nexa' !important;
+  color: var(--text-color) !important;
+}
+
+footer.dark {
+  color: var(--text-color);
 }
 

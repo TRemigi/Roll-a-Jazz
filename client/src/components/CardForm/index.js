@@ -54,7 +54,7 @@ const CardForm = () => {
     };
 
     return (
-        <div>
+        <div className='form-css'>
 
         <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
 
