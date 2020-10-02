@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Form, Button, Container, Row, Col, Card} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -41,36 +44,46 @@ const Login = (props) => {
   };
 
   return (
-    <main>
-      <div>
-        <div>
-          <h4>Login</h4>
-          <div>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                placeholder='Your email'
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button type='submit'>
-                Submit
-              </button>
-            </form>
-            {error && <div>Login failed</div>}
-          </div>
-        </div>
-      </div>
+    <main className="container">
+      <Container>
+        <Row>
+          <Col>
+        <h4>Login</h4>
+        <Form border='primary' onSubmit={handleFormSubmit}>
+          <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            name= "email" 
+            type="email" 
+            placeholder="Enter email" 
+            value={formState.email}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control 
+            name="password"
+            type="password" 
+            placeholder="Password"
+            id='password'
+            value={formState.password}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+      {error && <div>Login failed</div>}
+      <Card>
+      <Card.Body>Need to create an account? Head to our <Link to='/signup'>signup</Link> page</Card.Body>
+      </Card>
+      
+          </Col>
+        </Row>
+      </Container>   
     </main>
   );
 };
