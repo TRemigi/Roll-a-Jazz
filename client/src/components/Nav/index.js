@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
-import { Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const Navigation = () => {
     const logout = event => {
@@ -25,42 +25,27 @@ const Navigation = () => {
         //       </>
         //   )}
         // </nav>
-        <Nav>
-            {/* This might need to behave like a 'prolie' page. Letting a user only
-            have access to this info if they are logged in */}
-            <Nav.Item>
-                <Nav.Link href="/">Home</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="/create">Create</Nav.Link>
-            </Nav.Item>
-            {/* This may need to be the '/' so that it is the first thing that
-            non-logged in users see */}
-            <Nav.Item>
-                <Nav.Link href="/collection">Collection</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="/contact">Contact</Nav.Link>
-            </Nav.Item>
-            {Auth.loggedIn () ? (
-                <>
-                    <Nav.Item>
-                        <Nav.Link href='/profile'>Profile</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item href='/' onClick={logout}>
-                        <Nav.Link>Logout</Nav.Link>
-                    </Nav.Item>
-                </>
-            ) : (
-                <>
-                    <Nav.Item>
-                        <Nav.Link href='/login'>Login</Nav.Link>
-                    </Nav.Item>
-                </>
-            )}
-            
-
-        </Nav>
+        <Navbar bg="success" expand="lg">
+            <Navbar.Brand href="/">Roll-a-jazz</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+                <Nav className="mr-auto" className="justify-content-end">
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/create">Create</Nav.Link>
+                    <Nav.Link href="/collection">Collection</Nav.Link>
+                    <Nav.Link href="/contact">Contact</Nav.Link>
+                    {Auth.loggedIn () ? (
+                        <>  
+                            <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
+                        </>
+                    ) : (
+                        <>
+                            <Nav.Link href='/login'>Login</Nav.Link>
+                        </>
+                    )}
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
 
