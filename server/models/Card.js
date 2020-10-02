@@ -3,7 +3,6 @@ const { Schema, model } = require("mongoose");
 const cardSchema = new Schema({
   logoUrl: {
     type: String,
-    unique: true,
   },
   companyName: {
     type: String,
@@ -21,16 +20,13 @@ const cardSchema = new Schema({
   },
   website: {
     type: String,
-    unique: true,
   },
   phone: {
     type: String,
-    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
   },
 });
