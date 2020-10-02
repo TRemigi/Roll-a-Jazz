@@ -56,9 +56,9 @@ footer {
 
 /* light mode */
 body.light, main.light {
-  background-color: var(--background-color) !important;
+  background-color: var(--text-color) !important;
   font-family: 'nexa' !important;
-  color: var(--text-color) !important;
+  color: var(--background-color) !important;
 }
 
 .navbar-css-light {
@@ -66,7 +66,7 @@ body.light, main.light {
 }
 
 .nav-light {
-  color: var(--text-color) !important;
+  color: var(--background-color) !important;
 }
 
 .nav-light:focus, .nav-light:hover {
@@ -74,7 +74,7 @@ body.light, main.light {
 }
 
 .title-light {
-  color: var(--text-color) !important;
+  color: var(--background-color) !important;
   font-size: 6rem !important;
 }
 
@@ -87,10 +87,10 @@ body.light, main.light {
 
 .form-css-light {
   font-family: 'nexa' !important;
-  color: var(--text-color) !important;
+  color: var(--background-color) !important;
 }
 
 footer.light {
-  color: var(--text-color);
+  color: var(--background-color);
 }
 
