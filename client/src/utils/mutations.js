@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -20,6 +20,46 @@ export const ADD_USER = gql`
         _id
         username
       }
+    }
+  }
+`;
+
+export const ADD_CARD = gql`
+
+mutation addCard($userId: ID!, $logoUrl: String, $companyName: String, $tagline: String, $name: String!, $jobTitle: String!, $website: String, $phone: String!, $email: String!) {
+  addCard(userId: $userId, logoUrl: $logoUrl, companyName: $companyName, tagline: $tagline, name: $name, jobTitle: $jobTitle, website: $website, phone: $phone, email: $email ) {
+      _id
+      logoUrl
+      companyName
+      tagline
+      name
+      jobTitle
+      website
+      phone
+      email
+      userId
+    }
+  }
+`;
+
+export const UPDATE_CARD = gql`
+  mutation updateCard($_id: ID!, $input: CardInput) {
+    updateCard(_id: $_id, input: $input) {
+      _id
+      name
+      jobTitle
+      logoUrl
+      phone
+      tagline
+      companyName
+    }
+  }
+`;
+
+export const DELETE_CARD = gql`
+  mutation deleteCard($_id: ID!) {
+    deleteCard(_id: $_id) {
+      _id
     }
   }
 `;
