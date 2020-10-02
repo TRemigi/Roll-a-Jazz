@@ -35,7 +35,7 @@ export const QUERY_USERS = gql`
       _id
       username
       email
-      cards {
+      createdCards {
         _id
         companyName
       }
@@ -43,9 +43,10 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const QUERY_USERS = gql`
-  query card($_id: ID!) {
-    card(_id: $_id) {
+
+export const QUERY_CARDS = gql`
+  query cards ($username: String) {
+    cards (username: $username) {
       _id
       logoUrl
       companyName
@@ -59,9 +60,10 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const QUERY_USERS = gql`
-  query cards($userId: String) {
-    cards(userId: $userId) {
+
+export const QUERY_CARD = gql`
+  query cards ($username: String!) {
+    cards (username: $username) {
       _id
       logoUrl
       companyName
@@ -74,3 +76,4 @@ export const QUERY_USERS = gql`
     }
   }
 `;
+

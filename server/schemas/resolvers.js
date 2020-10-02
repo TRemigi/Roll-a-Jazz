@@ -31,11 +31,12 @@ const resolvers = {
       const card = await Card.find({ _id: _id }).select("-__v");
       return card;
     },
-
     // CARDS
-    cards: async () => {
-      return await Card.find().select("-__v");
-    },
+
+    cards: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Card.find(params).sort({ createdAt: -1 });
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

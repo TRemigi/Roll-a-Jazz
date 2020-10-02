@@ -28,7 +28,7 @@ const cardSchema = new Schema({
     type: String,
     required: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
-  },
+  }
 });
 
 const Card = model("Card", cardSchema);

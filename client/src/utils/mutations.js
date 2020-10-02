@@ -25,20 +25,9 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CARD = gql`
-  mutation addCard(
-    $userId: ID!
-    $name: String!
-    $jobTitle: String!
-    $phone: String!
-    $email: String!
-  ) {
-    addCard(
-      userId: $userId
-      name: $name
-      jobTitle: $jobTitle
-      phone: $phone
-      email: $email
-    ) {
+
+mutation addCard($userId: ID!, $logoUrl: String, $companyName: String, $tagline: String, $name: String!, $jobTitle: String!, $website: String, $phone: String!, $email: String!) {
+  addCard(userId: $userId, logoUrl: $logoUrl, companyName: $companyName, tagline: $tagline, name: $name, jobTitle: $jobTitle, website: $website, phone: $phone, email: $email ) {
       _id
       logoUrl
       companyName
