@@ -2,22 +2,26 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import Navigation from '../Nav';
+import { Container } from 'react-bootstrap';
 
 const Header = () => {
 
-  const logout = event => {
-    event.preventDefault();
-    Auth.logout();
-  }
+  // const logout = event => {
+  //   event.preventDefault();
+  //   Auth.logout();
+  // }
 
   return (
-    <header>
+    <Container className="space-between">
+      <header >
       <div>
         <Link to= '/'>
-          <h1>Project Name</h1>
+          <h1>Roll-a-jazz</h1>
         </Link>
         
-        <nav>
+        <Navigation />
+        {/* <nav>
           {Auth.loggedIn() ? (
             <>
               <Link to='/profile'>Profile</Link>
@@ -31,9 +35,11 @@ const Header = () => {
               <Link to='/signup'>Signup</Link>
               </>
           )}
-        </nav>
+        </nav> */}
       </div>
     </header>
+    </Container>
+    
   );
 };
 

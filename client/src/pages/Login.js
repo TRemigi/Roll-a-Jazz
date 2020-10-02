@@ -4,7 +4,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Form, Button, Container, Row, Col} from 'react-bootstrap'
+import {Form, Button, Container, Row, Col, Card} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -76,8 +77,10 @@ const Login = (props) => {
         </Button>
       </Form>
       {error && <div>Login failed</div>}
-
-
+      <Card>
+      <Card.Body>Need to create an account? Head to our <Link to='/signup'>signup</Link> page</Card.Body>
+      </Card>
+      
           </Col>
         </Row>
       </Container>   
