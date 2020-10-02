@@ -8,34 +8,33 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("Card");
+          .populate("cards");
 
         return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
-
+    //get all users
     users: async () => {
-      return await User.find().select("-__v -password").populate("createdCards");
+      return await User.find()
+        .select("-__v -password")
+        .populate("cards");
     },
-
+    //get a user by username
     user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate("cards");
     },
-
-    helloWorld: () => {
-      return "Hello World";
-    },
-
+    //get a card by id
     card: async (parent, { _id }) => {
       const card = await Card.find({ _id: _id }).select("-__v");
       return card;
     },
-    // CARDS
-
+    //get cards by username
     cards: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Card.find(params).sort({ createdAt: -1 });
+      return Card.find(params);
     }
   },
   Mutation: {
@@ -59,8 +58,18 @@ const resolvers = {
     },
 
     addCard: async (parent, args, context) => {
-      const card = await Card.create({ ...args, username: context.user._id });
-      return card;
+        if(context.user) {
+          const card = await Card.create({ ...args, username: context.user.username });
+
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $push: { cards: card._id } },
+            { new: true }
+          );
+
+          return card;
+        }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     updateCard: async (parent, { _id, input }, context) => {

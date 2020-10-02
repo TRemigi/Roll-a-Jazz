@@ -55,42 +55,42 @@ footer {
 }
 
 /* light mode */
-body.dark, main.dark {
+body.light, main.light {
   background-color: var(--background-color) !important;
   font-family: 'nexa' !important;
   color: var(--text-color) !important;
 }
 
-.navbar-css-dark {
+.navbar-css-light {
   border-bottom: 1px solid var(--accent-color) !important; 
 }
 
-.nav-dark {
+.nav-light {
   color: var(--text-color) !important;
 }
 
-.nav-dark:focus, .nav-dark:hover {
+.nav-light:focus, .nav-light:hover {
   color: var(--accent-color) !important;
 }
 
-.title-dark {
+.title-light {
   color: var(--text-color) !important;
   font-size: 6rem !important;
 }
 
-.title-dark span {
+.title-light span {
   color: var(--accent-color) !important;
   text-shadow: 0 0 10px var(--accent-color);
   font-family: 'ciutadella';
   font-style: italic;
 }
 
-.form-css-dark {
+.form-css-light {
   font-family: 'nexa' !important;
   color: var(--text-color) !important;
 }
 
-footer.dark {
+footer.light {
   color: var(--text-color);
 }
 
