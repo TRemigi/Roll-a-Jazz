@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_CARD } from '../../utils/mutations';
-import { QUERY_CARDS, QUERY_USER } from '../../utils/queries';
+import { QUERY_CARDS, QUERY_ME } from '../../utils/queries';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const CardForm = () => {
@@ -20,11 +20,11 @@ const CardForm = () => {
                 console.error(e);
             }
 
-            //update user object's cache, appending new card to the end of the array
-            const { user } = cache.readQuery({ query: QUERY_USER });
+            //update me object's cache, appending new card to the end of the array
+            const { me } = cache.readQuery({ query: QUERY_ME });
             cache.writeQuery({
-                query: QUERY_USER,
-                data: { user: { ...user, cards: [...user.cards, addCard] } }
+                query: QUERY_ME,
+                data: { me: { ...me, cards: [...me.cards, addCard] } }
             });
         }
     })
@@ -47,6 +47,9 @@ const CardForm = () => {
             await addCard({
                 variables: { ...formState }
             });
+
+            // clear form value
+            setFormState('');
 
         } catch (e) {
             console.error(e);
@@ -100,7 +103,7 @@ const CardForm = () => {
             </Form.Group>
 
             <Form.Group as={Row}>
-            <Form.Label column sm="2">Your Full Name:</Form.Label>
+            <Form.Label column sm="2">Full Name:</Form.Label>
                 <Col sm="10">
                     <Form.Control
                         name='name'
@@ -113,7 +116,7 @@ const CardForm = () => {
             </Form.Group>
 
             <Form.Group as={Row}>
-            <Form.Label column sm="2">You Job Title:</Form.Label>
+            <Form.Label column sm="2">Job Title:</Form.Label>
                 <Col sm="10">
                     <Form.Control
                         name='jobTitle'

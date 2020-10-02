@@ -28,8 +28,18 @@ const cardSchema = new Schema({
     type: String,
     required: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
+  },
+  username: {
+    type: String,
+    required: true
+  },
+},
+  {
+    toJSON: {
+      getters: true
+    }
   }
-});
+);
 
 const Card = model("Card", cardSchema);
 

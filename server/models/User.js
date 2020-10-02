@@ -19,7 +19,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  createdCards: [
+  cards: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Card'
@@ -31,7 +31,13 @@ const userSchema = new Schema({
       ref: 'Card'
     }
   ]
-});
+},
+  {
+    toJSON: {
+      virtuals: true
+    }
+  }
+);
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
