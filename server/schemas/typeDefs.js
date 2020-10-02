@@ -7,17 +7,17 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    createdCards: [Card]
+    cards: [Card]
   }
     
-    type Auth {
-        token: ID!
-        user: User
-    }
+  type Auth {
+      token: ID!
+      user: User
+  }
 
   type Card {
     _id: ID!
-    userId: ID
+    username: String
     logoUrl: String
     companyName: String
     tagline: String
@@ -41,18 +41,17 @@ const typeDefs = gql`
 
 
   type Query {
-    helloWorld: String
     me: User
     users: [User]
     user(username: String!): User
-    cards(userId: String): [Card]
-    card(_id: ID): Card
+    cards(username: String): [Card]
+    card(_id: ID!): Card
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addCard(userId: String, logoUrl: String, companyName: String, tagline: String, name: String!, jobTitle: String!, website: String, phone: String!, email: String!): Card
+    addCard(logoUrl: String, companyName: String, tagline: String, name: String!, jobTitle: String!, website: String, phone: String!, email: String!): Card
     updateCard(_id: ID!, input: CardInput): Card
     deleteCard(_id: ID!): Card
   }
