@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Redirect, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_CARDS } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
 
 import CardList from '../components/CardList';
 import CardCarousel from '../components/Carousel';
@@ -12,14 +14,46 @@ const Home = () => {
 
   const [viewSelected, setViewSelected] = useState(true);
 
-  const testCards = [
-    'card1',
-    'card2',
-    'card2'
-  ];
+  // const testCards = [
+  //   'card1',
+  //   'card2',
+  //   'card2'
+  // ];
 
-const { loading, data } = useQuery(QUERY_CARDS);
-  const cards = data?.cards || [];
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam }
+  });
+  const user = data?.me || data?.user || {};
+  console.log(useParams());
+
+  if (userParam) {
+    // redirect to personal profile page if username is the logged-in user's
+    if (Auth.loggedIn() && Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()) {
+      return <Redirect to="/profile" />;
+  }}
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
+    return (
+    <div className='text-center m-4'>
+      <h1>
+        Welcome to Roll-o-Jazz!
+      </h1>
+      <h4>
+        Join a community of business professionals.
+      </h4>
+      <p>
+        Login in or sign-up to get started!
+      </p>
+      <button>Get Started</button>
+      </div>
+    );
+  }
 
   return (
     <main className="container">
@@ -35,9 +69,9 @@ const { loading, data } = useQuery(QUERY_CARDS);
           { loading &&
           <div> Loading... </div>}
           {viewSelected ?
-          (<CardList cards={ cards } />)
+          (<CardList cards={ user.cards } />)
           :
-          (<CardCarousel cards={ cards } />)
+          (<CardCarousel cards={ user.cards } />)
           
         }
         </div>
