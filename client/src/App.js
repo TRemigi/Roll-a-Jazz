@@ -7,7 +7,8 @@ import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
-import Collection from './pages/Collection'
+import Collection from './pages/Collection';
+import Create from './pages/Create';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -38,6 +39,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
+              <Route exact path="/create" component={Create} />
               <Route exact path="/collection" component={Collection} />
               <Route exact path="/profile:username?" component={Profile} />
 

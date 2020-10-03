@@ -89,8 +89,35 @@ body.light, main.light {
   font-family: 'nexa' !important;
   color: var(--background-color) !important;
 }
+/* utilities */
+/* .btn:focus {
+  outline: none !important;
+  outline-offset: none !important;
+} */
+/* end utilities */
+
+/* general styles */
+
+* {
+  box-sizing: border-box;
+}
 
 footer.light {
   color: var(--background-color);
 }
+
+main {
+  min-height: 80vh;
+}
+
+/* end general styles */
+
+/* Carousel Component */
+.carousel-control-next, .carousel-control-prev {
+  background-color: black !important;
+  opacity: .1 !important;
+}
+/* end Carousel Component */
+
+
 

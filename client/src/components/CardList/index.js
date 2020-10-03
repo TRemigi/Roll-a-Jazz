@@ -9,8 +9,8 @@ const CardList = ({ cards }) => {
     }
 
     return (
-        <div className='m-5'>
-            <div>
+        // <div className='m-5'>
+        //     <div>
             <CardDeck className="m-4">
             {cards && 
                 cards.map(card => (
@@ -19,8 +19,8 @@ const CardList = ({ cards }) => {
                     </Col>
                 ))}
             </CardDeck>
-            </div>
-        </div>
+        //     </div>
+        // </div>
     )
 }
 

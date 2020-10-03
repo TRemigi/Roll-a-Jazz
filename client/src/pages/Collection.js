@@ -12,14 +12,16 @@ const Collection = () => {
   const cards = data?.cards || [];
 
   return (
-    <main>
-      <h3>Collection of All Business Cards Created</h3>
-      <div>
-        {loading ? (
-          <div>Loading..</div>
-        ) : (
-          <CardList cards={cards}/>
-        )}
+    <main className="container">
+      <div className="row justify-content-center">
+        <h3 className="p-3">Collection of All Business Cards Created</h3>
+        <div className="col-12">
+          {loading ? (
+            <div>Loading..</div>
+            ) : (
+              <CardList cards={cards}/>
+              )}
+        </div>
       </div>
       
     </main>

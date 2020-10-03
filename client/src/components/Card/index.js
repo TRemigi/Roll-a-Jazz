@@ -5,7 +5,7 @@ const CardComponent = ({ card }) => {
 
     return (
         <div>
-            <Card className="border m-2" key={card._id} style={{ width: '18rem' }}>
+            <Card className="border m-1" key={card._id} style={{ minHeight: '50vh' }}>
                 {/* <Card.Img variant="top" src={card.logoUrl} /> */}
                 <Card.Body>
                     <Card.Title>{card.name}</Card.Title>
