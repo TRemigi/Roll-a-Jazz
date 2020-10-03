@@ -1,49 +1,76 @@
-/* animations and keyframes */
-@-webkit-keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0)
-  }
-
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg)
-  }
+@font-face {
+  font-family: 'ciutadella';
+  src: url('./fonts/CiutadellaSlabDEMO-Rg/font.woff2') format('woff2'), url('./fonts/CiutadellaSlabDEMO-Rg/font.woff') format('woff');
 }
 
-@keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0)
-  }
-
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg)
-  }
+@font-face {
+  font-family: 'nexa';
+  src: local('nexa'), url(./fonts/Nexa-Font/NexaRegular.otf) format('opentype');
 }
 
-.flip {
-  animation-name: flip-horizontal-bottom;
-  animation-duration: .5s;
-  animation-iteration-count: 1;
+:root {
+  --black: #1b1b1b;
+  --gold: #d4af37;
+  --whitesmoke: #f5f5f5;
 }
-/* end animations and keyframes */
 
+/* dark mode */
+body, main {
+  font-family: 'nexa' !important;
+  /* color: var(--whitesmoke) !important; */
+}
+
+.navbar-css {
+  border-bottom: 1px solid var(--gold) !important; 
+}
+
+/* .nav {
+  color: var(--whitesmoke) !important;
+} */
+
+.nav:focus, .nav:hover {
+  color: var(--gold) !important;
+}
+
+.title {
+  /* color: var(--whitesmoke) !important; */
+  font-size: 6rem !important;
+}
+
+.title span {
+  color: var(--gold) !important;
+  text-shadow: 0 0 10px var(--gold);
+  font-family: 'ciutadella';
+  font-style: italic;
+}
+
+.form-css {
+  font-family: 'nexa' !important;
+  color: var(--whitesmoke) !important;
+}
+
+/* footer {
+  color: var(--whitesmoke);
+}
+ */
+button {
+  padding: 0 !important;
+}
 /* utilities */
 /* .btn:focus {
   outline: none !important;
   outline-offset: none !important;
-} */
+} */ 
 /* end utilities */
 
 /* general styles */
+
 * {
   box-sizing: border-box;
 }
 
-body {
-  background-color: azure;
+footer.light {
+  color: var(--black);
 }
 
 main {

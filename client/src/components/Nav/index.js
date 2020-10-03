@@ -25,15 +25,15 @@ const Navigation = () => {
         //       </>
         //   )}
         // </nav>
-        <Navbar bg="success" expand="lg">
-            <Navbar.Brand href="/">Roll-a-jazz</Navbar.Brand>
+        <Navbar className='navbar-css' expand="lg" >
+            <Navbar.Brand className='title' href="/">Rolo<span>Jazz</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-                <Nav className="mr-auto" className="justify-content-end">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/create">Create</Nav.Link>
-                    <Nav.Link href="/collection">Collection</Nav.Link>
-                    <Nav.Link href="/contact">Contact</Nav.Link>
+                <Nav className="mr-auto" className='justify-content-end'>
+                    <Nav.Link className='nav' href="/">Home</Nav.Link>
+                    <Nav.Link className='nav' href="/create">Create</Nav.Link>
+                    <Nav.Link className='nav' href="/collection">Collection</Nav.Link>
+                    <Nav.Link className='nav' href="/contact">Contact</Nav.Link>
                     {Auth.loggedIn () ? (
                         <>  
                             <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
