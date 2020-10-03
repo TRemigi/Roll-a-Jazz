@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
+
+import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
+
 import Auth from '../utils/auth';
 
 import CardList from '../components/CardList';
 import CardCarousel from '../components/Carousel';
 import CardToggle from '../components/CardToggle';
-
 
 const Home = () => {
 
@@ -31,7 +33,7 @@ const Home = () => {
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()) {
-      return <Redirect to="/profile" />;
+      return <Redirect to="/home" />;
   }}
 
   if (loading) {
@@ -50,7 +52,7 @@ const Home = () => {
       <p>
         Login in or sign-up to get started!
       </p>
-      <button>Get Started</button>
+      <Button href="/login">Get Started</Button>
       </div>
     );
   }
