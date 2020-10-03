@@ -30,6 +30,14 @@
 }
 /* end animations and keyframes */
 
+/* utilities */
+/* .btn:focus {
+  outline: none !important;
+  outline-offset: none !important;
+} */
+/* end utilities */
+
+/* general styles */
 * {
   box-sizing: border-box;
 }
@@ -37,4 +45,19 @@
 body {
   background-color: azure;
 }
+
+main {
+  min-height: 80vh;
+}
+
+/* end general styles */
+
+/* Carousel Component */
+.carousel-control-next, .carousel-control-prev {
+  background-color: black !important;
+  opacity: .1 !important;
+}
+/* end Carousel Component */
+
+
 

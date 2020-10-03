@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
-// import Card from '../Card';
+import CardComponent from '../Card';
 
 
 const CardCarousel = ({ cards }) => {
@@ -16,9 +16,8 @@ const CardCarousel = ({ cards }) => {
         >
             {cards &&
             cards.map(card => (
-                <Carousel.Item key={ cards.indexOf(card) }>
-                    {/* <Card cardData={ card } /> */}
-                    <h3>card</h3>
+                <Carousel.Item key={ card._id }>
+                    <CardComponent card={card} />
                 </Carousel.Item>
             )) }
         </Carousel>  
