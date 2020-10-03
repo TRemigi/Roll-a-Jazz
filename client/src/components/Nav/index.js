@@ -26,7 +26,7 @@ const Navigation = () => {
         //   )}
         // </nav>
         <Navbar className='navbar-css' expand="lg" >
-            <Navbar.Brand className='title' href="/">Roll-a-<span>Jazz</span></Navbar.Brand>
+            <Navbar.Brand className='title' href="/">Rolo<span>Jazz</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav className="mr-auto" className='justify-content-end'>

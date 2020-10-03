@@ -9,91 +9,58 @@
 }
 
 :root {
-  --background-color: rgb(27, 27, 27);
-  --accent-color: #d4af37;
-  --text-color: whitesmoke;
+  --black: #1b1b1b;
+  --gold: #d4af37;
+  --whitesmoke: #f5f5f5;
 }
 
 /* dark mode */
 body, main {
-  background-color: var(--background-color) !important;
   font-family: 'nexa' !important;
-  color: var(--text-color) !important;
+  /* color: var(--whitesmoke) !important; */
 }
 
 .navbar-css {
-  border-bottom: 1px solid var(--accent-color) !important; 
+  border-bottom: 1px solid var(--gold) !important; 
 }
 
-.nav {
-  color: var(--text-color) !important;
-}
+/* .nav {
+  color: var(--whitesmoke) !important;
+} */
 
 .nav:focus, .nav:hover {
-  color: var(--accent-color) !important;
+  color: var(--gold) !important;
 }
 
 .title {
-  color: var(--text-color) !important;
+  /* color: var(--whitesmoke) !important; */
   font-size: 6rem !important;
 }
 
 .title span {
-  color: var(--accent-color) !important;
-  text-shadow: 0 0 10px var(--accent-color);
+  color: var(--gold) !important;
+  text-shadow: 0 0 10px var(--gold);
   font-family: 'ciutadella';
   font-style: italic;
 }
 
 .form-css {
   font-family: 'nexa' !important;
-  color: var(--text-color) !important;
+  color: var(--whitesmoke) !important;
 }
 
-footer {
-  color: var(--text-color);
+/* footer {
+  color: var(--whitesmoke);
 }
-
-/* light mode */
-body.light, main.light {
-  background-color: var(--text-color) !important;
-  font-family: 'nexa' !important;
-  color: var(--background-color) !important;
-}
-
-.navbar-css-light {
-  border-bottom: 1px solid var(--accent-color) !important; 
-}
-
-.nav-light {
-  color: var(--background-color) !important;
-}
-
-.nav-light:focus, .nav-light:hover {
-  color: var(--accent-color) !important;
-}
-
-.title-light {
-  color: var(--background-color) !important;
-  font-size: 6rem !important;
-}
-
-.title-light span {
-  color: var(--accent-color) !important;
-  text-shadow: 0 0 10px var(--accent-color);
-  font-family: 'ciutadella';
-  font-style: italic;
-}
-
-.form-css-light {
-  font-family: 'nexa' !important;
-  color: var(--background-color) !important;
+ */
+button {
+  padding: 0 !important;
 }
 /* utilities */
 /* .btn:focus {
   outline: none !important;
   outline-offset: none !important;
-} */
+} */ 
 /* end utilities */
 
 /* general styles */
@@ -103,7 +70,7 @@ body.light, main.light {
 }
 
 footer.light {
-  color: var(--background-color);
+  color: var(--black);
 }
 
 main {

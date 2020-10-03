@@ -1,8 +1,9 @@
 import React, { useState, uuseEffect } from 'react';
 import { ThemeProvider } from "styled-components";
-import {useDarkMode} from './components/useDarkMode'
+import { useDarkMode } from './components/useDarkMode'
 import { GlobalStyles } from "./components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/Theme"
+import Toggle from './components/Toggler'
 import './index.css'
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
@@ -33,20 +34,23 @@ const client = new ApolloClient({
   uri: '/graphql'
 })
 function App() {
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
+  const [theme, themeToggler, mountedComponent] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  if(!mountedComponent) return <div/>
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
         <ApolloProvider client={client}>
           <Router>
             <div>
-              <Header />
+              <Header>
+              </Header>
               <div>
+              <Toggle theme={theme} toggleTheme={themeToggler} />
+
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/login" component={Login} />
@@ -58,10 +62,10 @@ function App() {
                   <Route component={NoMatch} />
                 </Switch>
               </div>
-              <Footer/>
+              <Footer />
             </div>
           </Router>
-      </ApolloProvider>
+        </ApolloProvider>
       </>
     </ThemeProvider >
 
