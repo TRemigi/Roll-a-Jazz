@@ -1,5 +1,9 @@
-import React from 'react';
-
+import React, { useState, uuseEffect } from 'react';
+import { ThemeProvider } from "styled-components";
+import {useDarkMode} from './components/useDarkMode'
+import { GlobalStyles } from "./components/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/Theme"
+import './index.css'
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -29,27 +33,38 @@ const client = new ApolloClient({
   uri: '/graphql'
 })
 function App() {
-  return (
-    <ApolloProvider client= {client}>
-      <Router>
-      <div>
-        <Header />
-          <div>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/create" component={Create} />
-              <Route exact path="/collection" component={Collection} />
-              <Route exact path="/profile:username?" component={Profile} />
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
 
-              <Route component= {NoMatch} />
-            </Switch>
-          </div>
-          <Footer />
-        </div>
-      </Router>
-    </ApolloProvider>
+  return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyles />
+        <ApolloProvider client={client}>
+          <Router>
+            <div>
+              <Header />
+              <div>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/create" component={Create} />
+                  <Route exact path="/collection" component={Collection} />
+                  <Route exact path="/profile:username?" component={Profile} />
+
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
+              <Footer/>
+            </div>
+          </Router>
+      </ApolloProvider>
+      </>
+    </ThemeProvider >
+
   );
 }
 
