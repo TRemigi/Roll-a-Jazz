@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_CARD } from '../../utils/mutations';
 import { QUERY_CARDS, QUERY_ME } from '../../utils/queries';
 import { Form, Button, Col, Row } from 'react-bootstrap';
+import SuccessModal from '../SuccessModal';
 
 const CardForm = () => {
     const [formState, setFormState] = useState({ logoUrl: '', companyName: '', tagline: '', name: '', jobTitle: '', website: '', phone: '', email: ''});
@@ -38,6 +39,10 @@ const CardForm = () => {
         });
     };
 
+    // use State to handle SuccessModal
+    // set initial show state to false
+    const [show, setShow] = useState(false);
+
     //handler for the card form
     const handleFormSubmit = async event => {
         event.preventDefault();
@@ -51,6 +56,10 @@ const CardForm = () => {
             // clear form value
             setFormState('');
 
+            // display SuccessModal
+            setShow(true);
+            
+
         } catch (e) {
             console.error(e);
         }
@@ -58,118 +67,123 @@ const CardForm = () => {
 
     return (
         <div>
+            <SuccessModal
+            show={show}
+            setShow={setShow}
+            message="Card successfully created!"
+            />
 
-        <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
+            <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
 
-            <h3 className="pb-4">Create a Business Card!</h3>
+                <h3 className="pb-4">Create a Business Card!</h3>
 
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Upload Company Logo:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        type="file"
-                        id="logoUrl"
-                        name="logoUrl"
-                        value={formState.logoUrl}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Upload Company Logo:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            type="file"
+                            id="logoUrl"
+                            name="logoUrl"
+                            value={formState.logoUrl}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Company Name:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='companyName'
+                            type='companyName'
+                            id='companyName'
+                            value={formState.companyName}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Company's Tagline:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='tagline'
+                            type='tagline'
+                            id='tagline'
+                            value={formState.tagline}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Full Name:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='name'
+                            type='name'
+                            id='name'
+                            value={formState.name}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Job Title:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='jobTitle'
+                            type='jobTitle'
+                            id='jobTitle'
+                            value={formState.jobTitle}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Company Website:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='website'
+                            type='website'
+                            id='website'
+                            value={formState.website}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Phone Number:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='phone'
+                            type='phone'
+                            id='phone'
+                            value={formState.phone}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row}>
+                <Form.Label column sm="2">Email Address:</Form.Label>
+                    <Col sm="10">
+                        <Form.Control
+                            name='email'
+                            type='email'
+                            id='email'
+                            value={formState.email}
+                            onChange={handleChange}
+                        ></Form.Control>
+                    </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Company Name:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='companyName'
-                        type='companyName'
-                        id='companyName'
-                        value={formState.companyName}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Company's Tagline:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='tagline'
-                        type='tagline'
-                        id='tagline'
-                        value={formState.tagline}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Full Name:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='name'
-                        type='name'
-                        id='name'
-                        value={formState.name}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Job Title:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='jobTitle'
-                        type='jobTitle'
-                        id='jobTitle'
-                        value={formState.jobTitle}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Company Website:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='website'
-                        type='website'
-                        id='website'
-                        value={formState.website}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Phone Number:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='phone'
-                        type='phone'
-                        id='phone'
-                        value={formState.phone}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-            <Form.Label column sm="2">Email Address:</Form.Label>
-                <Col sm="10">
-                    <Form.Control
-                        name='email'
-                        type='email'
-                        id='email'
-                        value={formState.email}
-                        onChange={handleChange}
-                    ></Form.Control>
-                </Col>
-           </Form.Group>
-
-            <Button type='submit'>
-                Submit
-            </Button>
+                <Button type='submit'>
+                    Submit
+                </Button>
 
             </Form>
 
