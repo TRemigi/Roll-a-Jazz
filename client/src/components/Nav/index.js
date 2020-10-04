@@ -33,7 +33,6 @@ const Navigation = () => {
                     <Nav.Link className='nav' href="/">Home</Nav.Link>
                     <Nav.Link className='nav' href="/create">Create</Nav.Link>
                     <Nav.Link className='nav' href="/collection">Collection</Nav.Link>
-                    <Nav.Link className='nav' href="/contact">Contact</Nav.Link>
                     {Auth.loggedIn () ? (
                         <>  
                             <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
