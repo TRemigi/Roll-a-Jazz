@@ -47,9 +47,9 @@ const Login = (props) => {
     <main className="container">
       <Container>
         <Row>
-          <Col>
+          <Col className='login'>
         <h4>Login</h4>
-        <Form border='primary' onSubmit={handleFormSubmit}>
+        <Form className='login-form' onSubmit={handleFormSubmit}>
           <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -72,7 +72,7 @@ const Login = (props) => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className='login-submit'>
           Submit
         </Button>
       </Form>

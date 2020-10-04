@@ -36,11 +36,11 @@ const Navigation = () => {
                     <Nav.Link className='nav' href="/contact">Contact</Nav.Link>
                     {Auth.loggedIn () ? (
                         <>  
-                            <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
+                            <Nav.Link className='nav' href='/' onClick={logout}>Logout</Nav.Link>
                         </>
                     ) : (
                         <>
-                            <Nav.Link href='/login'>Login</Nav.Link>
+                            <Nav.Link className='nav' href='/login'>Login</Nav.Link>
                         </>
                     )}
                 </Nav>

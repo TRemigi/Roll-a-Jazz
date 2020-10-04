@@ -1,4 +1,4 @@
-import React, { useState, uuseEffect } from 'react';
+import React from 'react';
 import { ThemeProvider } from "styled-components";
 import { useDarkMode } from './components/useDarkMode'
 import { GlobalStyles } from "./components/GlobalStyles";
@@ -52,6 +52,7 @@ function App() {
               <Toggle theme={theme} toggleTheme={themeToggler} />
 
                 <Switch>
+
                   <Route exact path="/" component={Home} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/signup" component={Signup} />
@@ -61,6 +62,7 @@ function App() {
 
                   <Route component={NoMatch} />
                 </Switch>
+
               </div>
               <Footer />
             </div>

@@ -44,7 +44,7 @@ const Home = () => {
     return (
     <div className='text-center m-4'>
       <h1>
-        Welcome to Roll-o-Jazz!
+        Welcome to Rolo<span>Jazz</span> !
       </h1>
       <h4>
         Join a community of business professionals.
