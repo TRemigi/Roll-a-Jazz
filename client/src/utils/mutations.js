@@ -41,6 +41,23 @@ mutation addCard($logoUrl: String, $companyName: String, $tagline: String, $name
   }
 `;
 
+export const ADD_COLLECTED_CARD = gql`
+mutation addCollectedCard($_id: ID!) {
+  addCollectedCard(_id: $_id) {
+    _id
+    logoUrl
+    companyName
+    tagline
+    name
+    jobTitle
+    website
+    phone
+    email
+    username
+  }
+}
+`;
+
 export const UPDATE_CARD = gql`
   mutation updateCard($_id: ID!, $input: CardInput) {
     updateCard(_id: $_id, input: $input) {
