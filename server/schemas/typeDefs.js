@@ -47,7 +47,7 @@ const typeDefs = gql`
     user(username: String!): User
     cards(username: String): [Card]
     card(_id: ID!): Card
-    userCards(email: String!): [Card]
+    userCards(name: String!): [Card]
     myCollection: User
   }
 
