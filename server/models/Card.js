@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const cardSchema = new Schema({
   logoUrl: {
     type: String,
+    unique: false
   },
   companyName: {
     type: String,
