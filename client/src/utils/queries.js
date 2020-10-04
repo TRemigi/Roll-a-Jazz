@@ -17,6 +17,17 @@ export const QUERY_ME = gql`
         phone
         email
       }
+      collectedCards {
+        _id
+        logoUrl
+        companyName
+        tagline
+        name
+        jobTitle
+        website
+        phone
+        email
+      }
     }
   }
 `;
@@ -28,6 +39,17 @@ export const QUERY_USER = gql`
       username
       email
       cards {
+        _id
+        logoUrl
+        companyName
+        tagline
+        name
+        jobTitle
+        website
+        phone
+        email
+      }
+      collectedCards {
         _id
         logoUrl
         companyName
@@ -95,6 +117,23 @@ export const QUERY_CARD = gql`
       phone
       email
       username
+    }
+  }
+`;
+
+export const QUERY_USER_CARDS = gql`
+  query userCards ($email: String!) {
+    userCards (email: $email) {
+      _id
+      username
+      logoUrl
+      companyName
+      tagline
+      name
+      jobTitle
+      website
+      phone
+      email
     }
   }
 `;

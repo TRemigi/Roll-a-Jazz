@@ -8,6 +8,7 @@ const typeDefs = gql`
     username: String
     email: String
     cards: [Card]
+    collectedCards: [Card]
   }
     
   type Auth {
@@ -46,12 +47,14 @@ const typeDefs = gql`
     user(username: String!): User
     cards(username: String): [Card]
     card(_id: ID!): Card
+    userCards(email: String!): [Card]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addCard(logoUrl: String, companyName: String, tagline: String, name: String!, jobTitle: String!, website: String, phone: String!, email: String!): Card
+    addCollectedCard(_id: ID!): Card
     updateCard(_id: ID!, input: CardInput): Card
     deleteCard(_id: ID!): Card
   }
