@@ -31,11 +31,17 @@ const AddCard = () => {
         setShow(true);
     };
 
-
+    const scanHandler = () => {
+        
+        return (
+            alert("You'll be able to scan QR codes by clicking this button!")
+            // <JakesAwesomeScannerComponent />
+        )
+    };
 
 
     return (
-        <>
+        <div className="col-12">
         <ResultsModal
         show={show}
         setShow={setShow}
@@ -44,7 +50,7 @@ const AddCard = () => {
 
             <Form
             inline
-            className="col-12"
+            className="col-12 p-0"
             onSubmit={handleSubmit}
             >
                 <Form.Label htmlFor="nameInput" srOnly>
@@ -60,7 +66,13 @@ const AddCard = () => {
                     Search
                 </Button>
             </Form>
-        </>
+            <Button
+            className="col-11 mb-3"
+            style={ { width: "90%"}}
+            onClick={scanHandler}>
+                Scan Code
+            </Button>
+        </div>
     )
 };
 

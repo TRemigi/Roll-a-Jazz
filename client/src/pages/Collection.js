@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import { QUERY_CARDS, QUERY_MY_COLLECTION } from '../utils/queries'
+import { QUERY_MY_COLLECTION } from '../utils/queries'
 
 import CardList from '../components/CardList';
 import AddCard from '../components/AddCard';
