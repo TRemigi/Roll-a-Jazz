@@ -61,13 +61,13 @@ const Home = () => {
     <main className="container">
       <div className="row justify-content-center">
         <h3 className="p-3">My cards</h3>
-        <div className="col-12 p-0">
+        <div className="col-12 p-0 caro-toggle">
             <CardToggle
             viewSelected={viewSelected}
             setViewSelected={setViewSelected}
             />
         </div>
-        <div className="col-12 mt-0 p-0 text-center" style={{ backgroundColor: "#6C757D", minHeight: "50vh" }}>
+        <div className="col-12 mt-0 p-0 text-center">
           { loading &&
           <div> Loading... </div>}
           {viewSelected ?

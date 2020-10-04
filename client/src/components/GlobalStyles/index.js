@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.main}!important;
   }
 
-  .btn {
+  .btn-border {
     background: ${({ theme }) => theme.main};
     border: 1px solid ${({ theme }) => theme.accent}!important;
     color: ${({ theme }) => theme.text};
@@ -26,6 +26,15 @@ export const GlobalStyles = createGlobalStyle`
   .btn:hover {
     color: ${({ theme }) => theme.text};
   }
+
+  .carousel-control-next, .carousel-control-prev {
+    background-color: ${({ theme }) => theme.main}!important;
+    opacity: 1 !important;
+    color: var(--gold) !important;
+    transition: all 2s linear;
+
+  }
+  
 
 
 `
