@@ -8,7 +8,19 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("cards");
+          .populate("cards")
+          .populate('collectedCards');
+
+        return userData;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    // get collectedCards of logged in user
+    myCollection: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate('collectedCards');
 
         return userData;
       }
@@ -35,6 +47,13 @@ const resolvers = {
     cards: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Card.find(params);
+    },
+    //get cards by card's email
+    userCards: async (parent, { email }) => {
+      const cards = await Card.find({ email: email })
+        .select("-__v");
+      
+        return cards;
     }
   },
   Mutation: {
@@ -71,6 +90,23 @@ const resolvers = {
         }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    // add card to collectedCards
+    addCollectedCard: async (parent, { _id }, context) => {
+      if(context.user) {
+        const card = await Card.findById({ _id: _id });
+        console.log(card);
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { collectedCards: card._id } },
+          { new: true }
+        );
+
+        return card;
+      }
+    throw new AuthenticationError('You need to be logged in!');
+  },
 
     updateCard: async (parent, { _id, input }, context) => {
       // if user is logged in: find card by id, update specified card fields by user input,
