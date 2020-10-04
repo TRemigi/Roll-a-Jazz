@@ -32,6 +32,24 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_MY_COLLECTION = gql`
+  {
+    me {
+      collectedCards {
+        _id
+        logoUrl
+        companyName
+        tagline
+        name
+        jobTitle
+        website
+        phone
+        email
+      }
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {

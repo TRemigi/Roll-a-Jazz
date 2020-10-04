@@ -8,7 +8,19 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("cards");
+          .populate("cards")
+          .populate('collectedCards');
+
+        return userData;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    // get collectedCards of logged in user
+    myCollection: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate('collectedCards');
 
         return userData;
       }

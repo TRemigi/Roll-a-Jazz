@@ -1,15 +1,15 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import { QUERY_CARDS } from '../utils/queries'
+import { QUERY_CARDS, QUERY_MY_COLLECTION } from '../utils/queries'
 
 import CardList from '../components/CardList'
 
 
 const Collection = () => {
-  const { loading, data } = useQuery(QUERY_CARDS);
+  const { loading, data } = useQuery(QUERY_MY_COLLECTION);
 
-  const cards = data?.cards || [];
+  const cards = data?.me.collectedCards || [];
 
   return (
     <main className="container">
