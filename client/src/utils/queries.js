@@ -140,8 +140,8 @@ export const QUERY_CARD = gql`
 `;
 
 export const QUERY_USER_CARDS = gql`
-  query userCards ($email: String!) {
-    userCards (email: $email) {
+  query userCards ($name: String!) {
+    userCards (name: $name) {
       _id
       username
       logoUrl
