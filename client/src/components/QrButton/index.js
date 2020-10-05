@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-reader";
+import { Button } from 'react-bootstrap'
+import { faRubleSign } from "@fortawesome/free-solid-svg-icons";
+
 
 const QrButton = () => {
   const [result, setResult] = useState("No result");
@@ -27,10 +30,10 @@ const QrButton = () => {
   return (
     <div>
       {toggle && reader}
-      <button onClick={() => (toggle ? setToggle(false) : setToggle(true))}>
+      <Button className='mb-1 btn-border' onClick={() => (toggle ? setToggle(false) : setToggle(true))}>
         {console.log(toggle)}
         Scan QR Code
-      </button>
+      </Button>
       <p>{result}</p>
     </div>
   );

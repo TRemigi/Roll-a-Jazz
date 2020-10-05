@@ -16,11 +16,19 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.main}!important;
   }
 
+  .card-title, card-sub {
+    color: ${({ theme }) => theme.main}!important;
+  }
+
+  .card-body {
+    background: ${({ theme }) => theme.text};
+  }
+
   .btn-border {
     background: ${({ theme }) => theme.main};
     border: 1px solid ${({ theme }) => theme.accent}!important;
     color: ${({ theme }) => theme.text};
-    transition: all 2s linear;
+    transition: all 2s ease-in;
   }
 
   .btn:hover {

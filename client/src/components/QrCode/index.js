@@ -6,7 +6,7 @@ const QRCode = require("qrcode.react");
 const QrCode = ({cardId}) => {
   return (
     <div>
-      <QRCode value={cardId} />
+      <QRCode className='qr-code' value={cardId} />
     </div>
   );
 };

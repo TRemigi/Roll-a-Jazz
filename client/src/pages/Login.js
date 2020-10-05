@@ -72,7 +72,7 @@ const Login = (props) => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className='login-submit'>
+        <Button variant="primary" type="submit" className='login-submit btn-border'>
           Submit
         </Button>
       </Form>

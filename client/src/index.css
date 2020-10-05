@@ -13,6 +13,8 @@
 * {
   box-sizing: border-box;
   outline: none !important;
+  margin: 0;
+  padding: 0;
 }
 
 main {
@@ -96,7 +98,7 @@ span {
 }
  */
 button {
-  padding: 0 !important;
+  padding: .2rem !important;
 }
 
 button:focus {
@@ -104,7 +106,7 @@ button:focus {
 }
 
 .btn:hover {
-  transition: all .2s !important; 
+  transition: all .2s ease !important; 
   transform: scale(1.1); 
   background: none !important;
 }
@@ -136,8 +138,29 @@ button:focus {
   border: none !important;
 }
 
-.buscard {
-  
+.card-title {
+  font-size: 2.5rem !important;
+}
+.card-link {
+  color: var(--gold);
+  font-family: ciutadella;
+}
+
+.card-text {
+  font-style: italic;
+}
+
+.qr-code {
+  fill: var(--gold) !important;
+}
+
+.searchbar {
+  width:90% !important;
+  margin-top: 1rem;
+}
+
+.search-btn {
+  margin: 0 !important;
 }
 
 /* utilities */

@@ -52,7 +52,7 @@ const Home = () => {
       <p>
         Login in or sign-up to get started!
       </p>
-      <Button href="/login">Get Started</Button>
+      <Button className='btn-border' href="/login">Get Started</Button>
       </div>
     );
   }

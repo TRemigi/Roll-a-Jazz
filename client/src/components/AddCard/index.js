@@ -57,17 +57,17 @@ const AddCard = () => {
                     Name
                 </Form.Label>
                 <Form.Control
-                    style={ { width: "90%" } }
-                    className="mb-2 mr-sm-2"
+                    className="mb-2 mr-sm-2 searchbar"
                     id="nameInput"
                     placeholder="Enter a name to search for cards"
                 />
-                <Button type="submit" className="mb-2">
+                <Button type="submit" className="mt-1 btn-border search-btn">
                     Search
                 </Button>
             </Form>
+            <p> or </p>
             <Button
-            className="col-11 mb-3"
+            className="col-11 mb-3 btn-border"
             style={ { width: "90%"}}
             onClick={scanHandler}>
                 Scan Code
