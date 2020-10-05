@@ -21,7 +21,6 @@ const ContactForm = () => {
 
         // This is where we would hook it up to email I'm guessing.
     }
-
     return(
         <Form id="contact-form" onSubmit={handleSubmit}>
         <Form.Row>
