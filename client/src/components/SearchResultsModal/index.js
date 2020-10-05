@@ -7,7 +7,7 @@ import AddCardButton from '../AddCard/Button';
 import { Card } from 'react-bootstrap';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
-function ResultsModal({ show, setShow, results }) {
+function ResultsModal({ show, setShow, results, addCollectedCard }) {
 
     return (
         <Modal
@@ -29,7 +29,7 @@ function ResultsModal({ show, setShow, results }) {
                         {results.map(card => (
                             <div className="col-6 pb-2 text-center" key={card._id}>
                                 <CardComponent card={card} />
-                                <AddCardButton id={card._id} />
+                                <AddCardButton addCollectedCard={addCollectedCard} id={card._id} />
                             </div>
                         ))}
                     </div>

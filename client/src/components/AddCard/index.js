@@ -5,18 +5,39 @@ import { Form, Button } from 'react-bootstrap';
 import ResultsModal from '../SearchResultsModal';
 
 
-const AddCard = () => {
+const AddCard = ({ addCollectedCard, collectedCards }) => {
 
     const [searchCards, { data }] = useLazyQuery(QUERY_USER_CARDS);
 
-    const cards = data?.userCards || [];
+    const results = data?.userCards || [];
+
+    const filteredResults = [];
+    
+    const filterResults = (results, collectedCards) => {
+        results.forEach((result) => {
+
+            let isNewCard = true;
+        
+            collectedCards.forEach((card) => {
+
+                if (card._id === result._id) {
+                    return isNewCard = false;
+                }
+            })
+
+            if (isNewCard) {
+                filteredResults.push(result);
+            }
+
+            console.log(`filteredResults: ${filteredResults}`);
+        });
+    };
 
     useEffect(() => {
-        if (cards) {
-            console.log(cards);
-        }
+        filterResults(results, collectedCards)
     }, [data]);
 
+    
     // use State to handle ResultsModal
     // set initial show state to false
     const [show, setShow] = useState(false);
@@ -27,7 +48,7 @@ const AddCard = () => {
         await searchCards({
             variables: { name: e.target.nameInput.value }
         });
-
+        
         setShow(true);
     };
 
@@ -45,7 +66,8 @@ const AddCard = () => {
         <ResultsModal
         show={show}
         setShow={setShow}
-        results={cards}
+        results={filteredResults}
+        addCollectedCard={addCollectedCard}
         />
 
             <Form
