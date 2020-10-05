@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import DeleteCard from '../DeleteCard';
 
 const CardComponent = ({ card }) => {
 
@@ -16,6 +17,7 @@ const CardComponent = ({ card }) => {
                     <Card.Link href={'mailto:' + card.email} >{card.email}</Card.Link><br/>
                     <Card.Link href={'tel:+' + card.phone}>{card.phone}</Card.Link>
                 </Card.Body>
+                <DeleteCard card={card}/>
             </Card>
         </div>
     )

@@ -4,13 +4,14 @@ import CardComponent from '../Card'
 
 const CardList = ({ cards }) => {
 
+
+    
+
     if(!cards.length) {
         return <h3>No Cards Yet!</h3>
     }
 
     return (
-        // <div className='m-5'>
-        //     <div>
             <CardDeck className="m-4">
             {cards && 
                 cards.map(card => (
@@ -19,8 +20,6 @@ const CardList = ({ cards }) => {
                     </Col>
                 ))}
             </CardDeck>
-        //     </div>
-        // </div>
     )
 }
 
