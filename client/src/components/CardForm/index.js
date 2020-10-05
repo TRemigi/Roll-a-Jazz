@@ -54,7 +54,16 @@ const CardForm = () => {
             });
 
             // clear form value
-            setFormState('');
+            setFormState({ 
+                logoUrl: '',
+                companyName: '',
+                tagline: '',
+                name: '',
+                jobTitle: '',
+                website: '',
+                phone: '',
+                email: ''
+            });
 
             // display SuccessModal
             setShow(true);
