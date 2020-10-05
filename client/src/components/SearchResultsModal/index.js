@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import CardComponent from '../Card';
-import AddCardButton from '../AddCard/Button';
+import AddCardButton from '../Search/Button';
 import { Card } from 'react-bootstrap';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop

@@ -5,36 +5,52 @@ import { Form, Button } from 'react-bootstrap';
 import ResultsModal from '../SearchResultsModal';
 
 
-const AddCard = ({ addCollectedCard, collectedCards }) => {
+const Search = ({ addCollectedCard, collectedCards }) => {
 
     const [searchCards, { data }] = useLazyQuery(QUERY_USER_CARDS);
+    const initialResults = data?.userCards || [];
 
-    const results = data?.userCards || [];
-
-    const filteredResults = [];
+    let filteredResults = [];
     
-    const filterResults = (results, collectedCards) => {
-        results.forEach((result) => {
+    const [finalResults, setFinalResults] = useState(filteredResults);
+    
+    const filterResults = () => {
+        filteredResults = [];
+
+        for (let i = 0; i < initialResults.length; i++) {
 
             let isNewCard = true;
-        
-            collectedCards.forEach((card) => {
 
-                if (card._id === result._id) {
-                    return isNewCard = false;
+            for (let j = 0; j < collectedCards.length; j++) {
+
+                if (initialResults[i]._id === collectedCards[j]._id) {
+
+                    isNewCard = false;
+                    break;
+
+                } else {
+
+                    continue;
+
                 }
-            })
-
-            if (isNewCard) {
-                filteredResults.push(result);
             }
 
-            console.log(`filteredResults: ${filteredResults}`);
-        });
-    };
+            if (isNewCard === false) {
 
+                continue;
+
+            } else {
+
+                filteredResults.push(initialResults[i])
+
+            };
+        }
+
+        setFinalResults(filteredResults);
+    };
+    
     useEffect(() => {
-        filterResults(results, collectedCards)
+        filterResults();
     }, [data]);
 
     
@@ -66,7 +82,7 @@ const AddCard = ({ addCollectedCard, collectedCards }) => {
         <ResultsModal
         show={show}
         setShow={setShow}
-        results={filteredResults}
+        results={finalResults}
         addCollectedCard={addCollectedCard}
         />
 
@@ -98,4 +114,4 @@ const AddCard = ({ addCollectedCard, collectedCards }) => {
     )
 };
 
-export default AddCard;
+export default Search;
