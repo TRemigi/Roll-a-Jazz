@@ -6,32 +6,50 @@ const ContactForm = () => {
         { firstName: '', lastName: '', contactFormEmail: '', message:'' 
     });
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+    
+        setContactFormState({
+          ...contactFormState,
+          [name]: value,
+        });
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(contactFormState)
+
+        // This is where we would hook it up to email I'm guessing.
+    }
+
     return(
-        <Form>
+        <Form id="contact-form" onSubmit={handleSubmit}>
         <Form.Row>
-          <Form.Group as={Col} controlId="formGridFirstName">
+          <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
             <Form.Control 
                 placeholder="First Name" 
                 name="firstName" 
                 id="firstName" 
                 value={contactFormState.firstName}
+                onChange={handleChange}
             />
           </Form.Group>
       
-          <Form.Group as={Col} controlId="formGridLastName">
+          <Form.Group as={Col}>
             <Form.Label>Last Name</Form.Label>
             <Form.Control 
                 placeholder="Last Name" 
                 name="lastName" 
                 id="lastName" 
                 value={contactFormState.lastName}
+                onChange={handleChange}
             />
           </Form.Group>
         </Form.Row>
         
         <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col}>
                 <Form.Label>Email</Form.Label>
                 <Form.Control 
                     type="email" 
@@ -39,12 +57,13 @@ const ContactForm = () => {
                     name="contactFormEmail" 
                     id="contactFormEmail" 
                     value={contactFormState.contactFormEmail}
+                    onChange={handleChange}
                 />
             </Form.Group>
         </Form.Row>
       
         <Form.Row>
-            <Form.Group as={Col} controlId="formMessage">
+            <Form.Group as={Col}>
                 <Form.Label>Message</Form.Label>
                 <Form.Control 
                     as="textarea" 
@@ -52,6 +71,7 @@ const ContactForm = () => {
                     name="message" 
                     id="message"
                     value={contactFormState.message}
+                    onChange={handleChange}
                 />
             </Form.Group>
         </Form.Row>
