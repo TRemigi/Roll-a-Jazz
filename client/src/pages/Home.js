@@ -11,7 +11,7 @@ import Auth from '../utils/auth';
 import CardList from '../components/CardList';
 import CardCarousel from '../components/Carousel';
 import CardToggle from '../components/CardToggle';
-import QrButton from '../components/QrButton';
+
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
@@ -61,8 +61,8 @@ const Home = () => {
     <main className="container">
       <div className="row justify-content-center">
         <h3 className="p-3">My cards</h3>
-        <div className="col-12 p-0 caro-toggle">
-          <QrButton/>
+        <div className="col-12 p-0">
+          
           <CardToggle
             viewSelected={viewSelected}
             setViewSelected={setViewSelected}

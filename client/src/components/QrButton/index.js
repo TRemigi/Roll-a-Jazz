@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QrReader from "react-qr-reader";
-import { Button } from 'react-bootstrap'
-import { faRubleSign } from "@fortawesome/free-solid-svg-icons";
-
+import { Button } from "react-bootstrap";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { ADD_COLLECTED_CARD } from "../../utils/mutations";
 
 const QrButton = () => {
   const [result, setResult] = useState("No result");
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
-  const handleScan = (data) => {
-    if (data) {
-      setResult(data);
+  // use a mutation to add scanned card to database
+  const [addCollectedCard, { addedData }] = useMutation(ADD_COLLECTED_CARD);
+
+  const handleScan = (scannedData) => {
+    if (scannedData) {
+      console.log(scannedData);
+      addCollectedCard({ variables: { _id: scannedData } });
+      setResult(scannedData);
     }
   };
 
@@ -27,14 +32,21 @@ const QrButton = () => {
     />
   );
 
+  useEffect(() => {
+    setToggle(false);
+  }, [result]);
+
   return (
     <div className='scanner'>
       {toggle && reader}
-      <Button className='mb-1 mx-auto btn-border scan-button' onClick={() => (toggle ? setToggle(false) : setToggle(true))}>
-        {console.log(toggle)}
-        Scan QR Code
+      <Button
+        className="col-11 mb-3"
+        style={{ width: "90%" }}
+        onClick={() => (toggle ? setToggle(false) : setToggle(true))}
+      >
+        Scan Code
       </Button>
-      <p className='mx-auto'>{result}</p>
+      <p>{result}</p>
     </div>
   );
 };
