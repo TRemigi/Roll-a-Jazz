@@ -78,19 +78,37 @@ const Search = ({ addCollectedCard, collectedCards }) => {
 
 
     return (
-    <div className="col-12">
-      <ResultsModal
-        show={show}
-        setShow={setShow}
-        results={finalResults}
-        addCollectedCard={addCollectedCard}
-      />
-      <Button type="submit" className="mb-2">
-        Search
-      </Button>
-      <QrButton />
-    </div>
-  );
+      <div className="col-12">
+        <ResultsModal
+          show={show}
+          setShow={setShow}
+          results={finalResults}
+          addCollectedCard={addCollectedCard}
+        />
+
+        <Form inline className="col-12 p-0" onSubmit={handleSubmit}>
+          <Form.Label htmlFor="nameInput" srOnly>
+            Name
+          </Form.Label>
+          <Form.Control
+            style={{ width: "90%" }}
+            className="mb-2 mr-sm-2"
+            id="nameInput"
+            placeholder="Enter a name to search for cards"
+          />
+          <Button type="submit" className="mb-2">
+            Search
+          </Button>
+        </Form>
+        <QrButton
+          className="col-11 mb-3"
+          style={{ width: "90%" }}
+          onClick={scanHandler}
+        >
+          Scan Code
+        </QrButton>
+      </div>
+    );
 };
 
 export default Search;
