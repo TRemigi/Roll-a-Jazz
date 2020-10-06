@@ -4,9 +4,6 @@ import CardComponent from '../Card'
 
 const CardList = ({ cards }) => {
 
-
-    
-
     if(!cards.length) {
         return <h3>No Cards Yet!</h3>
     }

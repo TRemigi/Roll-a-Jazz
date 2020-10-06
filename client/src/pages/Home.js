@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -13,23 +13,30 @@ import CardCarousel from '../components/Carousel';
 import CardToggle from '../components/CardToggle';
 
 const Home = () => {
+  // const [currentCards, setCurrentCards] = useState({});
 
-  const [viewSelected, setViewSelected] = useState(true);
-
-  // const testCards = [
-  //   'card1',
-  //   'card2',
-  //   'card2'
-  // ];
-
+  // show only user's unique cards
   const { username: userParam } = useParams();
-
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
   });
-  const user = data?.me || data?.user || {};
-  console.log(useParams());
+  const user = data?.me || data?.user || [];
+  
+  // // update card list when user deletes a card
+  // const [currentCards, setCurrentCards] = useState({});
+  // const cards = data?.me.cards || data?.user.cards || []
+  // console.log(cards)
+ 
+  // // hook to update state when user deletes a card
+  // useEffect( () => {
+  //   if(cards.length) {
+  //     setCurrentCards(cards.find(card => card._id === cards));
+  //   }
+  // }, [cards])
 
+  // console.log(currentCards)
+
+  // if user is logged in, change the home page to the user cards list
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()) {
@@ -40,6 +47,7 @@ const Home = () => {
     return <div>Loading...</div>;
   }
 
+  // if the user is not logged in, display this hero text and CTA
   if (!user?.username) {
     return (
     <div className='text-center m-4'>
@@ -57,6 +65,7 @@ const Home = () => {
     );
   }
 
+  // if the user is logged in, display the user's unique cards
   return (
     <main className="container">
       <div className="row justify-content-center">
@@ -70,12 +79,11 @@ const Home = () => {
         <div className="col-12 mt-0 p-0 text-center" style={{ backgroundColor: "#6C757D", minHeight: "50vh" }}>
           { loading &&
           <div> Loading... </div>}
-          {viewSelected ?
-          (<CardList cards={ user.cards } />)
-          :
-          (<CardCarousel cards={ user.cards } />)
-          
-        }
+            {viewSelected ?
+            (<CardList cards={ user.cards } />)
+            :
+            (<CardCarousel cards={ user.cards } />)
+            }
         </div>
       </div>
     </main>
