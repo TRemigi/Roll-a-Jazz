@@ -23,18 +23,18 @@ const QrButton = () => {
       delay={300}
       onError={handleError}
       onScan={handleScan}
-      style={{ width: "100%" }}
+      className='mb-2'
     />
   );
 
   return (
-    <div>
+    <div className='scanner'>
       {toggle && reader}
-      <Button className='mb-1 btn-border' onClick={() => (toggle ? setToggle(false) : setToggle(true))}>
+      <Button className='mb-1 mx-auto btn-border scan-button' onClick={() => (toggle ? setToggle(false) : setToggle(true))}>
         {console.log(toggle)}
         Scan QR Code
       </Button>
-      <p>{result}</p>
+      <p className='mx-auto'>{result}</p>
     </div>
   );
 };
