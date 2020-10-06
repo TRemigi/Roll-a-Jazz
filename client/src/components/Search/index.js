@@ -5,18 +5,55 @@ import { Form, Button } from 'react-bootstrap';
 import ResultsModal from '../SearchResultsModal';
 
 
-const AddCard = () => {
+const Search = ({ addCollectedCard, collectedCards }) => {
 
     const [searchCards, { data }] = useLazyQuery(QUERY_USER_CARDS);
+    const initialResults = data?.userCards || [];
 
-    const cards = data?.userCards || [];
+    let filteredResults = [];
+    
+    const [finalResults, setFinalResults] = useState(filteredResults);
+    
+    const filterResults = () => {
+        filteredResults = [];
 
-    useEffect(() => {
-        if (cards) {
-            console.log(cards);
+        for (let i = 0; i < initialResults.length; i++) {
+
+            let isNewCard = true;
+
+            for (let j = 0; j < collectedCards.length; j++) {
+
+                if (initialResults[i]._id === collectedCards[j]._id) {
+
+                    isNewCard = false;
+                    break;
+
+                } else {
+
+                    continue;
+
+                }
+            }
+
+            if (isNewCard === false) {
+
+                continue;
+
+            } else {
+
+                filteredResults.push(initialResults[i])
+
+            };
         }
+
+        setFinalResults(filteredResults);
+    };
+    
+    useEffect(() => {
+        filterResults();
     }, [data]);
 
+    
     // use State to handle ResultsModal
     // set initial show state to false
     const [show, setShow] = useState(false);
@@ -27,7 +64,7 @@ const AddCard = () => {
         await searchCards({
             variables: { name: e.target.nameInput.value }
         });
-
+        
         setShow(true);
     };
 
@@ -45,7 +82,8 @@ const AddCard = () => {
         <ResultsModal
         show={show}
         setShow={setShow}
-        results={cards}
+        results={finalResults}
+        addCollectedCard={addCollectedCard}
         />
 
             <Form
@@ -76,4 +114,4 @@ const AddCard = () => {
     )
 };
 
-export default AddCard;
+export default Search;
