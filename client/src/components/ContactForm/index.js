@@ -13,36 +13,34 @@ const ContactForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        // if (event.target.name === 'contactFormEmail') {
-        //     const isValid = validateEmail(event.target.value);
-        //     console.log(isValid);
+        if (event.target.name === 'contactFormEmail') {
+            const isValid = validateEmail(event.target.value);
+            console.log(isValid);
 
-        //     if (!isValid) {
-        //         setErrorMessage('Your email is invalid');
-        //     } else {
-        //         setErrorMessage('');
-        //     }
-        // } else {
-        //     if (!event.target.value.length) {
-        //         setErrorMessage(`${event.target.name} is required.`);
-        //     } else {
-        //         setErrorMessage('');
-        //     }
-        // }
+            if (!isValid) {
+                setErrorMessage('Your email is invalid');
+            } else {
+                setErrorMessage('');
+            }
+        } else {
+            if (!event.target.value.length) {
+                setErrorMessage(`${event.target.name} is required.`);
+            } else {
+                setErrorMessage('');
+            }
+        }
     
-        // if (!errorMessage) {
+        if (!errorMessage) {
             setContactFormState({
                 ...contactFormState,
                 [event.target.name]: event.target.value,
             });
-        // }
+        }
     }
 
     const sendEmail = (e) => {
         e.preventDefault();
         console.log(contactFormState)
-    
-        // these values are hardcoded and need to be changed eventually.
 
         emailjs.sendForm(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, e.target, process.env.REACT_APP_EMAIL_USER_ID)
             .then((result) => {
@@ -125,11 +123,11 @@ const ContactForm = () => {
                 />
             </Form.Group>
         </Form.Row>
-        {/* {errorMessage && (
+        {errorMessage && (
             <div>
                 <p className="error-text">{errorMessage}</p>
             </div>
-        )} */}
+        )}
         <Button variant="primary" type="submit" className="p-2">
           Submit
         </Button>
