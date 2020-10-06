@@ -1,19 +1,41 @@
 import React, { useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap'
+import { validateEmail } from '../../utils/helpers'
 import emailjs from 'emailjs-com';
 
 const ContactForm = () => {
     const [contactFormState, setContactFormState] =useState(
-        { firstName: '', lastName: '', contactFormEmail: '', message:'' 
+        { firstName: '', lastName: '', contactFormEmail: '', subject: '', message:'' 
     });
+
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+
+        // if (event.target.name === 'contactFormEmail') {
+        //     const isValid = validateEmail(event.target.value);
+        //     console.log(isValid);
+
+        //     if (!isValid) {
+        //         setErrorMessage('Your email is invalid');
+        //     } else {
+        //         setErrorMessage('');
+        //     }
+        // } else {
+        //     if (!event.target.value.length) {
+        //         setErrorMessage(`${event.target.name} is required.`);
+        //     } else {
+        //         setErrorMessage('');
+        //     }
+        // }
     
-        setContactFormState({
-          ...contactFormState,
-          [name]: value,
-        });
+        // if (!errorMessage) {
+            setContactFormState({
+                ...contactFormState,
+                [event.target.name]: event.target.value,
+            });
+        // }
     }
 
     const sendEmail = (e) => {
@@ -21,17 +43,19 @@ const ContactForm = () => {
         console.log(contactFormState)
     
         // these values are hardcoded and need to be changed eventually.
-        emailjs.sendForm('service_2skf21a', 'template_rn0mqpl', e.target, 'user_pZs7XqnXE8U79cDPrMk6l')
+
+        emailjs.sendForm(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, e.target, process.env.REACT_APP_EMAIL_USER_ID)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
                 console.log(error.text);
             });
-            
+
         setContactFormState({
             firstName: '',
             lastName: '',
             contactFormEmail: '',
+            subject: '',
             message: ''
         })
     }
@@ -77,6 +101,19 @@ const ContactForm = () => {
       
         <Form.Row>
             <Form.Group as={Col}>
+                <Form.Label>Subject</Form.Label>
+                <Form.Control 
+                    placeholder="Enter a subject line" 
+                    name="subject" 
+                    id="subject" 
+                    value={contactFormState.subject}
+                    onChange={handleChange}
+                />
+            </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+            <Form.Group as={Col}>
                 <Form.Label>Message</Form.Label>
                 <Form.Control 
                     as="textarea" 
@@ -88,7 +125,11 @@ const ContactForm = () => {
                 />
             </Form.Group>
         </Form.Row>
-      
+        {/* {errorMessage && (
+            <div>
+                <p className="error-text">{errorMessage}</p>
+            </div>
+        )} */}
         <Button variant="primary" type="submit" className="p-2">
           Submit
         </Button>
