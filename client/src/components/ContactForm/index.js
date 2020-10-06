@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap'
+import emailjs from 'emailjs-com';
 
 const ContactForm = () => {
     const [contactFormState, setContactFormState] =useState(
@@ -15,14 +16,27 @@ const ContactForm = () => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
         console.log(contactFormState)
-
-        // This is where we would hook it up to email I'm guessing.
+    
+        // these values are hardcoded and need to be changed eventually.
+        emailjs.sendForm('service_2skf21a', 'template_rn0mqpl', e.target, 'user_pZs7XqnXE8U79cDPrMk6l')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+            
+        setContactFormState({
+            firstName: '',
+            lastName: '',
+            contactFormEmail: '',
+            message: ''
+        })
     }
     return(
-        <Form id="contact-form" onSubmit={handleSubmit}>
+        <Form id="contact-form" onSubmit={sendEmail}>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
