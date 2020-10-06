@@ -4,9 +4,9 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_COLLECTED_CARD } from '../../../utils/mutations';
 import Button from 'react-bootstrap/Button';
 
-const AddCardButton = ({ id }) => {
+const AddCardButton = ({ addCollectedCard, id }) => {
 
-    const [addCollectedCard, { error }] = useMutation(ADD_COLLECTED_CARD);
+    // const [addCollectedCard, { error }] = useMutation(ADD_COLLECTED_CARD);
 
     const handleAddCollectedCard = async () => {
         try {
