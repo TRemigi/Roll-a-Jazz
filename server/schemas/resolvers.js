@@ -21,7 +21,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
           .populate('collectedCards');
-
+          console.log('userData: ' + userData);
         return userData;
       }
       throw new AuthenticationError("Not logged in");
@@ -95,7 +95,6 @@ const resolvers = {
     addCollectedCard: async (parent, { _id }, context) => {
       if(context.user) {
         const card = await Card.findById({ _id: _id });
-        console.log(card);
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
