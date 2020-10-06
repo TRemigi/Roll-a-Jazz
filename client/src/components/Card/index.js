@@ -3,9 +3,17 @@ import { Card } from "react-bootstrap";
 import QrCode from "../QrCode";
 
 const CardComponent = ({ card }) => {
+  const viewHandler = () => {
+    
+  }
   return (
     <div>
-      <Card className="border m-1" key={card._id} style={{ minHeight: "50vh" }}>
+      <Card
+        className="border m-1"
+        key={card._id}
+        style={{ minHeight: "50vh" }}
+        onClick={viewHandler}
+      >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
         <Card.Body>
           <Card.Title>{card.name}</Card.Title>
@@ -20,7 +28,7 @@ const CardComponent = ({ card }) => {
           <Card.Link href={"mailto:" + card.email}>{card.email}</Card.Link>
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
-          <QrCode cardId={card._id}/>
+          <QrCode cardId={card._id} />
         </Card.Body>
       </Card>
     </div>
