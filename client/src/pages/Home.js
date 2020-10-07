@@ -12,9 +12,13 @@ import CardList from '../components/CardList';
 import CardCarousel from '../components/Carousel';
 import CardToggle from '../components/CardToggle';
 
+<<<<<<< HEAD
 const Home = () => {
   // const [currentCards, setCurrentCards] = useState({});
+=======
+>>>>>>> ccb2160239471358d2e74a240be662d94adba283
 
+const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
 
   // show only user's unique cards
@@ -73,10 +77,11 @@ const Home = () => {
       <div className="row justify-content-center">
         <h3 className="p-3">My cards</h3>
         <div className="col-12 p-0">
-            <CardToggle
+          
+          <CardToggle
             viewSelected={viewSelected}
             setViewSelected={setViewSelected}
-            />
+          />
         </div>
         <div className="col-12 mt-0 p-0 text-center" style={{ backgroundColor: "#6C757D", minHeight: "50vh" }}>
           { loading &&
