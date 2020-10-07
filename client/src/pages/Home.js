@@ -15,6 +15,8 @@ import CardToggle from '../components/CardToggle';
 const Home = () => {
   // const [currentCards, setCurrentCards] = useState({});
 
+  const [viewSelected, setViewSelected] = useState(true);
+
   // show only user's unique cards
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
