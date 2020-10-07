@@ -107,7 +107,7 @@ const Search = ({ addCollectedCard, collectedCards }) => {
             <Button
             className="col-11 mb-3 btn-border"
             style={ { width: "90%"}}
-            onClick={scanHandler}>
+            >
                 Scan Code
             </Button>
         </div>
