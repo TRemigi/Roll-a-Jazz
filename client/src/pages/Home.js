@@ -12,11 +12,6 @@ import CardList from '../components/CardList';
 import CardCarousel from '../components/Carousel';
 import CardToggle from '../components/CardToggle';
 
-<<<<<<< HEAD
-const Home = () => {
-  // const [currentCards, setCurrentCards] = useState({});
-=======
->>>>>>> ccb2160239471358d2e74a240be662d94adba283
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
@@ -27,20 +22,6 @@ const Home = () => {
     variables: { username: userParam }
   });
   const user = data?.me || data?.user || [];
-  
-  // // update card list when user deletes a card
-  // const [currentCards, setCurrentCards] = useState({});
-  // const cards = data?.me.cards || data?.user.cards || []
-  // console.log(cards)
- 
-  // // hook to update state when user deletes a card
-  // useEffect( () => {
-  //   if(cards.length) {
-  //     setCurrentCards(cards.find(card => card._id === cards));
-  //   }
-  // }, [cards])
-
-  // console.log(currentCards)
 
   // if user is logged in, change the home page to the user cards list
   if (userParam) {
