@@ -6,6 +6,7 @@ import CardList from '../components/CardList';
 import Search from '../components/Search';
 
 
+
 const Collection = () => {
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
 

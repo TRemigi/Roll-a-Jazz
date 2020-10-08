@@ -20,6 +20,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 const client = new ApolloClient({
   // retrieves token from local storage
@@ -46,25 +48,31 @@ function App() {
         <GlobalStyles />
         <ApolloProvider client={client}>
           <Router>
-            <div>
-              <Header></Header>
+            <Provider store={store}>
               <div>
-                <Toggle theme={theme} toggleTheme={themeToggler} />
+                <Header></Header>
+                <div>
+                  <Toggle theme={theme} toggleTheme={themeToggler} />
 
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/signup" component={Signup} />
-                  <Route exact path="/create" component={Create} />
-                  <Route exact path="/collection" component={Collection} />
-                  <Route exact path="/profile:username?" component={Profile} />
-                  <Route exact path="/single-card" component={SingleCard} />
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/create" component={Create} />
+                    <Route exact path="/collection" component={Collection} />
+                    <Route
+                      exact
+                      path="/profile:username?"
+                      component={Profile}
+                    />
+                    <Route exact path="/single-card" component={SingleCard} />
 
-                  <Route component={NoMatch} />
-                </Switch>
+                    <Route component={NoMatch} />
+                  </Switch>
+                </div>
+                <Footer />
               </div>
-              <Footer />
-            </div>
+            </Provider>
           </Router>
         </ApolloProvider>
       </>
