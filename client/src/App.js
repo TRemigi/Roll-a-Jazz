@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Collection from './pages/Collection';
 import Create from './pages/Create';
+import Contact from './pages/Contact'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -58,6 +59,7 @@ function App() {
                   <Route exact path="/create" component={Create} />
                   <Route exact path="/collection" component={Collection} />
                   <Route exact path="/profile:username?" component={Profile} />
+                  <Route exact path="/contact" component={Contact} />
 
                   <Route component={NoMatch} />
                 </Switch>
