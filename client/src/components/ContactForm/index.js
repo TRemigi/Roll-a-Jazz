@@ -13,8 +13,8 @@ const ContactForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        if (event.target.name === 'contactFormEmail') {
-            const isValid = validateEmail(event.target.value);
+        if (name === 'contactFormEmail') {
+            const isValid = validateEmail(value);
             console.log(isValid);
 
             if (!isValid) {
@@ -23,23 +23,28 @@ const ContactForm = () => {
                 setErrorMessage('');
             }
         } else {
-            if (!event.target.value.length) {
-                setErrorMessage(`${event.target.name} is required.`);
+            if (!value.length) {
+                setErrorMessage(`${name} is required.`);
             } else {
                 setErrorMessage('');
             }
         }
     
-        if (!errorMessage) {
-            setContactFormState({
-                ...contactFormState,
-                [event.target.name]: event.target.value,
-            });
-        }
+        setContactFormState({
+            ...contactFormState,
+            [name]: value,
+        });
+    
     }
 
     const sendEmail = (e) => {
         e.preventDefault();
+
+        if (Object.values(contactFormState).filter(v=>v).length < 5) {
+            setErrorMessage("You must enter a valid response for all fields")
+            return;
+        }
+
         console.log(contactFormState)
 
         emailjs.sendForm(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, e.target, process.env.REACT_APP_EMAIL_USER_ID)
@@ -125,7 +130,7 @@ const ContactForm = () => {
         </Form.Row>
         {errorMessage && (
             <div>
-                <p className="error-text">{errorMessage}</p>
+                <p style={{color: "red" }}>{errorMessage}</p>
             </div>
         )}
         <Button variant="primary" type="submit" className="p-2">
