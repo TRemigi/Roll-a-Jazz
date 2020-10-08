@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Collection from "./pages/Collection";
 import Create from "./pages/Create";
 import SingleCard from "./pages/SingleCard";
+import Contact from './pages/Contact'
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -66,6 +67,7 @@ function App() {
                       component={Profile}
                     />
                     <Route exact path="/single-card" component={SingleCard} />
+                    <Route exact path="/contact" component={Contact} />
 
                     <Route component={NoMatch} />
                   </Switch>
