@@ -1,9 +1,27 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+
 import QrCode from "../QrCode";
 import DeleteCard from '../DeleteCard'
+import RemoveCard from '../RemoveCard'
+import Auth from '../../utils/auth'
 
 const CardComponent = ({ card }) => {
+
+  // show only user's unique cards
+  const { username: userParam } = useParams();
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam }
+  });
+  const user = data?.me || data?.user || [];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
