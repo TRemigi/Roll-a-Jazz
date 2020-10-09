@@ -4,9 +4,10 @@ import { validateEmail } from '../../utils/helpers'
 import emailjs from 'emailjs-com';
 
 const ContactForm = () => {
-    const [contactFormState, setContactFormState] =useState(
-        { firstName: '', lastName: '', contactFormEmail: '', subject: '', message:'' 
-    });
+    const [contactFormState, setContactFormState] = useState(
+        {
+            firstName: '', lastName: '', contactFormEmail: '', subject: '', message: ''
+        });
 
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -29,18 +30,18 @@ const ContactForm = () => {
                 setErrorMessage('');
             }
         }
-    
+
         setContactFormState({
             ...contactFormState,
             [name]: value,
         });
-    
+
     }
 
     const sendEmail = (e) => {
         e.preventDefault();
 
-        if (Object.values(contactFormState).filter(v=>v).length < 5) {
+        if (Object.values(contactFormState).filter(v => v).length < 5) {
             setErrorMessage("You must enter a valid response for all fields")
             return;
         }
@@ -62,81 +63,81 @@ const ContactForm = () => {
             message: ''
         })
     }
-    return(
+    return (
         <Form id="contact-form" onSubmit={sendEmail}>
-        <Form.Row>
-          <Form.Group as={Col}>
-            <Form.Label>First Name</Form.Label>
-            <Form.Control 
-                placeholder="First Name" 
-                name="firstName" 
-                id="firstName" 
-                value={contactFormState.firstName}
-                onChange={handleChange}
-            />
-          </Form.Group>
-      
-          <Form.Group as={Col}>
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control 
-                placeholder="Last Name" 
-                name="lastName" 
-                id="lastName" 
-                value={contactFormState.lastName}
-                onChange={handleChange}
-            />
-          </Form.Group>
-        </Form.Row>
-        
-        <Form.Row>
-            <Form.Group as={Col}>
-                <Form.Label>Email</Form.Label>
-                <Form.Control 
-                    type="email" 
-                    placeholder="Enter email" 
-                    name="contactFormEmail" 
-                    id="contactFormEmail" 
-                    value={contactFormState.contactFormEmail}
-                    onChange={handleChange}
-                />
-            </Form.Group>
-        </Form.Row>
-      
-        <Form.Row>
-            <Form.Group as={Col}>
-                <Form.Label>Subject</Form.Label>
-                <Form.Control 
-                    placeholder="Enter a subject line" 
-                    name="subject" 
-                    id="subject" 
-                    value={contactFormState.subject}
-                    onChange={handleChange}
-                />
-            </Form.Group>
-        </Form.Row>
+            <Form.Row>
+                <Form.Group as={Col}>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                        placeholder="First Name"
+                        name="firstName"
+                        id="firstName"
+                        value={contactFormState.firstName}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-        <Form.Row>
-            <Form.Group as={Col}>
-                <Form.Label>Message</Form.Label>
-                <Form.Control 
-                    as="textarea" 
-                    rows="4" 
-                    name="message" 
-                    id="message"
-                    value={contactFormState.message}
-                    onChange={handleChange}
-                />
-            </Form.Group>
-        </Form.Row>
-        {errorMessage && (
-            <div>
-                <p style={{color: "red" }}>{errorMessage}</p>
-            </div>
-        )}
-        <Button variant="primary" type="submit" className="p-2">
-          Submit
+                <Form.Group as={Col}>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                        placeholder="Last Name"
+                        name="lastName"
+                        id="lastName"
+                        value={contactFormState.lastName}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+                <Form.Group as={Col}>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        name="contactFormEmail"
+                        id="contactFormEmail"
+                        value={contactFormState.contactFormEmail}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+                <Form.Group as={Col}>
+                    <Form.Label>Subject</Form.Label>
+                    <Form.Control
+                        placeholder="Enter a subject line"
+                        name="subject"
+                        id="subject"
+                        value={contactFormState.subject}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+                <Form.Group as={Col}>
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        rows="4"
+                        name="message"
+                        id="message"
+                        value={contactFormState.message}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+            </Form.Row>
+            {errorMessage && (
+                <div>
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                </div>
+            )}
+            <Button variant="primary" type="submit" className="p-2 btn-border">
+                Submit
         </Button>
-      </Form>   
+        </Form>
     )
 }
 

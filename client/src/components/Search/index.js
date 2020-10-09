@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useLazyQuery } from "@apollo/react-hooks";
-import { QUERY_USER_CARDS } from "../../utils/queries";
-import { Form, Button } from "react-bootstrap";
-import ResultsModal from "../SearchResultsModal";
-import QrButton from "../QrButton";
+import React, { useState, useEffect } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
+import { QUERY_USER_CARDS } from '../../utils/queries';
+import { Form, Button } from 'react-bootstrap';
+import ResultsModal from '../SearchResultsModal';
+import QrButton from '../QrButton';
+
 
 const Search = ({ addCollectedCard, collectedCards }) => {
 
@@ -11,9 +12,9 @@ const Search = ({ addCollectedCard, collectedCards }) => {
     const initialResults = data?.userCards || [];
 
     let filteredResults = [];
-    
+
     const [finalResults, setFinalResults] = useState(filteredResults);
-    
+
     const filterResults = () => {
         filteredResults = [];
 
@@ -48,23 +49,23 @@ const Search = ({ addCollectedCard, collectedCards }) => {
 
         setFinalResults(filteredResults);
     };
-    
+
     useEffect(() => {
         filterResults();
     }, [data]);
 
-    
+
     // use State to handle ResultsModal
     // set initial show state to false
     const [show, setShow] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
+
         await searchCards({
             variables: { name: e.target.nameInput.value }
         });
-        
+
         setShow(true);
     };
 
@@ -84,14 +85,15 @@ const Search = ({ addCollectedCard, collectedCards }) => {
           </Form.Label>
           <Form.Control
             style={{ width: "90%" }}
-            className="mb-2 mr-sm-2"
+            className="mb-2 mr-sm-2 mt-2"
             id="nameInput"
             placeholder="Enter a name to search for cards"
           />
-          <Button type="submit" className="mb-2">
+          <Button type="submit" className="mb-2 mt-2 btn-border">
             Search
           </Button>
         </Form>
+        <p className='text-center'>or</p>
         <QrButton
           className="col-11 mb-3"
           style={{ width: "90%" }}

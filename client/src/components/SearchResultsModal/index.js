@@ -36,7 +36,7 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShow(false)}>Close</Button>
+            <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
