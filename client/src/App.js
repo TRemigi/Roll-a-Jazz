@@ -21,8 +21,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import { Provider } from "react-redux";
-import store from "./utils/store";
+import { Provider } from 'react-redux';
+import store from './utils/store';
+
 
 const client = new ApolloClient({
   // retrieves token from local storage

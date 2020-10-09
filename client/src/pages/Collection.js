@@ -4,32 +4,34 @@ import { QUERY_MY_COLLECTION, QUERY_ME } from "../utils/queries";
 import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_CARDS } from '../utils/actions';
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_CARDS, ADD_ALL } from '../utils/actions';
 
 const Collection = () => {
 
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const state = useSelector(state => state);
 
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
 
-  let cards = data?.me.collectedCards || [];
+  const { cards, collectedCards } = state;
+  console.log(state)
 
-  const addCollected = () => {
-    dispatch({
-      type: ADD_CARDS,
-      cardsCollected: cards,
-    });
+  // let collectedCards = data?.me.collectedCards || [];
+
+  const addAll = () => {
+    if (data) {
+      dispatch({
+        type: ADD_ALL,
+        cards: cards,
+        collectedCards: data.me.collectedCards,
+      });
+    }
   };
 
   useEffect(() => {
-    addCollected();
+    addAll();
   }, [data]);
-
-  console.log(state);
-
-  const [collectedCards, setCollectedCards] = useState(cards);
 
   const [addCollectedCard, { error }] = useMutation(ADD_COLLECTED_CARD, {
     update(cache, { data: { addCollectedCard } }) {
@@ -51,10 +53,6 @@ const Collection = () => {
     },
   });
 
-  useEffect(() => {
-    setCollectedCards(cards);
-  }, [data, cards]);
-
   return (
     <main className="container">
       <div className="row justify-content-center">
@@ -64,7 +62,7 @@ const Collection = () => {
         />
         <h3 className="p-3">Cards you've collected</h3>
         <div className="col-12">
-          {loading ? <div>Loading..</div> : <CardList cards={cards} />}
+          {loading ? <div>Loading..</div> : <CardList cards={collectedCards} />}
         </div>
       </div>
     </main>
