@@ -26,23 +26,27 @@ const Home = () => {
   const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
+  // console.log(userParam);
+  console.log(state);
+
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  
+
+  // console.log(data);
 
   const user = data?.me || data?.user || {};
-  console.log(user.cards);
+  // console.log(user.cards);
 
   const addCard = () => {
     dispatch({
       type: "CREATE_CARDS",
-      cards: [{},{}],
+      cards: [{}, {}],
     });
   };
   useEffect(() => {
     addCard();
-    console.log(state.user);
+    // console.log(state.user);
   }, [user]);
 
   if (userParam) {
