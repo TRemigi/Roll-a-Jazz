@@ -36,7 +36,7 @@ const Home = () => {
   // console.log(data);
 
   const user = data?.me || data?.user || {};
-  // console.log(user.cards);
+  console.log(user.cards);
 
   const addCard = () => {
     dispatch({
