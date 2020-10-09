@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CREATE_CARDS, ADD_ALL } from '../utils/actions';
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -11,42 +13,34 @@ import Auth from "../utils/auth";
 import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
-import { useSelector, useDispatch } from "react-redux";
+
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
-
-  // const testCards = [
-  //   'card1',
-  //   'card2',
-  //   'card2'
-  // ];
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
-  // console.log(userParam);
-  console.log(state);
+  console.log(state.collectedCards[0]);
+  const { cards, collectedCards } = state;
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 
-  // console.log(data);
-
   const user = data?.me || data?.user || {};
-  console.log(user.cards);
 
-  const addCard = () => {
+  const addAll = () => {
     dispatch({
-      type: "CREATE_CARDS",
+      type: ADD_ALL,
       cards: [user.cards],
+      collectedCards: [user.collectedCards]
     });
   };
+
   useEffect(() => {
-    addCard();
-    // console.log(state.user);
+    addAll();
   }, [data]);
 
   if (userParam) {
