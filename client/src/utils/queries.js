@@ -103,7 +103,6 @@ export const QUERY_USERS = gql`
   }
 `;
 
-
 export const QUERY_CARDS = gql`
   query cards($username: String) {
     cards(username: $username) {
@@ -121,10 +120,9 @@ export const QUERY_CARDS = gql`
   }
 `;
 
-
 export const QUERY_CARD = gql`
-  query card ($id: ID!) {
-    card (_id: $id) {
+  query card($id: ID!) {
+    card(_id: $id) {
       _id
       logoUrl
       companyName
@@ -140,8 +138,8 @@ export const QUERY_CARD = gql`
 `;
 
 export const QUERY_USER_CARDS = gql`
-  query userCards ($name: String!) {
-    userCards (name: $name) {
+  query userCards($name: String!) {
+    userCards(name: $name) {
       _id
       username
       logoUrl
