@@ -190,7 +190,7 @@ const CardForm = () => {
                     </Col>
             </Form.Group>
 
-                <Button type='submit'>
+                <Button type='submit' className='btn-border'>
                     Submit
                 </Button>
 
