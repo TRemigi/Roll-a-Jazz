@@ -84,18 +84,6 @@ const Home = () => {
             setViewSelected={setViewSelected}
           />
         </div>
-<<<<<<< HEAD
-        <div
-          className="col-12 mt-0 p-0 text-center"
-          style={{ backgroundColor: "#6C757D", minHeight: "50vh" }}
-        >
-          {loading && <div> Loading... </div>}
-          {viewSelected ? (
-            <CardList cards={user.cards} />
-          ) : (
-              <CardCarousel cards={user.cards} />
-            )}
-=======
         <div className="col-12 mt-0 p-0 text-center">
           {loading &&
             <div> Loading... </div>}
@@ -105,7 +93,6 @@ const Home = () => {
             (<CardCarousel cards={user.cards} />)
 
           }
->>>>>>> master
         </div>
       </div>
     </main>
