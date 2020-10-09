@@ -1,4 +1,4 @@
-import reducer from "../reducers";
+import reducers from "../reducers";
 import {
   CREATE_CARDS,
   DELETE_CARDS,
@@ -36,7 +36,7 @@ const initialState = {
 };
 
 test("CREATE_CARDS", () => {
-  let newState = reducer(initialState, {
+  let newState = reducers(initialState, {
     type: CREATE_CARDS,
     cards: [{}, {}],
   });
@@ -45,7 +45,7 @@ test("CREATE_CARDS", () => {
 });
 
 test("DELETE_CARDS", () => {
-  let newState = reducer(initialState, {
+  let newState = reducers(initialState, {
     type: DELETE_CARDS,
     cards: [],
   });
@@ -54,7 +54,7 @@ test("DELETE_CARDS", () => {
 });
 
 test("ADD_CARDS", () => {
-  let newState = reducer(initialState, {
+  let newState = reducers(initialState, {
     type: ADD_CARDS,
     cardsCollected: [{}],
   });
@@ -63,7 +63,7 @@ test("ADD_CARDS", () => {
 });
 
 test("REMOVE_CARDS", () => {
-  let newState = reducer(initialState, {
+  let newState = reducers(initialState, {
     type: REMOVE_CARDS,
     cardsCollected: [],
   });

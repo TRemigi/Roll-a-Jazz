@@ -37,6 +37,7 @@ const client = new ApolloClient({
   },
   uri: "/graphql",
 });
+
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
@@ -49,8 +50,8 @@ function App() {
         <GlobalStyles />
         <ApolloProvider client={client}>
           <Router>
-            <Provider store={store}>
-              <div>
+            <div>
+              <Provider store={store}>
                 <Header></Header>
                 <div>
                   <Toggle theme={theme} toggleTheme={themeToggler} />
@@ -66,15 +67,15 @@ function App() {
                       path="/profile:username?"
                       component={Profile}
                     />
-                    <Route exact path="/single-card" component={SingleCard} />
+                    {/* <Route exact path="/single-card" component={SingleCard} /> */}
                     <Route exact path="/contact" component={Contact} />
 
                     <Route component={NoMatch} />
                   </Switch>
                 </div>
                 <Footer />
-              </div>
-            </Provider>
+              </Provider>
+            </div>
           </Router>
         </ApolloProvider>
       </>

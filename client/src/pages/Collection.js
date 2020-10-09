@@ -4,15 +4,32 @@ import { QUERY_MY_COLLECTION, QUERY_ME } from "../utils/queries";
 import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
+import { useSelector, useDispatch } from "react-redux";
+import { ADD_CARDS } from '../utils/actions';
 
 const Collection = () => {
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
 
   let cards = data?.me.collectedCards || [];
 
-  const [collectedCards, setCollectedCards] = useState(cards);
+  const addCollected = () => {
+    dispatch({
+      type: ADD_CARDS,
+      cardsCollected: cards,
+    });
+  };
 
-  // const [addCollectedCard, { error }] = useMutation(ADD_COLLECTED_CARD);
+  useEffect(() => {
+    addCollected();
+  }, [data]);
+
+  console.log(state);
+
+  const [collectedCards, setCollectedCards] = useState(cards);
 
   const [addCollectedCard, { error }] = useMutation(ADD_COLLECTED_CARD, {
     update(cache, { data: { addCollectedCard } }) {

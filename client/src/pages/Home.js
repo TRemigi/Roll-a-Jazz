@@ -12,6 +12,7 @@ import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
 import { useSelector, useDispatch } from "react-redux";
+import { CREATE_CARDS } from '../utils/actions';
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
@@ -40,14 +41,15 @@ const Home = () => {
 
   const addCard = () => {
     dispatch({
-      type: "CREATE_CARDS",
-      cards: [{}, {}],
+      type: CREATE_CARDS,
+      cards: [user.cards],
     });
   };
+
   useEffect(() => {
     addCard();
     // console.log(state.user);
-  }, [user]);
+  }, [data]);
 
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
@@ -92,8 +94,8 @@ const Home = () => {
           {viewSelected ? (
             <CardList cards={user.cards} />
           ) : (
-            <CardCarousel cards={user.cards} />
-          )}
+              <CardCarousel cards={user.cards} />
+            )}
         </div>
       </div>
     </main>

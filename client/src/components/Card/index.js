@@ -9,7 +9,7 @@ const CardComponent = ({ card }) => {
   };
 
   // const dispatch = useDispatch();
-  // const [state, dispatch] = useReducer(reducer, initialState, init);
+  // const [state, dispatch] = useReducer(reducers, initialState, init);
 
   return (
     <div>
