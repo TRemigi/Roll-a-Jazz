@@ -41,13 +41,13 @@ const Home = () => {
   const addCard = () => {
     dispatch({
       type: "CREATE_CARDS",
-      cards: [{}, {}],
+      cards: [user.cards],
     });
   };
   useEffect(() => {
     addCard();
     // console.log(state.user);
-  }, [user]);
+  }, [data]);
 
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
@@ -65,17 +65,17 @@ const Home = () => {
 
   if (!user?.username) {
     return (
-    <div className='text-center m-4'>
-      <h1>
-        Welcome to Rolo<span>Jazz</span> !
+      <div className='text-center m-4'>
+        <h1>
+          Welcome to Rolo<span>Jazz</span> !
       </h1>
-      <h4>
-        Join a community of business professionals.
+        <h4>
+          Join a community of business professionals.
       </h4>
-      <p>
-        Login in or sign-up to get started!
+        <p>
+          Login in or sign-up to get started!
       </p>
-      <Button className='btn-border' href="/login">Get Started</Button>
+        <Button className='btn-border' href="/login">Get Started</Button>
       </div>
     );
   }
@@ -91,14 +91,14 @@ const Home = () => {
           />
         </div>
         <div className="col-12 mt-0 p-0 text-center">
-          { loading &&
-          <div> Loading... </div>}
+          {loading &&
+            <div> Loading... </div>}
           {viewSelected ?
-          (<CardList cards={ user.cards } />)
-          :
-          (<CardCarousel cards={ user.cards } />)
-          
-        }
+            (<CardList cards={user.cards} />)
+            :
+            (<CardCarousel cards={user.cards} />)
+
+          }
         </div>
       </div>
     </main>
