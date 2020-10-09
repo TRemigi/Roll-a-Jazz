@@ -68,14 +68,6 @@ const Search = ({ addCollectedCard, collectedCards }) => {
         setShow(true);
     };
 
-    const scanHandler = () => {
-        
-        return (
-            alert("You'll be able to scan QR codes by clicking this button!")
-            // <JakesAwesomeScannerComponent />
-        )
-    };
-
 
     return (
       <div className="col-12">
@@ -103,7 +95,6 @@ const Search = ({ addCollectedCard, collectedCards }) => {
         <QrButton
           className="col-11 mb-3"
           style={{ width: "90%" }}
-          onClick={scanHandler}
         >
           Scan Code
         </QrButton>
