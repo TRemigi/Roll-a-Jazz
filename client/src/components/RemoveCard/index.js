@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap'
 
-
-const RemoveCard = ({ card }) => {
+const RemoveCard = () => {
 
     return (
             <Button>Remove Card</Button>

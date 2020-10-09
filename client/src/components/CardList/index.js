@@ -13,7 +13,7 @@ const CardList = ({ cards }) => {
             {cards && 
                 cards.map(card => (
                     <Col sm key={card._id}>
-                        <CardComponent card={card}/>
+                        <CardComponent cards={card}/>
                     </Col>
                 ))}
             </CardDeck>
