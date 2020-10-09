@@ -69,50 +69,38 @@ const Search = ({ addCollectedCard, collectedCards }) => {
         setShow(true);
     };
 
-    const scanHandler = () => {
-
-        return (
-            alert("You'll be able to scan QR codes by clicking this button!")
-            // <JakesAwesomeScannerComponent />
-        )
-    };
-
 
     return (
-        <div className="col-12">
-            <ResultsModal
-                show={show}
-                setShow={setShow}
-                results={finalResults}
-                addCollectedCard={addCollectedCard}
-            />
+      <div className="col-12">
+        <ResultsModal
+          show={show}
+          setShow={setShow}
+          results={finalResults}
+          addCollectedCard={addCollectedCard}
+        />
 
-            <Form
-                inline
-                className="col-12 p-0"
-                onSubmit={handleSubmit}
-            >
-                <Form.Label htmlFor="nameInput" srOnly>
-                    Name
-                </Form.Label>
-                <Form.Control
-                    className="mb-2 mr-sm-2 searchbar"
-                    id="nameInput"
-                    placeholder="Enter a name to search for cards"
-                />
-                <Button type="submit" className="mt-1 btn-border search-btn">
-                    Search
-                </Button>
-            </Form>
-            <p> or </p>
-            <QrButton
-                className="col-11 mb-3 btn-border"
-                style={{ width: "90%" }}
-            >
-                Scan Code
-            </QrButton>
-        </div>
-    )
+        <Form inline className="col-12 p-0" onSubmit={handleSubmit}>
+          <Form.Label htmlFor="nameInput" srOnly>
+            Name
+          </Form.Label>
+          <Form.Control
+            style={{ width: "90%" }}
+            className="mb-2 mr-sm-2"
+            id="nameInput"
+            placeholder="Enter a name to search for cards"
+          />
+          <Button type="submit" className="mb-2">
+            Search
+          </Button>
+        </Form>
+        <QrButton
+          className="col-11 mb-3"
+          style={{ width: "90%" }}
+        >
+          Scan Code
+        </QrButton>
+      </div>
+    );
 };
 
 export default Search;

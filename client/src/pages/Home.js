@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 
-import { Redirect, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { Redirect, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
-import CardList from '../components/CardList';
-import CardCarousel from '../components/Carousel';
-import CardToggle from '../components/CardToggle';
-
+import CardList from "../components/CardList";
+import CardCarousel from "../components/Carousel";
+import CardToggle from "../components/CardToggle";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
@@ -22,19 +22,42 @@ const Home = () => {
   //   'card2'
   // ];
 
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
+  // console.log(userParam);
+  console.log(state);
+
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam }
+    variables: { username: userParam },
   });
+
+  // console.log(data);
+
   const user = data?.me || data?.user || {};
-  console.log(useParams());
+  // console.log(user.cards);
+
+  const addCard = () => {
+    dispatch({
+      type: "CREATE_CARDS",
+      cards: [{}, {}],
+    });
+  };
+  useEffect(() => {
+    addCard();
+    // console.log(state.user);
+  }, [user]);
 
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
-    if (Auth.loggedIn() && Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()) {
+    if (
+      Auth.loggedIn() &&
+      Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()
+    ) {
       return <Redirect to="/home" />;
-  }}
+    }
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -62,7 +85,6 @@ const Home = () => {
       <div className="row justify-content-center">
         <h3 className="p-3">My cards</h3>
         <div className="col-12 p-0">
-          
           <CardToggle
             viewSelected={viewSelected}
             setViewSelected={setViewSelected}

@@ -1,11 +1,24 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import QrCode from "../QrCode";
+import { useDispatch, useReducer } from "react-redux";
 
 const CardComponent = ({ card }) => {
+  const viewHandler = () => {
+    window.location.href = "/single-card";
+  };
+
+  // const dispatch = useDispatch();
+  // const [state, dispatch] = useReducer(reducer, initialState, init);
+
   return (
     <div>
-      <Card className="border m-1" key={card._id} style={{ minHeight: "50vh" }}>
+      <Card
+        className="border m-1"
+        key={card._id}
+        style={{ minHeight: "50vh" }}
+        onClick={viewHandler}
+      >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
         <Card.Body>
           <Card.Title className='card-title'>{card.name}</Card.Title>
