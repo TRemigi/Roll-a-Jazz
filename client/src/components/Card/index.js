@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import './style.css';
 import { Card } from "react-bootstrap";
+import SingleCardModal from '../SingleCard';
 import QrCode from "../QrCode";
 
 const CardComponent = ({ card }) => {
+
+  const [show, setShow] = useState(false);
+
+  const cardClickHandler = () => {
+    
+    setShow(true);
+
+  }
+
   return (
     <div>
-      <Card className="border m-1" key={card._id} style={{ minHeight: "50vh" }}>
+      <SingleCardModal show={show} setShow={setShow} card={card} />
+      <Card className="border m-1 pointer" key={card._id} style={{ minHeight: "50vh" }}
+      onClick={cardClickHandler}
+      >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
         <Card.Body>
           <Card.Title>{card.name}</Card.Title>
