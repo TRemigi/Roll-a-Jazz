@@ -40,8 +40,8 @@ const QrButton = () => {
     <div className='scanner'>
       {toggle && reader}
       <Button
-        className="col-11 mb-3"
-        style={{ width: "90%" }}
+        className="col-12 mb-3 btn-border scan-button"
+        style={{ width: "100%" }}
         onClick={() => (toggle ? setToggle(false) : setToggle(true))}
       >
         Scan Code

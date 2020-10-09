@@ -111,10 +111,6 @@ button:focus {
   background: none !important;
 }
 
-button:focus {
-  outline: none !important;
-}
-
 .login-submit {
   padding: .2rem !important;
 }

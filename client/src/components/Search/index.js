@@ -85,14 +85,15 @@ const Search = ({ addCollectedCard, collectedCards }) => {
           </Form.Label>
           <Form.Control
             style={{ width: "90%" }}
-            className="mb-2 mr-sm-2"
+            className="mb-2 mr-sm-2 mt-2"
             id="nameInput"
             placeholder="Enter a name to search for cards"
           />
-          <Button type="submit" className="mb-2">
+          <Button type="submit" className="mb-2 mt-2 btn-border">
             Search
           </Button>
         </Form>
+        <p className='text-center'>or</p>
         <QrButton
           className="col-11 mb-3"
           style={{ width: "90%" }}
