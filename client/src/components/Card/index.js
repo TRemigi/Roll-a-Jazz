@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import './style.css';
 import { Card } from "react-bootstrap";
+import SingleCardModal from '../SingleCard';
 import QrCode from "../QrCode";
 import { useDispatch, useReducer } from "react-redux";
 
 const CardComponent = ({ card }) => {
-  const viewHandler = () => {
-    window.location.href = "/single-card";
-  };
 
-  // const dispatch = useDispatch();
-  // const [state, dispatch] = useReducer(reducers, initialState, init);
+  const [show, setShow] = useState(false);
+
+  const cardClickHandler = () => {
+    
+    setShow(true);
+
+  }
 
   return (
     <div>
-      <Card
-        className="border m-1"
-        key={card._id}
-        style={{ minHeight: "50vh" }}
-        onClick={viewHandler}
+      <SingleCardModal show={show} setShow={setShow} card={card} />
+      <Card className="border m-1 pointer" key={card._id} style={{ minHeight: "50vh" }}
+      onClick={cardClickHandler}
       >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
         <Card.Body>
@@ -33,7 +35,7 @@ const CardComponent = ({ card }) => {
           <Card.Link href={"mailto:" + card.email}>{card.email}</Card.Link>
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
-          <QrCode className='qr-code' cardId={card._id}/>
+          {/* <QrCode cardId={card._id}/> */}
         </Card.Body>
       </Card>
     </div>
