@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CREATE_CARDS, ADD_ALL } from '../utils/actions';
+import { CREATE_CARDS, ADD_ALL } from "../utils/actions";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -14,7 +14,6 @@ import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
 
-
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
 
@@ -22,7 +21,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
-  console.log(state.collectedCards[0]);
+  // console.log(state.collectedCards[0]);
   const { cards, collectedCards } = state;
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -30,12 +29,13 @@ const Home = () => {
   });
 
   const user = data?.me || data?.user || {};
+  console.log(user);
 
   const addAll = () => {
     dispatch({
       type: ADD_ALL,
       cards: [user.cards],
-      collectedCards: [user.collectedCards]
+      collectedCards: [user],
     });
   };
 
@@ -59,17 +59,15 @@ const Home = () => {
 
   if (!user?.username) {
     return (
-      <div className='text-center m-4'>
+      <div className="text-center m-4">
         <h1>
           Welcome to Rolo<span>Jazz</span> !
-      </h1>
-        <h4>
-          Join a community of business professionals.
-      </h4>
-        <p>
-          Login in or sign-up to get started!
-      </p>
-        <Button className='btn-border' href="/login">Get Started</Button>
+        </h1>
+        <h4>Join a community of business professionals.</h4>
+        <p>Login in or sign-up to get started!</p>
+        <Button className="btn-border" href="/login">
+          Get Started
+        </Button>
       </div>
     );
   }
@@ -85,14 +83,12 @@ const Home = () => {
           />
         </div>
         <div className="col-12 mt-0 p-0 text-center">
-          {loading &&
-            <div> Loading... </div>}
-          {viewSelected ?
-            (<CardList cards={user.cards} />)
-            :
-            (<CardCarousel cards={user.cards} />)
-
-          }
+          {loading && <div> Loading... </div>}
+          {viewSelected ? (
+            <CardList cards={user.cards} />
+          ) : (
+            <CardCarousel cards={user.cards} />
+          )}
         </div>
       </div>
     </main>

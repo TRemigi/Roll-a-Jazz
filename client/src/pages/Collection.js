@@ -13,9 +13,11 @@ const Collection = () => {
   const state = useSelector(state => state);
 
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
+  
 
   const { cards, collectedCards } = state;
-  console.log(state)
+  // console.log(state);
+  console.log(data);
 
   // let collectedCards = data?.me.collectedCards || [];
 

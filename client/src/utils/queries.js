@@ -46,6 +46,17 @@ export const QUERY_MY_COLLECTION = gql`
         phone
         email
       }
+      cards {
+        _id
+        logoUrl
+        companyName
+        tagline
+        name
+        jobTitle
+        website
+        phone
+        email
+      }
     }
   }
 `;
