@@ -73,6 +73,7 @@ function SingleCardModal({ show, setShow, card }) {
                         <QrCode cardId={card._id}/>
                     </Card.Body>
                     <Card.Footer>
+                        {/* placeholder for Kailey's delete button */}
                         <Button variant="danger">Delete</Button>
                     </Card.Footer>
                 </Card>
