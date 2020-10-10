@@ -60,7 +60,7 @@ const Collection = () => {
           collectedCards={collectedCards || []}
         />
         <h3 className="p-3">Cards you've collected</h3>
-        <div className="col-12">
+        <div className="col-12 text-center">
           {loading ? <div>Loading..</div> : <CardList cards={collectedCards} />}
         </div>
       </div>

@@ -20,6 +20,19 @@ function SingleCardModal({ show, setShow, card }) {
         setCardFlipped(!cardFlipped);
     };
 
+    let isHome;
+
+    const pageCheck = () => {
+        if (window.location.href === 'http://localhost:3000/') {
+            isHome = true;
+        } else {
+            isHome = false;
+        }
+    };
+
+    pageCheck();
+
+
     return (
         <>
             <Modal
@@ -72,10 +85,10 @@ function SingleCardModal({ show, setShow, card }) {
                     <Card.Body className="d-flex justify-content-center align-items-center">
                         <QrCode cardId={card._id}/>
                     </Card.Body>
-                    <Card.Footer>
-                        {/* placeholder for Kailey's delete button */}
-                        <Button variant="danger">Delete</Button>
-                    </Card.Footer>
+                    {/* Kailey's delete button will go here */}
+                    {isHome &&
+                    <Button variant="danger">Delete</Button>
+                    }
                 </Card>
             )
             }
