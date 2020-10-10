@@ -5,6 +5,7 @@ import SingleCardModal from '../SingleCard';
 import QrCode from "../QrCode";
 import { useDispatch, useReducer } from "react-redux";
 import DeleteCard from "../DeleteCard";
+import RemoveCard from "../RemoveCard";
 
 const CardComponent = ({ card }) => {
 
@@ -39,6 +40,7 @@ const CardComponent = ({ card }) => {
           {/* <QrCode cardId={card._id}/> */}
           <br />
           <DeleteCard card={card}/>
+          <RemoveCard card={card}/>
         </Card.Body>
       </Card>
     </div>
