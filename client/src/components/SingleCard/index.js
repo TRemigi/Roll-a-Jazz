@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { CSSTransition } from 'react-transition-group';
 import QrCode from '../QrCode';
-
+import CardComponent from '../Card'
 import { Card } from 'react-bootstrap';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
@@ -42,7 +42,7 @@ function SingleCardModal({ show, setShow, card }) {
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            className="scale-in"
+            className="scale-in border-0"
             >
             {!cardFlipped ? 
             (
@@ -50,22 +50,21 @@ function SingleCardModal({ show, setShow, card }) {
                 in={inProp} timeout={200} classNames="my-node"
                 >
 
-                <Card className="pointer"
+                <Card className="pointer border-0 single-card"
                 key={card._id}
-                style={{ minHeight: "50vh" }}
                 onClick={handleFlip}
                 >
                 {/* <Card.Img variant="top" src={card.logoUrl} /> */}
-                    <Card.Body>
+                    <Card.Body className='text-center'>
                         <Card.Title>{card.name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">
+                        <Card.Subtitle>
                             {card.companyName}
                         </Card.Subtitle>
                         <Card.Link href={card.website} target="_blank">
                             {card.website}
                         </Card.Link>
                         <Card.Text>{card.tagline}</Card.Text>
-                        <h5>Contact</h5>
+                        <h5 className='card-contact '>Contact</h5>
                         <Card.Link href={"mailto:" + card.email}>{card.email}</Card.Link>
                         <br />
                         <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
@@ -77,17 +76,17 @@ function SingleCardModal({ show, setShow, card }) {
             )
             :
             (
-                <Card className="flip-in pointer"
+                <Card className="flip-in pointer border-0 single-card"
                 key={card._id}
-                style={{ minHeight: "50vh" }}
                 onClick={handleFlip}
                 >
-                    <Card.Body className="d-flex justify-content-center align-items-center">
+                    <Card.Body className="d-flex justify-content-center align-items-center qr-body">
                         <QrCode cardId={card._id}/>
                     </Card.Body>
                     {/* Kailey's delete button will go here */}
                     {isHome &&
-                    <Button variant="danger">Delete</Button>
+                    <Button className='delete-btn h-100' variant="danger">
+                        <img src="https://img.icons8.com/windows/64/d4af37/delete-forever.png"/></Button>
                     }
                 </Card>
             )

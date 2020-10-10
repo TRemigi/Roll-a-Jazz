@@ -35,7 +35,6 @@ export const GlobalStyles = createGlobalStyle`
 
   btn-border:focus {
     border: 1px solid ${({ theme }) => theme.accent} !important;
-
   }
 
   .btn:hover {
@@ -52,8 +51,27 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 1 !important;
     color: var(--gold) !important;
     transition: all 2s linear;
-
   }
+
+  .delete-btn {
+    background-color: ${({ theme }) => theme.text}!important;
+    border: none !important;
+    width: 15%;
+    margin: -20% 0 0 10%;
+  }
+
+  .single-card {
+    height: 16rem;
+    background-color: ${({ theme }) => theme.text}!important;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  .qr-body {
+    box-shadow: none !important;
+  
+  }
+  
+  
   
 
 
