@@ -21,8 +21,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import { Provider } from "react-redux";
-import store from "./utils/store";
+import { Provider } from 'react-redux';
+import store from './utils/store';
+
 
 const client = new ApolloClient({
   // retrieves token from local storage
@@ -37,6 +38,7 @@ const client = new ApolloClient({
   },
   uri: "/graphql",
 });
+
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
@@ -49,8 +51,8 @@ function App() {
         <GlobalStyles />
         <ApolloProvider client={client}>
           <Router>
-            <Provider store={store}>
-              <div>
+            <div>
+              <Provider store={store}>
                 <Header></Header>
                 <div>
                   <Toggle theme={theme} toggleTheme={themeToggler} />
@@ -66,15 +68,15 @@ function App() {
                       path="/profile:username?"
                       component={Profile}
                     />
-                    <Route exact path="/single-card" component={SingleCard} />
+                    {/* <Route exact path="/single-card" component={SingleCard} /> */}
                     <Route exact path="/contact" component={Contact} />
 
                     <Route component={NoMatch} />
                   </Switch>
                 </div>
                 <Footer />
-              </div>
-            </Provider>
+              </Provider>
+            </div>
           </Router>
         </ApolloProvider>
       </>
