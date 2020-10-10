@@ -34,7 +34,7 @@ const CardComponent = ({ card }) => {
           <Card.Link href={"mailto:" + card.email}>{card.email}</Card.Link>
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
-          <QrCode cardId={card._id}/>
+          {/* <QrCode cardId={card._id}/> */}
         </Card.Body>
       </Card>
     </div>

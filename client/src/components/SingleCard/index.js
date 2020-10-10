@@ -72,6 +72,9 @@ function SingleCardModal({ show, setShow, card }) {
                     <Card.Body className="d-flex justify-content-center align-items-center">
                         <QrCode cardId={card._id}/>
                     </Card.Body>
+                    <Card.Footer>
+                        <Button variant="danger">Delete</Button>
+                    </Card.Footer>
                 </Card>
             )
             }
