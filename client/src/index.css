@@ -99,6 +99,7 @@ span {
  */
 button {
   padding: .2rem !important;
+  
 }
 
 button:focus {
@@ -181,6 +182,10 @@ button:focus {
   /* display: block; */
   margin: 0 auto !important;
   width: 100%;
+}
+
+.navbar-toggler-icon {
+  background-image: url('./gold.png') !important;
 }
 
 /* utilities */

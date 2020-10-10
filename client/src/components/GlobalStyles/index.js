@@ -26,8 +26,8 @@ export const GlobalStyles = createGlobalStyle`
   };
   }
 
-  .btn-border {
-    background: ${({ theme }) => theme.main};
+  button {
+    background: ${({ theme }) => theme.main} !important;
     border: 1px solid ${({ theme }) => theme.accent}!important;
     color: ${({ theme }) => theme.text} !important;
     transition: all 2s ease-in;
