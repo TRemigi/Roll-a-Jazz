@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -29,17 +29,17 @@ const Navigation = () => {
             <Navbar.Brand className='title' href="/">Rolo<span>Jazz</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-                <Nav className="mr-auto" className='justify-content-end'>
-                    <Nav.Link className='nav' href="/">Home</Nav.Link>
-                    <Nav.Link className='nav' href="/create">Create</Nav.Link>
-                    <Nav.Link className='nav' href="/collection">Collection</Nav.Link>
+                <Nav className="justify-content-end">
+                    <Nav.Link className='nav' as={Link} to="/">Home</Nav.Link>
+                    <Nav.Link className='nav' as={Link} to="/create">Create</Nav.Link>
+                    <Nav.Link className='nav' as={Link} to="/collection">Collection</Nav.Link>
                     {Auth.loggedIn () ? (
                         <>  
-                            <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
+                            <Nav.Link className='nav' as={Link} to="/" onClick={logout}>Logout</Nav.Link>
                         </>
                     ) : (
                         <>
-                            <Nav.Link href='/login'>Login</Nav.Link>
+                            <Nav.Link className='nav' as={Link} to="/login">Login</Nav.Link>
                         </>
                     )}
                 </Nav>

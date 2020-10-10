@@ -1,40 +1,56 @@
-import React, { useState } from 'react';
-import { Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CREATE_CARDS, ADD_ALL } from '../utils/actions';
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 
-import { Redirect, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { Redirect, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
-import CardList from '../components/CardList';
-import CardCarousel from '../components/Carousel';
-import CardToggle from '../components/CardToggle';
+import CardList from "../components/CardList";
+import CardCarousel from "../components/Carousel";
+import CardToggle from "../components/CardToggle";
 
 
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
 
-  // const testCards = [
-  //   'card1',
-  //   'card2',
-  //   'card2'
-  // ];
-
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
+  const { cards, collectedCards } = state;
+
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam }
+    variables: { username: userParam },
   });
+  console.log(state)
   const user = data?.me || data?.user || {};
-  console.log(useParams());
+
+  const addAll = () => {
+    dispatch({
+      type: ADD_ALL,
+      cards: [user.cards],
+      collectedCards: [user.collectedCards]
+    });
+  };
+
+  useEffect(() => {
+    addAll();
+  }, [data]);
 
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
-    if (Auth.loggedIn() && Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()) {
+    if (
+      Auth.loggedIn() &&
+      Auth.getProfile().data.username.toLowerCase() === userParam.toLowerCase()
+    ) {
       return <Redirect to="/home" />;
-  }}
+    }
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,17 +58,17 @@ const Home = () => {
 
   if (!user?.username) {
     return (
-    <div className='text-center m-4'>
-      <h1>
-        Welcome to Roll-o-Jazz!
+      <div className='text-center m-4'>
+        <h1>
+          Welcome to Rolo<span>Jazz</span> !
       </h1>
-      <h4>
-        Join a community of business professionals.
+        <h4>
+          Join a community of business professionals.
       </h4>
-      <p>
-        Login in or sign-up to get started!
+        <p>
+          Login in or sign-up to get started!
       </p>
-      <Button href="/login">Get Started</Button>
+        <Button className='btn-border' href="/login">Get Started</Button>
       </div>
     );
   }
@@ -62,21 +78,20 @@ const Home = () => {
       <div className="row justify-content-center">
         <h3 className="p-3">My cards</h3>
         <div className="col-12 p-0">
-          
           <CardToggle
             viewSelected={viewSelected}
             setViewSelected={setViewSelected}
           />
         </div>
-        <div className="col-12 mt-0 p-0 text-center" style={{ backgroundColor: "#6C757D", minHeight: "50vh" }}>
-          { loading &&
-          <div> Loading... </div>}
+        <div className="col-12 mt-0 p-0 text-center">
+          {loading &&
+            <div> Loading... </div>}
           {viewSelected ?
-          (<CardList cards={ user.cards } />)
-          :
-          (<CardCarousel cards={ user.cards } />)
-          
-        }
+            (<CardList cards={user.cards} />)
+            :
+            (<CardCarousel cards={user.cards} />)
+
+          }
         </div>
       </div>
     </main>
