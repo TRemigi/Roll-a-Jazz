@@ -22,13 +22,12 @@ const Home = () => {
   const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
-  console.log(state.collectedCards[0]);
   const { cards, collectedCards } = state;
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-
+  console.log(state)
   const user = data?.me || data?.user || {};
 
   const addAll = () => {
