@@ -3,12 +3,14 @@ import {
   DELETE_CARDS,
   ADD_CARDS,
   REMOVE_CARDS,
-  ADD_ALL
+  ADD_ALL, 
+  UPDATE_SCANNED_ID
 } from "./actions";
 
 const initialState = {
   cards: [],
-  collectedCards: []
+  collectedCards: [], 
+  scannedId: ""
 };
 
 const reducers = (state = initialState, action) => {
@@ -46,6 +48,13 @@ const reducers = (state = initialState, action) => {
       //     ...state,
       //     collectedCards: newState2,
       //   };
+
+      case UPDATE_SCANNED_ID: 
+      return {
+        ...state, 
+        scannedId: action.scannedId
+      }
+
       default:
         return state;
   }

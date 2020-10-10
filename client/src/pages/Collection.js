@@ -18,7 +18,7 @@ const Collection = () => {
 
   let collectedCards = data?.me.collectedCards || [];
 
-  console.log(state)
+  // console.log(state)
 
   useEffect(() => {
     const addCards = () => {

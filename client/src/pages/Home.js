@@ -27,7 +27,7 @@ const Home = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  console.log(state)
+  // console.log(state)
   const user = data?.me || data?.user || {};
 
   const addAll = () => {
