@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import SingleCardModal from '../SingleCard';
 import QrCode from "../QrCode";
 import { useDispatch, useReducer } from "react-redux";
+import DeleteCard from "../DeleteCard";
 
 const CardComponent = ({ card }) => {
 
@@ -36,6 +37,8 @@ const CardComponent = ({ card }) => {
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
           {/* <QrCode cardId={card._id}/> */}
+          <br />
+          <DeleteCard card={card}/>
         </Card.Body>
       </Card>
     </div>
