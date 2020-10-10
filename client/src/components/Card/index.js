@@ -6,6 +6,7 @@ import QrCode from "../QrCode";
 import { useDispatch, useReducer } from "react-redux";
 import DeleteCard from "../DeleteCard";
 import RemoveCard from "../RemoveCard";
+import ResultsModal from "../SearchResultsModal"
 
 const CardComponent = ({ card }) => {
 
@@ -14,12 +15,11 @@ const CardComponent = ({ card }) => {
   const cardClickHandler = () => {
     
     setShow(true);
-
   }
 
   return (
     <div>
-      <SingleCardModal show={show} setShow={setShow} card={card} />
+      {/* <SingleCardModal show={show} setShow={setShow} card={card} /> */}
       <Card className="border m-1 pointer" key={card._id} style={{ minHeight: "50vh" }}
       onClick={cardClickHandler}
       >

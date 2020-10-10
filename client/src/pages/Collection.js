@@ -6,6 +6,7 @@ import CardList from "../components/CardList";
 import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_CARDS, ADD_ALL } from '../utils/actions';
+import RemoveCard from "../components/RemoveCard";
 
 const Collection = () => {
 
@@ -61,7 +62,7 @@ const Collection = () => {
         />
         <h3 className="p-3">Cards you've collected</h3>
         <div className="col-12 text-center">
-          {loading ? <div>Loading..</div> : <CardList cards={collectedCards} />}
+          {loading ? <div>Loading..</div> : <CardList cards={collectedCards}/>}
         </div>
       </div>
     </main>

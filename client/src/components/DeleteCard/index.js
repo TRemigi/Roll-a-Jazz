@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap'
+
 import { useMutation } from '@apollo/react-hooks'
 import { DELETE_CARD } from '../../utils/mutations'
 
-const DeleteCard = ({ card }) => {
+const DeleteCard = ({ card }) => {    
 
-  const [deleteCard, { error }] = useMutation(DELETE_CARD)
+    const [deleteCard, { error }] = useMutation(DELETE_CARD)
 
-  const handleDeleteCard = async event => {
+    const handleDeleteCard = async event => {
       event.preventDefault();
     
       try {

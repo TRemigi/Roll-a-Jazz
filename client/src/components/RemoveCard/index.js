@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap'
 import { useMutation } from '@apollo/react-hooks'
-import { DELETE_CARD } from '../../utils/mutations'
+import { REMOVE_CARD } from '../../utils/mutations'
+import ResultsModal from '../SearchResultsModal';
 
 const RemoveCard = ({ card }) => {
 
-  const [removeCard, { error }] = useMutation(DELETE_CARD)
 
-  const handleRemoveCard = async event => {
-      event.preventDefault();
-    
-      try {
-        // remove card from database
-        await removeCard({
-          variables: { ...card }
-        });
-    
-      } catch (e) {
-        console.error(e);
-      }
-    };
+    const [removeCard, { error }] = useMutation(REMOVE_CARD)
+
+    const handleRemoveCard = async event => {
+        event.preventDefault();
+        
+        try {
+            // remove card from database
+            await removeCard({
+            variables: { ...card }
+            });
+        
+            } catch (e) {
+                console.error(e);
+            }
+        };
 
     let isCollection;
 
