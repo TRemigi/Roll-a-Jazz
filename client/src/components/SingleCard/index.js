@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
 import Modal from 'react-bootstrap/Modal';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import { Card } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 import QrCode from '../QrCode';
-
-import { Card } from 'react-bootstrap';
+import EditCardForm from '../EditCardForm';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
 function SingleCardModal({ show, setShow, card }) {
@@ -14,6 +15,8 @@ function SingleCardModal({ show, setShow, card }) {
     const [cardFlipped, setCardFlipped] = useState(false);
 
     const [inProp, setInProp] = useState(false);
+
+    const [isEdit, setIsEdit] = useState(false);
 
     const handleFlip = () => {
         setInProp(true)
@@ -32,9 +35,20 @@ function SingleCardModal({ show, setShow, card }) {
 
     pageCheck();
 
+    const editCard = () => {
+        console.log('editing card')
+        setShow(false);
+        setIsEdit(true);
+    }
 
     return (
         <>
+        {isEdit &&
+            <div className="row justify-content-center">
+                <EditCardForm card={card} setIsEdit={setIsEdit} />
+            </div>
+        }
+        {!isEdit &&
             <Modal
             animation={false}
             show={show}
@@ -86,14 +100,22 @@ function SingleCardModal({ show, setShow, card }) {
                         <QrCode cardId={card._id}/>
                     </Card.Body>
                     {/* Kailey's delete button will go here */}
-                    {isHome &&
-                    <Button variant="danger">Delete</Button>
+                    {isHome ? (
+                    <ButtonGroup className="justify-content-between" aria-label="home-btns">
+                        <Button value={card} variant="primary" onClick={() => editCard()}>Edit</Button>
+                        <Button value={card} variant="danger">Delete</Button>
+                    </ButtonGroup>
+                    ) :
+                    (
+                        <Button value={card} variant="danger">Remove From Collection</Button>
+                    )
                     }
                 </Card>
             )
             }
         </Modal>
-            </>
+        }
+        </>
     );
 };
 
