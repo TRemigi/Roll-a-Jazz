@@ -33,6 +33,13 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s ease-in;
   }
 
+  .start-btn {
+    background: ${({ theme }) => theme.main} !important;
+    border: 1px solid ${({ theme }) => theme.accent}!important;
+    color: ${({ theme }) => theme.text} !important;
+    transition: all 2s ease-in;
+  }
+
   btn-border:focus {
     border: 1px solid ${({ theme }) => theme.accent} !important;
   }

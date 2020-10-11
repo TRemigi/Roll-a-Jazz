@@ -41,6 +41,10 @@ header {
   position: relative;
 }
 
+.home-title {
+  margin-left: 3.5rem;
+}
+
 .light-dark-btn {
   float: right;
   position: absolute;
