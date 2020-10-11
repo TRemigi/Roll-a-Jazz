@@ -238,8 +238,26 @@ button:focus {
     width: 7% !important;
   }
 
+  .col-12 {
+    padding: 0 !important;
+  }
+
   .card-column {
     padding: 0 !important;
+  }
+
+  .searchbar {
+    width: 95% !important;
+    margin-top: 4rem !important;
+  }
+
+  .scanner {
+    width: 90%;
+  }
+
+  .scan-button {
+   width: 75% !important;
+   margin: 0 auto;
   }
 }
 
