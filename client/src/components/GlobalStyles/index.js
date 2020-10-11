@@ -57,7 +57,7 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s linear;
   }
 
-  .delete-btn {
+  .delete-btn, .edit-btn {
     background-color: ${({ theme }) => theme.text}!important;
     border: none !important;
     width: 15%;

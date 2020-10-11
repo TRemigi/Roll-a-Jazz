@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
 import Modal from 'react-bootstrap/Modal';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import { Card } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 import QrCode from '../QrCode';
-import CardComponent from '../Card'
-import { Card } from 'react-bootstrap';
+import EditCardForm from '../EditCardForm';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
 function SingleCardModal({ show, setShow, card }) {
@@ -14,6 +15,8 @@ function SingleCardModal({ show, setShow, card }) {
     const [cardFlipped, setCardFlipped] = useState(false);
 
     const [inProp, setInProp] = useState(false);
+
+    const [isEdit, setIsEdit] = useState(false);
 
     const handleFlip = () => {
         setInProp(true)
@@ -32,9 +35,20 @@ function SingleCardModal({ show, setShow, card }) {
 
     pageCheck();
 
+    const editCard = () => {
+        console.log('editing card')
+        setShow(false);
+        setIsEdit(true);
+    }
 
     return (
         <>
+        {isEdit &&
+            <div className="row justify-content-center">
+                <EditCardForm card={card} setIsEdit={setIsEdit} />
+            </div>
+        }
+        {!isEdit &&
             <Modal
                 animation={false}
                 show={show}
@@ -72,27 +86,35 @@ function SingleCardModal({ show, setShow, card }) {
                                 </Card.Body>
                             </Card>
 
-                        </CSSTransition>
-                    )
-                    :
-                    (
-                        <Card className="flip-in pointer border-0 single-card"
-                            key={card._id}
-                            onClick={handleFlip}
-                        >
+                </CSSTransition>
+            )
+            :
+            (
+                <Card className="flip-in pointer border-0 single-card"
+                key={card._id}
+                onClick={handleFlip}
+                >
                             <Card.Body className="d-flex justify-content-center align-items-center qr-body">
                                 <QrCode cardId={card._id} />
                             </Card.Body>
-                            {/* Kailey's delete button will go here */}
-                            {isHome &&
-                                <Button className='delete-btn' variant="danger">
+                    {/* Kailey's delete button will go here */}
+                    {isHome ? (
+                    <ButtonGroup className="justify-content-between" aria-label="home-btns">
+                        <Button className='edit-btn' value={card} variant="primary" onClick={() => editCard()}><img src="https://img.icons8.com/metro/36/d4af37/edit.png"/></Button>
+                        <Button className='delete-btn' variant="danger">
                                     <img src="https://img.icons8.com/windows/48/d4af37/delete-forever.png" />
                                 </Button>
-                            }
-                        </Card>
+                    </ButtonGroup>
+                    ) :
+                    (
+                        <Button value={card} variant="danger">Remove From Collection</Button>
                     )
-                }
-            </Modal>
+                    }
+                </Card>
+            )
+            }
+        </Modal>
+        }
         </>
     );
 };

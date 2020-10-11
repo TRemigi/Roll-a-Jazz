@@ -35,6 +35,7 @@ export const QUERY_ME = gql`
 export const QUERY_MY_COLLECTION = gql`
   {
     me {
+      _id
       collectedCards {
         _id
         logoUrl
