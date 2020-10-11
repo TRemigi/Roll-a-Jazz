@@ -12,15 +12,12 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s linear;
   }
 
-  .card-body {
-    color: ${({ theme }) => theme.main}!important;
-  }
-
   .card-title, card-sub {
     color: ${({ theme }) => theme.main}!important;
   }
 
   .card-body {
+    color: ${({ theme }) => theme.main}!important;
     background: ${({ theme }) => theme.text};
     box-shadow: ${({ theme }) => theme.boxShadow
   };
@@ -79,6 +76,10 @@ export const GlobalStyles = createGlobalStyle`
     position: absolute;
     width: 100% !important;
     margin-left: 0 auto;
+  }
+
+  .caro-single {
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
   
   
