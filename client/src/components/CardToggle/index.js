@@ -12,11 +12,11 @@ const CardToggle = ({ viewSelected, setViewSelected }) => {
     };
 
     return (
-        <Button variant="secondary" size="sm" onClick={handleToggle} className="rounded-0 no-focus-outline car-view">
+        <div variant="secondary" size="sm" onClick={handleToggle} className="pointer car-view" border={false}>
             {viewSelected ? 
-            (<FontAwesomeIcon icon={faThLarge} size="lg" className="card-toggle flip car-view" />) :
-            (<FontAwesomeIcon icon={faClone}  size="lg" className="card-toggle flip car-view" />)}
-        </Button>
+            (<FontAwesomeIcon icon={faThLarge} size="lg" border={false}/>) :
+            (<FontAwesomeIcon icon={faClone}  size="lg" border={false}/>)}
+        </div>
     )
 };
 
