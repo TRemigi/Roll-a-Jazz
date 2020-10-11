@@ -9,7 +9,7 @@ import { validateEmail, validatePhone } from "../../utils/helpers";
 
 const CardForm = () => {
   const [formState, setFormState] = useState({
-    logoUrl: "",
+    // logoUrl: "",
     companyName: "",
     tagline: "",
     name: "",
@@ -100,7 +100,7 @@ const CardForm = () => {
 
       // clear form value
       setFormState({
-        logoUrl: "",
+        // logoUrl: "",
         companyName: "",
         tagline: "",
         name: "",
@@ -128,7 +128,7 @@ const CardForm = () => {
       <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
         <h3 className="pb-4">Create a Business Card!</h3>
 
-        <Form.Group as={Row}>
+        {/* <Form.Group as={Row}>
           <Form.Label column sm="2">
             Upload Company Logo:
           </Form.Label>
@@ -141,7 +141,7 @@ const CardForm = () => {
               onChange={handleChange}
             ></Form.Control>
           </Col>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group as={Row}>
           <Form.Label column sm="2">
