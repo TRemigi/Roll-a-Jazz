@@ -121,6 +121,7 @@ button:focus {
   border: none !important;
   background-color: transparent !important;
   outline: none !important;
+  max-width: fit-content;
 }
 
 .car-view:focus {

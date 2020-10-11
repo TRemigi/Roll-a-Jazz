@@ -85,8 +85,8 @@ function SingleCardModal({ show, setShow, card }) {
                     </Card.Body>
                     {/* Kailey's delete button will go here */}
                     {isHome &&
-                    <Button className='delete-btn h-100' variant="danger">
-                        <img src="https://img.icons8.com/windows/64/d4af37/delete-forever.png"/></Button>
+                    <Button className='delete-btn' variant="danger">
+                        <img src="https://img.icons8.com/windows/48/d4af37/delete-forever.png"/></Button>
                     }
                 </Card>
             )

@@ -57,7 +57,8 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.text}!important;
     border: none !important;
     width: 15%;
-    margin: -20% 0 0 10%;
+    z-index: 9999; 
+    margin-top: 37%;   
   }
 
   .single-card {
@@ -68,7 +69,9 @@ export const GlobalStyles = createGlobalStyle`
 
   .qr-body {
     box-shadow: none !important;
-  
+    position: absolute;
+    width: 100% !important;
+    margin-left: 0 auto;
   }
   
   
