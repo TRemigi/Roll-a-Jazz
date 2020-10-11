@@ -28,9 +28,7 @@ const cardSchema = new Schema(
       required: true,
       validate: {
         validator: function (v) {
-          return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
-            v
-          );
+          return /^(\+0?1\s)?\(?\d{3}\)?[\s-]\d{3}[\s-]\d{4}$/im.test(v);
         },
         message: (props) => `${props.value} is not a valid phone number!`,
       },

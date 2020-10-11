@@ -4,6 +4,8 @@ import { ADD_CARD } from "../../utils/mutations";
 import { QUERY_CARDS, QUERY_ME } from "../../utils/queries";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import SuccessModal from "../SuccessModal";
+// i'll need to import validatePhone as well.
+import { validateEmail, validatePhone } from "../../utils/helpers";
 
 const CardForm = () => {
   const [formState, setFormState] = useState({
@@ -16,6 +18,8 @@ const CardForm = () => {
     phone: "",
     email: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [addCard, { error }] = useMutation(ADD_CARD, {
     update(cache, { data: { addCard } }) {
@@ -52,11 +56,43 @@ const CardForm = () => {
   // set initial show state to false
   const [show, setShow] = useState(false);
 
+  const isValidPhoneInput = (text) => {
+    const isValid = validatePhone(text);
+    return isValid;
+  };
+
+  const isValidEmailInput = (text) => {
+    const isValid = validateEmail(text);
+    return isValid;
+  };
+
   //handler for the card form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    const isValidPhone = isValidPhoneInput(formState.phone);
+    const isValidEmail = isValidEmailInput(formState.email);
+    const hasName = formState.name;
+    const hasTitle = formState.jobTitle;
+
     try {
+      //validate required fields
+      if (!isValidEmail) {
+        setErrorMessage("Please enter a valid email address.");
+        return;
+      } else if (!isValidPhone) {
+        setErrorMessage("Please enter a valid phone number.");
+        return;
+      } else if (hasName.length < 3) {
+        setErrorMessage("Please enter a full name.");
+        return;
+      } else if (hasTitle.length < 3) {
+        setErrorMessage("Please enter a job title.");
+        return;
+      } else {
+        setErrorMessage("");
+      }
+
       //add card to database
       await addCard({
         variables: { ...formState },
@@ -222,13 +258,11 @@ const CardForm = () => {
             ></Form.Control>
           </Col>
         </Form.Group>
-
+        {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <Button type="submit" className="btn-border">
           Submit
         </Button>
       </Form>
-
-      {error && <div>Card creation failed</div>}
     </div>
   );
 };
