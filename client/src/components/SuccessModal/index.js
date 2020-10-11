@@ -22,7 +22,7 @@ function SuccessModal({ show, setShow, message }) {
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>
+                <p style={{color: "black"}}>
                     { message }
                 </p>
             </Modal.Body>
