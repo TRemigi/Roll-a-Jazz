@@ -66,7 +66,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .single-card {
-    height: 16rem;
+    height: 17rem;
     background-color: ${({ theme }) => theme.text}!important;
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
