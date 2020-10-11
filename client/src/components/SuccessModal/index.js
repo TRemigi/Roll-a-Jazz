@@ -8,26 +8,25 @@ function SuccessModal({ show, setShow, message }) {
 
     return (
         <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
+            show={show}
+            onHide={() => setShow(false)}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
         >
             <Modal.Header
-            closeButton
-            style={ {backgroundColor: "#28A745"}}>
-            <Modal.Title id="contained-modal-title-vcenter">
-                Success!
+            >
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Success!
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p style={{color: "black"}}>
-                    { message }
+                <p style={{ color: "black" }}>
+                    {message}
                 </p>
             </Modal.Body>
             <Modal.Footer>
-            <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
