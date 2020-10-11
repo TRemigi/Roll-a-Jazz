@@ -18,7 +18,7 @@ const CardList = ({ cards }) => {
             <CardDeck className="m-4">
             {cards && 
                 cards.map(card => (
-                    <Col className='col-6' key={card._id}>
+                    <Col className='col-lg-6 col-sm-12 card-column' key={card._id}>
                         <CardComponent card={card}/>
                     </Col>
                 ))}
