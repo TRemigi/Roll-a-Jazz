@@ -19,21 +19,21 @@ const CardComponent = ({ card }) => {
 
   return (
     <div>
-      {/* <SingleCardModal show={show} setShow={setShow} card={card} /> */}
-      <Card className="border m-1 pointer" key={card._id} style={{ minHeight: "50vh" }}
+      <SingleCardModal show={show} setShow={setShow} card={card} />
+      <Card className="border m-1 pointer" key={card._id}
       onClick={cardClickHandler}
       >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
-        <Card.Body>
+        <Card.Body className='text-center'>
           <Card.Title className='card-title'>{card.name}</Card.Title>
-          <Card.Subtitle className="mb-2 card-sub">
+          <Card.Subtitle className=" card-sub">
             {card.companyName}
           </Card.Subtitle>
           <Card.Link href={card.website} target="_blank">
             {card.website}
           </Card.Link>
           <Card.Text>"{card.tagline}"</Card.Text>
-          <h5>Contact</h5>
+          <h5 className='card-contact '>Contact</h5>
           <Card.Link href={"mailto:" + card.email}>{card.email}</Card.Link>
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>

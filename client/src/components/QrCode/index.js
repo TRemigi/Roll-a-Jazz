@@ -8,7 +8,7 @@ const QrCode = ({cardId}) => {
   
   return (
     <div>
-      <QRCode className='qr-code' value={cardId} />
+      <QRCode className='qr-code mt-3' value={cardId} />
     </div>
   );
 };

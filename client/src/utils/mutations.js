@@ -62,12 +62,14 @@ export const UPDATE_CARD = gql`
   mutation updateCard($_id: ID!, $input: CardInput) {
     updateCard(_id: $_id, input: $input) {
       _id
+      logoUrl
+      companyName
+      tagline
       name
       jobTitle
-      logoUrl
+      website
       phone
-      tagline
-      companyName
+      email
     }
   }
 `;
