@@ -24,6 +24,9 @@ const CardComponent = ({ card }) => {
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}
         <Card.Body className='text-center'>
           <Card.Title className='card-title'>{card.name}</Card.Title>
+          <Card.Subtitle className=" card-sub mb-4">
+            {card.jobTitle}
+          </Card.Subtitle>
           <Card.Subtitle className=" card-sub">
             {card.companyName}
           </Card.Subtitle>
