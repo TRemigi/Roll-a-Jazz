@@ -17,7 +17,7 @@ const CardCarousel = ({ cards }) => {
             {cards &&
             cards.map(card => (
                 <Carousel.Item key={ card._id }>
-                    <CardComponent card={card} />
+                    <CardComponent className='caro-single' card={card} />
                 </Carousel.Item>
             )) }
         </Carousel>  
