@@ -178,6 +178,9 @@ const EditCardForm = ({ card, setIsEdit }) => {
               value={formState.name}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="nameHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -194,6 +197,9 @@ const EditCardForm = ({ card, setIsEdit }) => {
               value={formState.jobTitle}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="jobTitleHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -225,6 +231,9 @@ const EditCardForm = ({ card, setIsEdit }) => {
               value={formState.phone}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="nameHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -240,6 +249,9 @@ const EditCardForm = ({ card, setIsEdit }) => {
               value={formState.email}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="emailHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 

@@ -189,6 +189,9 @@ const CardForm = () => {
               value={formState.name}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="nameHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -206,6 +209,9 @@ const CardForm = () => {
               value={formState.jobTitle}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="jobTitleHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -239,6 +245,9 @@ const CardForm = () => {
               value={formState.phone}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="phoneHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
 
@@ -256,6 +265,9 @@ const CardForm = () => {
               value={formState.email}
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text id="emailHelpBlock" muted>
+              Required
+            </Form.Text>
           </Col>
         </Form.Group>
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
