@@ -5,13 +5,12 @@ import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_CARDS, ADD_ALL } from '../utils/actions';
-import RemoveCard from "../components/RemoveCard";
+import { ADD_CARDS, ADD_ALL } from "../utils/actions";
+
 
 const Collection = () => {
-
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
+  const state = useSelector((state) => state);
 
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
 
@@ -19,7 +18,7 @@ const Collection = () => {
 
   let collectedCards = data?.me.collectedCards || [];
 
-  console.log(state)
+  console.log(state);
 
   useEffect(() => {
     const addCards = () => {

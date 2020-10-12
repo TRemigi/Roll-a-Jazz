@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import './style.css';
-import Modal from 'react-bootstrap/Modal';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
-import { Card } from 'react-bootstrap';
-import QrCode from '../QrCode';
-import EditCardForm from '../EditCardForm';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./style.css";
+import Modal from "react-bootstrap/Modal";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
+import { Card } from "react-bootstrap";
+import QrCode from "../QrCode";
+import EditCardForm from "../EditCardForm";
 // import ReactCardFlip
 // docs: https://github.com/AaronCCWong/react-card-flip
 import ReactCardFlip from 'react-card-flip';
 import DeleteCard from '../DeleteCard';
 import RemoveCard from '../RemoveCard';
 
+
 function SingleCardModal({ show, setShow, card }) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-    const [isFlipped, setIsFlipped] = useState(false);
+  const [inProp, setInProp] = useState(false);
 
-    const [inProp, setInProp] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
-    const [isEdit, setIsEdit] = useState(false);
+  const handleFlip = () => {
+    setInProp(true);
+    setIsFlipped(!isFlipped);
+  };
 
-    const handleFlip = () => {
-        setInProp(true)
-        setIsFlipped(!isFlipped);
-    };
-
-    let isHome;
+  let isHome;
 
     const pageCheck = () => {
         if (window.location.pathname === '/') {
@@ -36,33 +36,62 @@ function SingleCardModal({ show, setShow, card }) {
         }
     };
 
-    pageCheck();
 
-    const editCard = () => {
-        console.log('editing card')
-        setShow(false);
-        setIsEdit(true);
-    }
+  pageCheck();
 
-    return (
-        <>
-        {isEdit &&
-            <div className="row justify-content-center">
-                <EditCardForm card={card} setIsEdit={setIsEdit} />
-            </div>
-        }
-        {!isEdit &&
-            <Modal
-                animation={false}
-                show={show}
-                onHide={() => setShow(false)}
-                size="md"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                className="scale-in border-0"
-                style={{backgroundColor: "rgba(14, 14, 14, 0.3)"}}
+  const editCard = () => {
+    console.log("editing card");
+    setShow(false);
+    setIsEdit(true);
+  };
+
+  return (
+    <>
+      {isEdit && (
+        <div className="row justify-content-center">
+          <EditCardForm card={card} setIsEdit={setIsEdit} />
+        </div>
+      )}
+      {!isEdit && (
+        <Modal
+          animation={false}
+          show={show}
+          onHide={() => setShow(false)}
+          size="md"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="scale-in border-0"
+          style={{ backgroundColor: "rgba(14, 14, 14, 0.3)" }}
+        >
+          <ReactCardFlip
+            isFlipped={isFlipped}
+            flipDirection="horizontal"
+            containerStyle={{ backgroundColor: "rgb(14, 14, 14)" }}
+          >
+            <Card
+              className="pointer border-0 single-card"
+              key={card._id}
+              key="front"
+              onClick={handleFlip}
             >
-                    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{backgroundColor: "rgb(14, 14, 14)"}}>
+              {/* <Card.Img variant="top" src={card.logoUrl} /> */}
+              <Card.Body className="text-center">
+                <Card.Title>{card.name}</Card.Title>
+                <Card.Subtitle>{card.companyName}</Card.Subtitle>
+                <Card.Link href={card.website} target="_blank">
+                  {card.website}
+                </Card.Link>
+                <Card.Text>{card.tagline}</Card.Text>
+                <h5 className="card-contact ">Contact</h5>
+                <Card.Link href={"mailto:" + card.email}>
+                  {card.email}
+                </Card.Link>
+                <br />
+                <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
+                {/* <QrCode cardId={card._id}/> */}
+              </Card.Body>
+            </Card>
+
 
                         <Card className="pointer border-0 single-card"
                             key={card._id}
@@ -115,5 +144,6 @@ function SingleCardModal({ show, setShow, card }) {
         </>
     );
 };
+
 
 export default SingleCardModal;
