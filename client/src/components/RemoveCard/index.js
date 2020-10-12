@@ -24,7 +24,7 @@ const RemoveCard = ({ card }) => {
 
     return (
         <>
-            <Button onClick={handleRemoveCard} value={card} variant="danger" style={{color:"white"}}>Remove From Collection</Button>
+            <Button className='remove-btn' onClick={handleRemoveCard} value={card} variant="danger">Remove From Collection</Button>
         </>
   )
 }

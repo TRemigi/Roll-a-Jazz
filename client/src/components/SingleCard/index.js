@@ -119,7 +119,7 @@ function SingleCardModal({ show, setShow, card }) {
                                 </ButtonGroup>
                             ) : (
                                     <ButtonGroup
-                                        className="justify-content-between"
+                                        className="remove-btn"
                                         aria-label="home-btns"
                                     >
                                         <RemoveCard card={card} />

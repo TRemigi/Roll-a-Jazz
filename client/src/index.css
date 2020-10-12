@@ -196,6 +196,7 @@ button:focus {
   background-image: url('./gold.png') !important;
 }
 
+
 /* utilities */
 /* .btn:focus {
   outline: none !important;
@@ -266,6 +267,10 @@ button:focus {
   .home-title {
     margin-left: 0;
     margin-top: 3rem;
+  }
+
+  .delete-btn, .edit-btn {
+    margin-top: 52% !important;
   }
 }
 

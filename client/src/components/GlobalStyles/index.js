@@ -87,6 +87,11 @@ export const GlobalStyles = createGlobalStyle`
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
   
+  .remove-btn:hover {
+    background-color: ${({ theme }) => theme.main} !important;
+    border-color: 1px solid #d4af37 !important;
+    transition: none !important;
+  }
   
   
 
