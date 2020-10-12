@@ -136,10 +136,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
                 </Form.Group> */}
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Company Name:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               name="companyName"
               type="companyName"
@@ -151,10 +151,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Company's Tagline:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               name="tagline"
               type="tagline"
@@ -166,10 +166,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Full Name:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               required
               name="name"
@@ -185,10 +185,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Job Title:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               required
               name="jobTitle"
@@ -204,10 +204,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Company Website:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               name="website"
               type="website"
@@ -219,10 +219,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Phone Number:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               required
               name="phone"
@@ -238,10 +238,10 @@ const EditCardForm = ({ card, setIsEdit }) => {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label column sm="2">
+          <Form.Label column sm="12">
             Email Address:
           </Form.Label>
-          <Col sm="10">
+          <Col sm="12">
             <Form.Control
               name="email"
               type="email"

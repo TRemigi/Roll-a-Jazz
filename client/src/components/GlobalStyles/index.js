@@ -19,9 +19,14 @@ export const GlobalStyles = createGlobalStyle`
   .card-body {
     color: ${({ theme }) => theme.main}!important;
     background: ${({ theme }) => theme.text};
-    box-shadow: ${({ theme }) => theme.boxShadow
-  };
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
+
+  .card-contact {
+    margin: 0 30% 1% 30%;
+    border-bottom: 1px solid ${({ theme }) => theme.main};
+  }
+  
 
   button {
     background: ${({ theme }) => theme.main} !important;

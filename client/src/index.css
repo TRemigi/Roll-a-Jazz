@@ -195,11 +195,6 @@ button:focus {
   background-image: url('./gold.png') !important;
 }
 
-.card-contact {
-  margin: 0 30% 1% 30%;
-  border-bottom: 1px solid var(--white);
-}
-
 /* utilities */
 /* .btn:focus {
   outline: none !important;
