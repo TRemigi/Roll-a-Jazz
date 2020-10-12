@@ -84,8 +84,7 @@ const Search = ({ addCollectedCard, collectedCards }) => {
             Name
           </Form.Label>
           <Form.Control
-            style={{ width: "90%" }}
-            className="mb-2 mr-sm-2 mt-2"
+            className="mb-2 mr-lg-2 mt-lg-2 searchbar"
             id="nameInput"
             placeholder="Enter a name to search for cards"
           />
