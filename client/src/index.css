@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'ciutadella';
-  src: url('./fonts/CiutadellaSlabDEMO-Rg/font.woff2') format('woff2'), url('./fonts/CiutadellaSlabDEMO-Rg/font.woff') format('woff');
+  font-family: 'yantramanav';
+  src: url('https://fonts.googleapis.com/css2?family=Yantramanav&display=swap');;
 }
 
 @font-face {
@@ -80,7 +80,7 @@ header {
 span {
   color: var(--gold) !important;
   text-shadow: 0 0 10px var(--gold);
-  font-family: 'ciutadella';
+  font-family: 'yantramanav';
   font-style: italic;
 }
 
@@ -155,7 +155,7 @@ button:focus {
 }
 .card-link {
   color: var(--gold);
-  font-family: ciutadella;
+  font-family: yantramanav;
 }
 
 .card-text {
