@@ -5,13 +5,14 @@ import Modal from "react-bootstrap/Modal";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import { Card } from "react-bootstrap";
-import { CSSTransition } from "react-transition-group";
 import QrCode from "../QrCode";
 import EditCardForm from "../EditCardForm";
+// import ReactCardFlip
+// docs: https://github.com/AaronCCWong/react-card-flip
+import ReactCardFlip from "react-card-flip";
 
-// when using the success modal, the message you want displayed needs to be passed in through the message prop
 function SingleCardModal({ show, setShow, card }) {
-  const [cardFlipped, setCardFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const [inProp, setInProp] = useState(false);
 
@@ -19,7 +20,7 @@ function SingleCardModal({ show, setShow, card }) {
 
   const handleFlip = () => {
     setInProp(true);
-    setCardFlipped(!cardFlipped);
+    setIsFlipped(!isFlipped);
   };
 
   let isHome;
@@ -56,38 +57,41 @@ function SingleCardModal({ show, setShow, card }) {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           className="scale-in border-0"
+          style={{ backgroundColor: "rgba(14, 14, 14, 0.3)" }}
         >
-          {!cardFlipped ? (
-            <CSSTransition in={inProp} timeout={200} classNames="my-node">
-              <Card
-                className="pointer border-0 single-card"
-                key={card._id}
-                onClick={handleFlip}
-              >
-                {/* <Card.Img variant="top" src={card.logoUrl} /> */}
-                <Card.Body className="text-center">
-                  <Card.Title>{card.name}</Card.Title>
-                  <Card.Subtitle>{card.companyName}</Card.Subtitle>
-                  <Card.Link href={card.website} target="_blank">
-                    {card.website}
-                  </Card.Link>
-                  <Card.Text>{card.tagline}</Card.Text>
-                  <h5 className="card-contact ">Contact</h5>
-                  <Card.Link href={"mailto:" + card.email}>
-                    {card.email}
-                  </Card.Link>
-                  <br />
-                  <Card.Link href={"tel:+" + card.phone}>
-                    {card.phone}
-                  </Card.Link>
-                  {/* <QrCode cardId={card._id}/> */}
-                </Card.Body>
-              </Card>
-            </CSSTransition>
-          ) : (
+          <ReactCardFlip
+            isFlipped={isFlipped}
+            flipDirection="horizontal"
+            containerStyle={{ backgroundColor: "rgb(14, 14, 14)" }}
+          >
+            <Card
+              className="pointer border-0 single-card"
+              key={card._id}
+              key="front"
+              onClick={handleFlip}
+            >
+              {/* <Card.Img variant="top" src={card.logoUrl} /> */}
+              <Card.Body className="text-center">
+                <Card.Title>{card.name}</Card.Title>
+                <Card.Subtitle>{card.companyName}</Card.Subtitle>
+                <Card.Link href={card.website} target="_blank">
+                  {card.website}
+                </Card.Link>
+                <Card.Text>{card.tagline}</Card.Text>
+                <h5 className="card-contact ">Contact</h5>
+                <Card.Link href={"mailto:" + card.email}>
+                  {card.email}
+                </Card.Link>
+                <br />
+                <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
+                {/* <QrCode cardId={card._id}/> */}
+              </Card.Body>
+            </Card>
+
             <Card
               className="flip-in pointer border-0 single-card"
               key={card._id}
+              key="back"
               onClick={handleFlip}
             >
               <Card.Body className="d-flex justify-content-center align-items-center qr-body">
@@ -117,7 +121,7 @@ function SingleCardModal({ show, setShow, card }) {
                 </Button>
               )}
             </Card>
-          )}
+          </ReactCardFlip>
         </Modal>
       )}
     </>
