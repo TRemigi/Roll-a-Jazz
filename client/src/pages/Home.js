@@ -75,7 +75,7 @@ const Home = () => {
 
   return (
     <main className="container">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mr-0">
         <h3 className="p-3">My cards</h3>
         <div className="col-12 p-0">
           <CardToggle

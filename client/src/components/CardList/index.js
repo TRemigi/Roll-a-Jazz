@@ -15,10 +15,10 @@ const CardList = ({ cards }) => {
     return (
         // <div className='m-5'>
         //     <div>
-            <CardDeck className="m-4">
+            <CardDeck className='pl-0'>
             {cards && 
                 cards.map(card => (
-                    <Col className='col-6' key={card._id}>
+                    <Col className='col-lg-6 col-sm-12 card-column' key={card._id}>
                         <CardComponent card={card}/>
                     </Col>
                 ))}

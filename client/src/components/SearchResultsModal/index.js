@@ -11,23 +11,22 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
 
     return (
         <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
+            show={show}
+            onHide={() => setShow(false)}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
         >
-            <Modal.Header
-            style={ {backgroundColor: "#D4AF37"}}>
-            <Modal.Title id="contained-modal-title-vcenter">
-                Search Results:
-            </Modal.Title>
+            <Modal.Header>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Search Results:
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="container">
                     <div className="row justify-content-start">
                         {results.map(card => (
-                            <div className="col-6 pb-2 text-center" key={card._id}>
+                            <div className="col-12 pb-2 text-center" key={card._id}>
                                 <CardComponent card={card}/>
                                 <AddCardButton addCollectedCard={addCollectedCard} id={card._id} />
                             </div>
@@ -36,7 +35,7 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-            <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
