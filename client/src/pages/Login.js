@@ -80,7 +80,11 @@ const Login = (props) => {
                 Submit
               </Button>
             </Form>
-            {error && <div>Login attempt failed. Please try again.</div>}
+            {error && (
+              <div style={{ color: "red" }}>
+                Login attempt failed. Please try again.
+              </div>
+            )}
             <Card>
               <Card.Body>
                 Need to create an account? Head to our{" "}

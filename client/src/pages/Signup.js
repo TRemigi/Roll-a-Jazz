@@ -83,7 +83,11 @@ const Signup = () => {
               Submit
             </Button>
           </Form>
-          {error && <div>Unable to create an account. Please try again.</div>}
+          {error && (
+            <div style={{ color: "red" }}>
+              Unable to create an account. Please try again.
+            </div>
+          )}
         </Col>
       </Row>
     </Container>
