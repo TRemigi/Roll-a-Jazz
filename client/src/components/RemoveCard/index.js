@@ -36,9 +36,9 @@ const RemoveCard = ({ card }) => {
     pageCheck()
 
     return (
-        <div>
-            {isCollection && <Button onClick={handleRemoveCard}>Remove Card</Button>}
-        </div>
+        <>
+            <Button onClick={handleRemoveCard} value={card} variant="danger" style={{color:"white"}}>Remove From Collection</Button>
+        </>
   )
 }
 

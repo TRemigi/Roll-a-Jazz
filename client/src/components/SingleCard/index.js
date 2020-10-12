@@ -10,6 +10,8 @@ import EditCardForm from '../EditCardForm';
 // import ReactCardFlip
 // docs: https://github.com/AaronCCWong/react-card-flip
 import ReactCardFlip from 'react-card-flip';
+import DeleteCard from '../DeleteCard';
+import RemoveCard from '../RemoveCard';
 
 function SingleCardModal({ show, setShow, card }) {
 
@@ -27,7 +29,7 @@ function SingleCardModal({ show, setShow, card }) {
     let isHome;
 
     const pageCheck = () => {
-        if (window.location.href === 'http://localhost:3000/') {
+        if (window.location.pathname === '/') {
             isHome = true;
         } else {
             isHome = false;
@@ -97,13 +99,13 @@ function SingleCardModal({ show, setShow, card }) {
                                 {isHome ? (
                                     <ButtonGroup className="justify-content-between" aria-label="home-btns">
                                     <Button className='edit-btn' value={card} variant="primary" onClick={() => editCard()}><img src="https://img.icons8.com/metro/36/d4af37/edit.png"/></Button>
-                                    <Button className='delete-btn' variant="danger">
-                                                <img src="https://img.icons8.com/windows/48/d4af37/delete-forever.png" />
-                                            </Button>
+                                        <DeleteCard card={card}/>
                                     </ButtonGroup>
                                 ) :
                                 (
-                                    <Button value={card} variant="danger">Remove From Collection</Button>
+                                    <ButtonGroup className="justify-content-between" aria-label="home-btns">
+                                        <RemoveCard card={card}/>
+                                    </ButtonGroup>
                                 )
                                 }
                         </Card>

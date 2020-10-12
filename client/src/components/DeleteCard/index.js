@@ -35,9 +35,11 @@ const DeleteCard = ({ card }) => {
     pageCheck()
 
     return (
-        <div>
-            {isHome && <Button onClick={handleDeleteCard}>Delete Card</Button>}
-        </div>
+        <>
+          <Button onClick={handleDeleteCard} className='delete-btn' variant="danger">
+                <img src="https://img.icons8.com/windows/48/d4af37/delete-forever.png" />
+          </Button>
+        </>
   )
 }
 

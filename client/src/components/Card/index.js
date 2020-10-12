@@ -38,9 +38,6 @@ const CardComponent = ({ card }) => {
           <br />
           <Card.Link href={"tel:+" + card.phone}>{card.phone}</Card.Link>
           {/* <QrCode cardId={card._id}/> */}
-          <br />
-          <DeleteCard card={card}/>
-          <RemoveCard card={card}/>
         </Card.Body>
       </Card>
     </div>
