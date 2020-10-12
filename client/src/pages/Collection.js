@@ -59,9 +59,13 @@ const Collection = () => {
           addCollectedCard={addCollectedCard}
           collectedCards={collectedCards || []}
         />
-        <h3 className="p-3">Cards you've collected</h3>
-        <div className="col-12 text-center">
-          {loading ? <div>Loading..</div> : <CardList cards={collectedCards}/>}
+        <div className='container p-0'>
+          <h3 className='text-center'>Cards you've collected</h3>
+          <div>
+            <div className="col-12 text-center list-container">
+              {loading ? <div>Loading..</div> : <CardList cards={collectedCards} />}
+            </div>
+          </div>
         </div>
       </div>
     </main>

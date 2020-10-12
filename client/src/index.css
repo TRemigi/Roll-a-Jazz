@@ -176,6 +176,7 @@ button:focus {
 }
 
 .scanner {
+  padding: 0 !important;
   margin: 0 auto;
   width: 50%;
 }
@@ -213,6 +214,11 @@ button:focus {
 /* end Carousel Component */
 
 @media screen and (max-width: 575px) {
+  * {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
   main {
     padding-right: 0 !important;
@@ -233,10 +239,6 @@ button:focus {
     width: 7% !important;
   }
 
-  .col-12 {
-    padding: 0 !important;
-  }
-
   .card-column {
     padding: 0 !important;
   }
@@ -252,7 +254,18 @@ button:focus {
 
   .scan-button {
    width: 75% !important;
-   margin: 0 auto;
+   margin-left: 2rem !important;
+   
+  }
+
+  .list-container {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .home-title {
+    margin-left: 0;
+    margin-top: 3rem;
   }
 }
 

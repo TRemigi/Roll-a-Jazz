@@ -20,7 +20,7 @@ const CardComponent = ({ card }) => {
   return (
     <div>
       <SingleCardModal show={show} setShow={setShow} card={card} />
-      <Card className="border m-1 pointer" key={card._id}
+      <Card className="mt-1 mb-1 pointer" key={card._id}
       onClick={cardClickHandler}
       >
         {/* <Card.Img variant="top" src={card.logoUrl} /> */}

@@ -47,8 +47,8 @@ const Login = (props) => {
     <main className="container">
       <Container>
         <Row>
-          <Col className="login">
-            <h4>Login</h4>
+          <Col className="login mt-5">
+            <h4 >Login</h4>
             <Form className="login-form" onSubmit={handleFormSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
