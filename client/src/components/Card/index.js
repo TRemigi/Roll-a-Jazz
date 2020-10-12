@@ -4,6 +4,9 @@ import { Card } from "react-bootstrap";
 import SingleCardModal from '../SingleCard';
 import QrCode from "../QrCode";
 import { useDispatch, useReducer } from "react-redux";
+import DeleteCard from "../DeleteCard";
+import RemoveCard from "../RemoveCard";
+import ResultsModal from "../SearchResultsModal"
 
 const CardComponent = ({ card }) => {
 
@@ -12,7 +15,6 @@ const CardComponent = ({ card }) => {
   const cardClickHandler = () => {
     
     setShow(true);
-
   }
 
   return (

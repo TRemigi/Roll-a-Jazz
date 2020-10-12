@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -27,7 +27,7 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
                     <div className="row justify-content-start">
                         {results.map(card => (
                             <div className="col-12 pb-2 text-center" key={card._id}>
-                                <CardComponent card={card} />
+                                <CardComponent card={card}/>
                                 <AddCardButton addCollectedCard={addCollectedCard} id={card._id} />
                             </div>
                         ))}

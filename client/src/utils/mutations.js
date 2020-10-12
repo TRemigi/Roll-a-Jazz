@@ -81,3 +81,11 @@ export const DELETE_CARD = gql`
     }
   }
 `;
+
+export const REMOVE_CARD = gql`
+  mutation removeCard($_id: ID!) {
+    removeCard(_id: $_id) {
+      _id
+    }
+  }
+`;
