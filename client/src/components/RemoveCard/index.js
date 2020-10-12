@@ -6,7 +6,6 @@ import ResultsModal from '../SearchResultsModal';
 
 const RemoveCard = ({ card }) => {
 
-
     const [removeCard, { error }] = useMutation(REMOVE_CARD)
 
     const handleRemoveCard = async event => {
@@ -22,18 +21,6 @@ const RemoveCard = ({ card }) => {
                 console.error(e);
             }
         };
-
-    let isCollection;
-
-    const pageCheck = () => {
-        if (window.location.pathname === '/collection') {
-            isCollection = true;
-        } else {
-            isCollection = false;
-        }
-    };
-
-    pageCheck()
 
     return (
         <>

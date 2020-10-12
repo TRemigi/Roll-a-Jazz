@@ -22,18 +22,6 @@ const DeleteCard = ({ card }) => {
       }
     };
 
-    let isHome;
-
-    const pageCheck = () => {
-        if (window.location.pathname === '/') {
-            isHome = true;
-        } else {
-            isHome = false;
-        }
-    };
-
-    pageCheck()
-
     return (
         <>
           <Button onClick={handleDeleteCard} className='delete-btn' variant="danger">
