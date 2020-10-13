@@ -14,7 +14,7 @@ function SuccessModal({ show, setShow, message }) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header
+            <Modal.Header className='modal-header'
             >
                 <Modal.Title id="contained-modal-title-vcenter">
                     Success!

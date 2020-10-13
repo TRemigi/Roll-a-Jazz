@@ -119,7 +119,7 @@ const EditCardForm = ({ card, setIsEdit }) => {
         message="Card successfully edited!"
       />
 
-      <Form className="border p-4 m-5" onSubmit={handleFormSubmit}>
+      <Form className="p-4 m-5" onSubmit={handleFormSubmit}>
         <h3 className="pb-4">Edit your card</h3>
 
         {/* <Form.Group as={Row}>

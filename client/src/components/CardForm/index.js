@@ -125,8 +125,7 @@ const CardForm = () => {
         message="Card successfully created!"
       />
 
-      <Form className="border p-4 m-lg-5 mt-5" onSubmit={handleFormSubmit}>
-        <h3 className="pb-4">Create a Business Card!</h3>
+      <Form className=" p-4 m-lg-5 mr-2" onSubmit={handleFormSubmit}>
 
         {/* <Form.Group as={Row}>
           <Form.Label column sm="2">
