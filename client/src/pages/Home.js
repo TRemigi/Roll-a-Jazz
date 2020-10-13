@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { DELETE_CARDS, ADD_ALL } from '../utils/actions';
+import { DELETE_CARDS, ADD_ALL } from "../utils/actions";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -14,7 +14,6 @@ import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
 
-
 const Home = () => {
   const [viewSelected, setViewSelected] = useState(true);
 
@@ -22,25 +21,27 @@ const Home = () => {
   const dispatch = useDispatch();
   const { username: userParam } = useParams();
 
-  const { cards, collectedCards } = state;
+  let { cards } = state;
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  let { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
+    pollInterval: 500,
   });
-  console.log(state)
-  const user = data?.me || data?.user || {};
+  console.log("state:");
+  console.log(state);
+  let user = data?.me || data?.user || {};
 
   const addAll = () => {
     dispatch({
       type: ADD_ALL,
-      cards: [user.cards],
-      collectedCards: [user.collectedCards]
+      cards: user.cards,
+      collectedCards: user.collectedCards,
     });
   };
 
   useEffect(() => {
     addAll();
-  }, [data]);
+  }, [user]);
 
   if (userParam) {
     // redirect to personal profile page if username is the logged-in user's
@@ -58,17 +59,15 @@ const Home = () => {
 
   if (!user?.username) {
     return (
-      <div className='text-center m-4'>
-        <h1 className='home-title'>
+      <div className="text-center m-4">
+        <h1 className="home-title">
           Welcome to Rolo<span>Jazz</span> !
-      </h1>
-        <h4>
-          Join a community of business professionals.
-      </h4>
-        <p>
-          Login in or sign-up to get started!
-      </p>
-        <Button className='start-btn' as={Link} to="/login">Get Started</Button>
+        </h1>
+        <h4>Join a community of business professionals.</h4>
+        <p>Login in or sign-up to get started!</p>
+        <Button className="start-btn" as={Link} to="/login">
+          Get Started
+        </Button>
       </div>
     );
   }
@@ -84,14 +83,12 @@ const Home = () => {
           />
         </div>
         <div className="col-12 mt-0 p-0 text-center">
-          {loading &&
-            <div> Loading... </div>}
-          {viewSelected ?
-            (<CardList cards={user.cards} />)
-            :
-            (<CardCarousel cards={user.cards} />)
-
-          }
+          {loading && <div> Loading... </div>}
+          {viewSelected ? (
+            <CardList cards={cards || []} />
+          ) : (
+            <CardCarousel cards={cards || []} />
+          )}
         </div>
       </div>
     </main>

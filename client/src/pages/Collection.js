@@ -7,25 +7,25 @@ import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_CARDS, ADD_ALL } from "../utils/actions";
 
-
 const Collection = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const { loading, data } = useQuery(QUERY_MY_COLLECTION);
+  const { loading, data } = useQuery(QUERY_MY_COLLECTION, {
+    pollInterval: 500,
+  });
 
-  const { cards } = state;
-
-  let collectedCards = data?.me.collectedCards || [];
-
+  const { collectedCards } = state;
   console.log(state);
+
+  let collectedCardsData = data?.me.collectedCards || [];
 
   useEffect(() => {
     const addCards = () => {
       if (data) {
         dispatch({
           type: ADD_CARDS,
-          collectedCards: data.me.collectedCards,
+          collectedCards: collectedCardsData,
         });
       }
     };
@@ -57,13 +57,17 @@ const Collection = () => {
       <div className="row justify-content-center">
         <Search
           addCollectedCard={addCollectedCard}
-          collectedCards={collectedCards || []}
+          collectedCards={collectedCards}
         />
-        <div className='container p-0'>
-          <h3 className='text-center'>Cards you've collected</h3>
+        <div className="container p-0">
+          <h3 className="text-center">Cards you've collected</h3>
           <div>
             <div className="col-12 text-center list-container">
-              {loading ? <div>Loading..</div> : <CardList cards={collectedCards} />}
+              {loading ? (
+                <div>Loading..</div>
+              ) : (
+                <CardList cards={collectedCards} />
+              )}
             </div>
           </div>
         </div>
