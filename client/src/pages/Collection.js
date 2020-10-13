@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_MY_COLLECTION } from "../utils/queries";
 import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
-import { useDispatch, useSelector } from "react-redux";
-import { ADD_CARDS, ADD_ALL } from '../utils/actions';
+import { useDispatch } from "react-redux";
+import { ADD_CARDS } from "../utils/actions";
 
+// Page where the user can look at all cards in their collection
 const Collection = () => {
-
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
-
   const { loading, data } = useQuery(QUERY_MY_COLLECTION);
-
-  const { cards } = state;
-
   let collectedCards = data?.me.collectedCards || [];
 
-  console.log(state)
-
+  // if data is queried add it to redux state as well
   useEffect(() => {
     const addCards = () => {
       if (data) {
@@ -32,10 +26,10 @@ const Collection = () => {
     addCards();
   }, [data]);
 
+  // mutate card that will also update the DOM and cache
   const [addCollectedCard] = useMutation(ADD_COLLECTED_CARD, {
     update(cache, { data: { addCollectedCard } }) {
       try {
-        //could potentially not exist yet, so wrap in a try...catch
         const { me } = cache.readQuery({ query: QUERY_MY_COLLECTION });
         cache.writeQuery({
           query: QUERY_MY_COLLECTION,

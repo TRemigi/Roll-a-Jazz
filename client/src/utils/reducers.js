@@ -3,12 +3,12 @@ import {
   DELETE_CARDS,
   ADD_CARDS,
   REMOVE_CARDS,
-  ADD_ALL
+  ADD_ALL,
 } from "./actions";
 
 const initialState = {
   cards: [],
-  collectedCards: []
+  collectedCards: [],
 };
 
 const reducers = (state = initialState, action) => {
@@ -17,20 +17,20 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         cards: [...action.cards],
-        collectedCards: [...action.collectedCards]
+        collectedCards: [...action.collectedCards],
       };
     case CREATE_CARDS:
       return {
         ...state,
-        cards: [...action.cards]
+        cards: [...action.cards],
       };
 
-      // case DELETE_CARDS:
-      //   let newState = {
-      //     ...state
-      //   };
-      //   delete state[action._id];
-      //   return state;
+    // case DELETE_CARDS:
+    //   let newState = {
+    //     ...state
+    //   };
+    //   delete state[action._id];
+    //   return state;
 
     case ADD_CARDS:
       return {
@@ -38,16 +38,16 @@ const reducers = (state = initialState, action) => {
         collectedCards: [action.collectedCards],
       };
 
-      // case REMOVE_CARDS:
-      //   let newState2 = state.collectedCards.filter((card) => {
-      //     return card._id !== action._id;
-      //   });
-      //   return {
-      //     ...state,
-      //     collectedCards: newState2,
-      //   };
-      default:
-        return state;
+    // case REMOVE_CARDS:
+    //   let newState2 = state.collectedCards.filter((card) => {
+    //     return card._id !== action._id;
+    //   });
+    //   return {
+    //     ...state,
+    //     collectedCards: newState2,
+    //   };
+    default:
+      return state;
   }
 };
 
