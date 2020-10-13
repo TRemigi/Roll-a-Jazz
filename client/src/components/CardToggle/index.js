@@ -14,8 +14,8 @@ const CardToggle = ({ viewSelected, setViewSelected }) => {
     return (
         <div variant="secondary" size="sm" onClick={handleToggle} className="pointer car-view pl-2" border={false}>
             {viewSelected ? 
-            (<FontAwesomeIcon icon={faThLarge} size="lg" border={false}/>) :
-            (<FontAwesomeIcon icon={faClone}  size="lg" border={false}/>)}
+            (<><FontAwesomeIcon icon={faClone} size="lg" border={false}/><span> Carousel View</span></>) :
+            (<><FontAwesomeIcon icon={faThLarge} size="lg" border={false}/><span> Grid View</span></>) }
         </div>
     )
 };
