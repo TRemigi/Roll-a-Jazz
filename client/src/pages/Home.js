@@ -61,7 +61,7 @@ const Home = () => {
     return (
       <div className="text-center m-4">
         <h1 className="home-title">
-          Welcome to Rolo<span>Jazz</span> !
+          Welcome to Rolo<span>Deck</span> !
         </h1>
         <h4>Join a community of business professionals.</h4>
         <p>Login in or sign-up to get started!</p>
@@ -76,7 +76,7 @@ const Home = () => {
     <main className="container">
       <div className="justify-content-center mr-0">
         <div className="row justify-content-center">
-          <h3 className="p-3">
+          <h3 className="p-3 mt-sm-2 mt-5 page-header">
             {user.username}'s cards {/*My created cards*/}
           </h3>
         </div>
@@ -84,6 +84,7 @@ const Home = () => {
         <div className="row justify-content-center">
           <p>Tap card to view. Tap again to edit.</p>
         </div>
+
         <div className="col-12 p-0">
           <CardToggle
             viewSelected={viewSelected}
