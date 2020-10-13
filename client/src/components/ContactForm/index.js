@@ -75,7 +75,7 @@ const ContactForm = () => {
     });
   };
   return (
-    <Form id="contact-form" onSubmit={sendEmail}>
+    <Form  className='contact-form' id="contact-form" onSubmit={sendEmail}>
       <Form.Row>
         <Form.Group as={Col}>
           <Form.Label>First Name</Form.Label>

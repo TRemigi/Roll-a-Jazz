@@ -65,12 +65,12 @@ const Search = ({ addCollectedCard, collectedCards }) => {
         addCollectedCard={addCollectedCard}
       />
 
-      <Form inline className="col-12 p-0" onSubmit={handleSubmit}>
+      <Form inline className="col-12 p-0 border-0" onSubmit={handleSubmit}>
         <Form.Label htmlFor="nameInput" srOnly>
           Name
         </Form.Label>
         <Form.Control
-          className="mb-2 mr-lg-2 mt-lg-2 searchbar"
+          className="mb-2 mr-lg-2 mt-0 searchbar"
           id="nameInput"
           placeholder="Enter a name to search for cards"
         />

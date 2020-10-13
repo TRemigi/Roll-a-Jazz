@@ -51,11 +51,11 @@ const QrButton = () => {
   console.log(show);
 
   return (
-    <div className="scanner col-12">
+    <div className="scanner">
       {toggle && reader}
       <SuccessModal show={show} setShow={setShow} message={"You did it!!!"} />
       <Button
-        className="col-12 mb-3 btn-border scan-button"
+        className="col-12 mt-2 mb-3 btn-border scan-button"
         onClick={() => (toggle ? setToggle(false) : setToggle(true))}
       >
         Scan Code

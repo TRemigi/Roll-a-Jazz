@@ -61,7 +61,7 @@ const Home = () => {
     return (
       <div className="text-center m-4">
         <h1 className="home-title">
-          Welcome to Rolo<span>Jazz</span> !
+          Welcome to Rolo<span>Deck</span> !
         </h1>
         <h4>Join a community of business professionals.</h4>
         <p>Login in or sign-up to get started!</p>
@@ -75,7 +75,7 @@ const Home = () => {
   return (
     <main className="container">
       <div className="row justify-content-center mr-0">
-        <h3 className="p-3">My cards</h3>
+        <h3 className="p-3 mt-sm-2 mt-5 page-header">My cards</h3>
         <div className="col-12 p-0">
           <CardToggle
             viewSelected={viewSelected}
