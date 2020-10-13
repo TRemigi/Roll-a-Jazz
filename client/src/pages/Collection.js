@@ -55,6 +55,9 @@ const Collection = () => {
   return (
     <main className="container">
       <div className="row justify-content-center">
+        <div className="p-3">
+          <h2>Add cards to your collection</h2>
+        </div>
         <Search
           addCollectedCard={addCollectedCard}
           collectedCards={collectedCards}

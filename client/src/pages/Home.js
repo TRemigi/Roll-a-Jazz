@@ -74,8 +74,16 @@ const Home = () => {
 
   return (
     <main className="container">
-      <div className="row justify-content-center mr-0">
-        <h3 className="p-3">My cards</h3>
+      <div className="justify-content-center mr-0">
+        <div className="row justify-content-center">
+          <h3 className="p-3">
+            {user.username}'s cards {/*My created cards*/}
+          </h3>
+        </div>
+
+        <div className="row justify-content-center">
+          <p>Tap card to view. Tap again to edit.</p>
+        </div>
         <div className="col-12 p-0">
           <CardToggle
             viewSelected={viewSelected}

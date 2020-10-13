@@ -11,7 +11,6 @@ const QrButton = () => {
   const [result, setResult] = useState(oldResult);
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
-  
 
   // use a mutation to add scanned card to database
   const [addCollectedCard, { addedData }] = useMutation(ADD_COLLECTED_CARD);
@@ -19,7 +18,7 @@ const QrButton = () => {
   const handleScan = (scannedData) => {
     if (scannedData) {
       // console.log(scannedData);
-      oldResult = result
+      oldResult = result;
       addCollectedCard({ variables: { _id: scannedData } });
       setResult(scannedData);
     }
@@ -44,7 +43,7 @@ const QrButton = () => {
 
   useEffect(() => {
     // after qrscanner collapses and if you scanned a new code show the success modal
-    if (!toggle && (result !== oldResult)) {
+    if (!toggle && result !== oldResult) {
       setShow(true);
     }
   }, [toggle]);
@@ -58,7 +57,7 @@ const QrButton = () => {
         className="col-12 mb-3 btn-border scan-button"
         onClick={() => (toggle ? setToggle(false) : setToggle(true))}
       >
-        Scan Code
+        {toggle ? "Close" : "Scan Code"}
       </Button>
     </div>
   );
