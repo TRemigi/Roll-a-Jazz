@@ -8,14 +8,17 @@ import QrButton from "../QrButton";
 const Search = ({ addCollectedCard, collectedCards }) => {
   const [searchCards, { data }] = useLazyQuery(QUERY_USER_CARDS);
   const initialResults = data?.userCards || [];
+
   let filteredResults = [];
+
   const [finalResults, setFinalResults] = useState(filteredResults);
 
   const filterResults = () => {
     filteredResults = [];
-    
+
     for (let i = 0; i < initialResults.length; i++) {
       let isNewCard = true;
+
       for (let j = 0; j < collectedCards.length; j++) {
         if (initialResults[i]._id === collectedCards[j]._id) {
           isNewCard = false;
@@ -31,6 +34,7 @@ const Search = ({ addCollectedCard, collectedCards }) => {
         filteredResults.push(initialResults[i]);
       }
     }
+
     setFinalResults(filteredResults);
   };
 
@@ -44,9 +48,11 @@ const Search = ({ addCollectedCard, collectedCards }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await searchCards({
       variables: { name: e.target.nameInput.value },
     });
+
     setShow(true);
   };
 
@@ -64,8 +70,7 @@ const Search = ({ addCollectedCard, collectedCards }) => {
           Name
         </Form.Label>
         <Form.Control
-          style={{ width: "90%" }}
-          className="mb-2 mr-sm-2 mt-2"
+          className="mb-2 mr-lg-2 mt-lg-2 searchbar"
           id="nameInput"
           placeholder="Enter a name to search for cards"
         />

@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'ciutadella';
-  src: url('./fonts/CiutadellaSlabDEMO-Rg/font.woff2') format('woff2'), url('./fonts/CiutadellaSlabDEMO-Rg/font.woff') format('woff');
+  font-family: 'yantramanav';
+  src: url('https://fonts.googleapis.com/css2?family=Yantramanav&display=swap');;
 }
 
 @font-face {
@@ -41,6 +41,10 @@ header {
   position: relative;
 }
 
+.home-title {
+  margin-left: 3.5rem;
+}
+
 .light-dark-btn {
   float: right;
   position: absolute;
@@ -76,7 +80,7 @@ header {
 span {
   color: var(--gold) !important;
   text-shadow: 0 0 10px var(--gold);
-  font-family: 'ciutadella';
+  font-family: 'yantramanav';
   font-style: italic;
 }
 
@@ -99,6 +103,7 @@ span {
  */
 button {
   padding: .2rem !important;
+  
 }
 
 button:focus {
@@ -120,6 +125,7 @@ button:focus {
   border: none !important;
   background-color: transparent !important;
   outline: none !important;
+  max-width: fit-content;
 }
 
 .car-view:focus {
@@ -140,14 +146,16 @@ button:focus {
 
 .card {
   border-radius: 0 !important;
+  min-height: max-content;
 }
 
 .card-title {
   font-size: 2.5rem !important;
+  margin-bottom: .2rem !important;
 }
 .card-link {
   color: var(--gold);
-  font-family: ciutadella;
+  font-family: yantramanav;
 }
 
 .card-text {
@@ -168,6 +176,7 @@ button:focus {
 }
 
 .scanner {
+  padding: 0 !important;
   margin: 0 auto;
   width: 50%;
 }
@@ -182,6 +191,11 @@ button:focus {
   margin: 0 auto !important;
   width: 100%;
 }
+
+.navbar-toggler-icon {
+  background-image: url('./gold.png') !important;
+}
+
 
 /* utilities */
 /* .btn:focus {
@@ -199,6 +213,66 @@ button:focus {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23d4af37' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
 }
 /* end Carousel Component */
+
+@media screen and (max-width: 575px) {
+  * {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  main {
+    padding-right: 0 !important;
+  }
+  .title {
+    font-size: 4rem !important;
+  }
+
+  .light-dark-btn {
+    position: absolute !important;
+  }
+
+  .carousel-item {
+  width: 100% !important;
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+    width: 7% !important;
+  }
+
+  .card-column {
+    padding: 0 !important;
+  }
+
+  .searchbar {
+    width: 95% !important;
+    margin-top: 4rem !important;
+  }
+
+  .scanner {
+    width: 90%;
+  }
+
+  .scan-button {
+   width: 75% !important;
+   margin-left: 2rem !important;
+   
+  }
+
+  .list-container {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .home-title {
+    margin-left: 0;
+    margin-top: 3rem;
+  }
+
+  .delete-btn, .edit-btn {
+    margin-top: 52% !important;
+  }
+}
 
 
 

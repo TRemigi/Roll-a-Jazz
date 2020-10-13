@@ -44,12 +44,11 @@ const QrButton = () => {
   }, [addedData]);
 
   return (
-    <div className='scanner'>
+    <div className='scanner col-12'>
       {toggle && reader}
       <SuccessModal show={addedData?true:false} setShow={setShow} message={"You did it!!!"}/>
       <Button
         className="col-12 mb-3 btn-border scan-button"
-        style={{ width: "100%" }}
         onClick={() => (toggle ? setToggle(false) : setToggle(true))}
       >
         Scan Code

@@ -12,22 +12,31 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s linear;
   }
 
-  .card-body {
-    color: ${({ theme }) => theme.main}!important;
-  }
-
   .card-title, card-sub {
     color: ${({ theme }) => theme.main}!important;
   }
 
   .card-body {
+    color: ${({ theme }) => theme.main}!important;
     background: ${({ theme }) => theme.text};
-    box-shadow: ${({ theme }) => theme.boxShadow
-  };
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  .btn-border {
-    background: ${({ theme }) => theme.main};
+  .card-contact {
+    margin: 0 30% 1% 30%;
+    border-bottom: 1px solid ${({ theme }) => theme.main};
+  }
+  
+
+  button {
+    background: ${({ theme }) => theme.main} !important;
+    border: 1px solid ${({ theme }) => theme.accent}!important;
+    color: ${({ theme }) => theme.text} !important;
+    transition: all 2s ease-in;
+  }
+
+  .start-btn {
+    background: ${({ theme }) => theme.main} !important;
     border: 1px solid ${({ theme }) => theme.accent}!important;
     color: ${({ theme }) => theme.text} !important;
     transition: all 2s ease-in;
@@ -35,7 +44,6 @@ export const GlobalStyles = createGlobalStyle`
 
   btn-border:focus {
     border: 1px solid ${({ theme }) => theme.accent} !important;
-
   }
 
   .btn:hover {
@@ -52,8 +60,39 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 1 !important;
     color: var(--gold) !important;
     transition: all 2s linear;
-
   }
+
+  .delete-btn, .edit-btn {
+    background-color: ${({ theme }) => theme.text}!important;
+    border: none !important;
+    width: 15%;
+    z-index: 9999; 
+    margin-top: 37%;   
+  }
+
+  .single-card {
+    height: 17rem;
+    background-color: ${({ theme }) => theme.text}!important;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  .qr-body {
+    box-shadow: none !important;
+    position: absolute;
+    width: 100% !important;
+    margin-left: 0 auto;
+  }
+
+  .caro-single {
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+  
+  .remove-btn:hover {
+    background-color: ${({ theme }) => theme.main} !important;
+    border-color: 1px solid #d4af37 !important;
+    transition: none !important;
+  }
+  
   
 
 

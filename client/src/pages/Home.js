@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CREATE_CARDS, ADD_ALL } from '../utils/actions';
+import { DELETE_CARDS, ADD_ALL } from '../utils/actions';
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-
+import { Link } from 'react-router-dom';
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -59,7 +59,7 @@ const Home = () => {
   if (!user?.username) {
     return (
       <div className='text-center m-4'>
-        <h1>
+        <h1 className='home-title'>
           Welcome to Rolo<span>Jazz</span> !
       </h1>
         <h4>
@@ -68,14 +68,14 @@ const Home = () => {
         <p>
           Login in or sign-up to get started!
       </p>
-        <Button className='btn-border' href="/login">Get Started</Button>
+        <Button className='start-btn' as={Link} to="/login">Get Started</Button>
       </div>
     );
   }
 
   return (
     <main className="container">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mr-0">
         <h3 className="p-3">My cards</h3>
         <div className="col-12 p-0">
           <CardToggle
