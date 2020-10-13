@@ -3,10 +3,13 @@ import QrReader from "react-qr-reader";
 import { Button } from "react-bootstrap";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_COLLECTED_CARD } from "../../utils/mutations";
+import ResultsModal from '../SearchResultsModal'
+import SuccessModal from '../SuccessModal';
 
 const QrButton = () => {
   const [result, setResult] = useState("No result");
   const [toggle, setToggle] = useState(false);
+  const [show, setShow] = useState(false)
 
   // use a mutation to add scanned card to database
   const [addCollectedCard, { addedData }] = useMutation(ADD_COLLECTED_CARD);
@@ -35,10 +38,15 @@ const QrButton = () => {
   useEffect(() => {
     setToggle(false);
   }, [result]);
+  
+  useEffect(() => {
+    setShow(true);
+  }, [addedData]);
 
   return (
     <div className='scanner'>
       {toggle && reader}
+      <SuccessModal show={addedData?true:false} setShow={setShow} message={"You did it!!!"}/>
       <Button
         className="col-12 mb-3 btn-border scan-button"
         style={{ width: "100%" }}
