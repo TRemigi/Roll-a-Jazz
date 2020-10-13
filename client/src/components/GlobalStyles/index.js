@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -22,8 +22,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .card-body {
     background: ${({ theme }) => theme.text};
-    box-shadow: ${({ theme }) => theme.boxShadow
-  };
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
   .btn-border {
@@ -54,7 +53,4 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s linear;
 
   }
-  
-
-
-`
+`;

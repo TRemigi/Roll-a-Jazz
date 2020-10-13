@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { Button } from "react-bootstrap";
-import { useMutation, useQuery } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { ADD_COLLECTED_CARD } from "../../utils/mutations";
 
 const QrButton = () => {
@@ -9,7 +9,7 @@ const QrButton = () => {
   const [toggle, setToggle] = useState(false);
 
   // use a mutation to add scanned card to database
-  const [addCollectedCard, { addedData }] = useMutation(ADD_COLLECTED_CARD);
+  const [addCollectedCard] = useMutation(ADD_COLLECTED_CARD);
 
   const handleScan = (scannedData) => {
     if (scannedData) {
@@ -28,7 +28,7 @@ const QrButton = () => {
       delay={300}
       onError={handleError}
       onScan={handleScan}
-      className='mb-2'
+      className="mb-2"
     />
   );
 
@@ -37,7 +37,7 @@ const QrButton = () => {
   }, [result]);
 
   return (
-    <div className='scanner'>
+    <div className="scanner">
       {toggle && reader}
       <Button
         className="col-12 mb-3 btn-border scan-button"
