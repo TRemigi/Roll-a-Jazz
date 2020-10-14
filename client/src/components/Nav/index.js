@@ -25,7 +25,7 @@ const Navigation = () => {
     //       </>
     //   )}
     // </nav>
-    <Navbar collapseOnSelect="true" expand="lg" className="navbar-css">
+    <Navbar collapseOnSelect expand="lg" className="navbar-css">
       <Navbar.Brand className="title" as={Link} to="/">
         Rolo<span>Deck</span>
       </Navbar.Brand>
@@ -33,23 +33,27 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav className="justify-content-end">
           <Nav.Link className="nav" as={Link} to="/">
-            Home
+            {Auth.loggedIn() ? "My cards" : "Home"}
           </Nav.Link>
-          <Nav.Link className="nav" as={Link} to="/create">
-            Create
-          </Nav.Link>
-          <Nav.Link className="nav" as={Link} to="/collection">
-            Collection
-          </Nav.Link>
+
           {Auth.loggedIn() ? (
             <>
+              <Nav.Link className="nav" as={Link} to="/create">
+                Create
+              </Nav.Link>
+              <Nav.Link className="nav" as={Link} to="/collection">
+                Collection
+              </Nav.Link>
               <Nav.Link className="nav" as={Link} to="/" onClick={logout}>
                 Logout
               </Nav.Link>
             </>
           ) : (
             <>
-              <Nav.Link eventKey="4" className="nav" as={Link} to="/login">
+              <Nav.Link className="nav" as={Link} to="/signup">
+                Sign up
+              </Nav.Link>
+              <Nav.Link className="nav" as={Link} to="/login">
                 Login
               </Nav.Link>
             </>

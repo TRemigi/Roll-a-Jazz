@@ -55,14 +55,16 @@ const Collection = () => {
   return (
     <main className="container">
       <div className="row justify-content-center">
-      <h3 className="p-3 mt-sm-2 mt-5 page-header">Search</h3>
+        <h3 className="p-3 mt-sm-2 mt-5 page-header">Add to your collection</h3>
 
         <Search
           addCollectedCard={addCollectedCard}
           collectedCards={collectedCards}
         />
         <div className="container p-0">
-          <h3 className="text-center mt-4 page-header" >Cards you've collected</h3>
+          <h3 className="text-center mt-4 page-header">
+            Cards you've collected
+          </h3>
           <div>
             <div className="col-12 text-center list-container">
               {loading ? (

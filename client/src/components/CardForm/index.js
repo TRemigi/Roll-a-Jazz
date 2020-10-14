@@ -126,7 +126,7 @@ const CardForm = () => {
       />
 
       <Form className=" p-4 m-lg-5 mr-2" onSubmit={handleFormSubmit}>
-
+        <h3 className="pb-4">Fill out the form below</h3>
         {/* <Form.Group as={Row}>
           <Form.Label column sm="2">
             Upload Company Logo:
