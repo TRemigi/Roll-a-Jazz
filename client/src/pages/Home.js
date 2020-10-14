@@ -27,8 +27,7 @@ const Home = () => {
     variables: { username: userParam },
     pollInterval: 500,
   });
-  console.log("state:");
-  console.log(state);
+
   let user = data?.me || data?.user || {};
 
   const addAll = () => {
