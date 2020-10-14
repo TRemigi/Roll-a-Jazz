@@ -77,7 +77,7 @@ const Home = () => {
       <div className="justify-content-center mr-0">
         <div className="row justify-content-center">
           <h3 className="p-3 mt-sm-2 mt-5 page-header">
-            {user.username}'s cards {/*My created cards*/}
+            {user.username}'s cards
           </h3>
         </div>
 
