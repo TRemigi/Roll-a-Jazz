@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
 function SuccessModal({ show, setShow, message }) {
@@ -39,10 +40,10 @@ function SuccessModal({ show, setShow, message }) {
             </Modal.Body>
             <Modal.Footer>
                 {isCreatePage ? (
-                    <ButtonGroup>
-                        <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
-                        <Button className='btn-border' variant="secondary" href='/'>View Card</Button>
-                    </ButtonGroup>
+                    <>
+                        <Button className='btn-border mr-2' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                        <Button className='btn-border' variant="secondary" as={Link} to="/">View Cards</Button>
+                    </>
                 ) : (
                     <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
                 )}
