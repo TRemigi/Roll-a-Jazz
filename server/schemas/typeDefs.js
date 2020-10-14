@@ -58,6 +58,7 @@ const typeDefs = gql`
     addCollectedCard(_id: ID!): Card
     updateCard(_id: ID!, input: CardInput): Card
     deleteCard(_id: ID!): Card
+    removeCard(_id: ID!): Card
   }
 `;
 
