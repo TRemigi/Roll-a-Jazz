@@ -19,26 +19,32 @@ const Navigation = () => {
         <Nav className="justify-content-end">
           {Auth.loggedIn() ? (
             <>
-              <Nav.Link className="nav" as={Link} to="/cards">
+              <Nav.Link eventKey="1" className="nav" as={Link} to="/cards">
                 My Cards
               </Nav.Link>
-              <Nav.Link className="nav" as={Link} to="/create">
+              <Nav.Link eventKey="2" className="nav" as={Link} to="/create">
                 Create
               </Nav.Link>
-              <Nav.Link className="nav" as={Link} to="/collection">
+              <Nav.Link eventKey="3" className="nav" as={Link} to="/collection">
                 Collection
               </Nav.Link>
-              <Nav.Link className="nav" as={Link} to="/" onClick={logout}>
+              <Nav.Link
+                eventKey="4"
+                className="nav"
+                as={Link}
+                to="/"
+                onClick={logout}
+              >
                 Logout
               </Nav.Link>
             </>
           ) : (
-              <>
-                <Nav.Link className="nav" as={Link} to="/signup">
-                  Sign up
+            <>
+              <Nav.Link eventKey="2" className="nav" as={Link} to="/signup">
+                Sign up
               </Nav.Link>
-                <Nav.Link className="nav" as={Link} to="/login">
-                  Login
+              <Nav.Link eventKey="3" className="nav" as={Link} to="/login">
+                Login
               </Nav.Link>
               </>
             )}
