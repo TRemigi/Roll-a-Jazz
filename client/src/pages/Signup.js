@@ -44,8 +44,8 @@ const Signup = () => {
     <Container>
       <Row>
         <Col>
-          <h4>Sign Up</h4>
-          <Form onSubmit={handleFormSubmit}>
+          <h4>Signup</h4>
+          <Form className='p-4' onSubmit={handleFormSubmit}>
             <Form.Group controlId="formBasicUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
