@@ -63,7 +63,7 @@ const Collection = () => {
         />
         <div className="container p-0">
           <h3 className="text-center mt-4 page-header">
-            Cards you've collected
+            Cards You've Collected
           </h3>
           <div>
             <div className="col-12 text-center list-container">

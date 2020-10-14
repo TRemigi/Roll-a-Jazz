@@ -63,7 +63,7 @@ const Home = () => {
           Welcome to Rolo<span>Deck</span> !
         </h1>
         <h4>Join a community of business professionals.</h4>
-        <p>Login in or sign-up to get started!</p>
+        <p>Login in or signup to get started!</p>
         <Button className="start-btn" as={Link} to="/login">
           Get Started
         </Button>
@@ -76,7 +76,7 @@ const Home = () => {
       <div className="justify-content-center mr-0">
         <div className="row justify-content-center">
           <h3 className="p-3 mt-sm-2 mt-5 page-header">
-            {user.username}'s cards
+            {user.username}'s Cards
           </h3>
         </div>
 

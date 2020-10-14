@@ -57,7 +57,7 @@ const Navigation = () => {
           ) : (
             <>
               <Nav.Link eventKey="2" className="nav" as={Link} to="/signup">
-                Sign up
+                Signup
               </Nav.Link>
               <Nav.Link eventKey="3" className="nav" as={Link} to="/login">
                 Login
