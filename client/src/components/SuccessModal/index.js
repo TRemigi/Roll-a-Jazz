@@ -1,10 +1,22 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
 function SuccessModal({ show, setShow, message }) {
+
+    let isCreatePage;
+
+    const pageCheck = () => {
+        if (window.location.pathname === "/create") {
+            isCreatePage = true;
+        } else {
+            isCreatePage = false;
+        }
+    };
+
+    pageCheck();
 
     return (
         <Modal
@@ -26,7 +38,14 @@ function SuccessModal({ show, setShow, message }) {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                {isCreatePage ? (
+                    <ButtonGroup>
+                        <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                        <Button className='btn-border' variant="secondary" href='/'>View Card</Button>
+                    </ButtonGroup>
+                ) : (
+                    <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                )}
             </Modal.Footer>
         </Modal>
     );
