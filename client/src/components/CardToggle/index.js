@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faClone } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
 
 const CardToggle = ({ viewSelected, setViewSelected }) => {
 

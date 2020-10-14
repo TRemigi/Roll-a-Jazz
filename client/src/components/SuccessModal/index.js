@@ -42,7 +42,7 @@ function SuccessModal({ show, setShow, message }) {
                 {isCreatePage ? (
                     <>
                         <Button className='btn-border mr-2' variant="secondary" onClick={() => setShow(false)}>Close</Button>
-                        <Button className='btn-border' variant="secondary" as={Link} to="/">View Cards</Button>
+                        <Button className='btn-border' variant="secondary" as={Link} to="/cards">View Cards</Button>
                     </>
                 ) : (
                     <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>

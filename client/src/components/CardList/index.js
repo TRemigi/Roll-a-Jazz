@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardDeck, Col } from "react-bootstrap";
 import CardComponent from "../Card";
 import "../../assets/css/style.css";
