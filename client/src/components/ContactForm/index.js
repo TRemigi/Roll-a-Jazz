@@ -48,8 +48,6 @@ const ContactForm = () => {
       return;
     }
 
-    console.log(contactFormState);
-
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAIL_SERVICE_ID,
