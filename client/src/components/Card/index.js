@@ -13,13 +13,13 @@ const CardComponent = ({ card }) => {
   return (
     <div>
       <SingleCardModal show={show} setShow={setShow} card={card} />
-      <OverlayTrigger
+      {/* <OverlayTrigger
         overlay={
           <Tooltip id="tooltip">
             <strong>Click</strong> card to view
           </Tooltip>
         }
-      >
+      > */}
         <Card
           className="mt-1 mb-1 pointer"
           key={card._id}
@@ -49,7 +49,7 @@ const CardComponent = ({ card }) => {
             {/* <QrCode cardId={card._id}/> */}
           </Card.Body>
         </Card>
-      </OverlayTrigger>
+      {/* </OverlayTrigger> */}
     </div>
   );
 };
