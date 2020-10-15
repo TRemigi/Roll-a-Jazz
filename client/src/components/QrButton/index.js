@@ -3,7 +3,7 @@ import QrReader from "react-qr-reader";
 import { Button } from "react-bootstrap";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_COLLECTED_CARD } from "../../utils/mutations";
-import ResultsModal from "../SearchResultsModal";
+import SingleCardModal from "../SingleCard";
 import SuccessModal from "../SuccessModal";
 
 const QrButton = () => {
@@ -52,7 +52,7 @@ const QrButton = () => {
   return (
     <div className="scanner">
       {toggle && reader}
-      <SuccessModal show={show} setShow={setShow} message={"You did it!!!"} />
+      <SingleCardModal show={show} setShow={setShow} card={"You did it!!!"} />
       <Button
         className="col-12 mt-2 mb-3 btn-border scan-button"
         onClick={() => (toggle ? setToggle(false) : setToggle(true))}

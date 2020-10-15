@@ -5,7 +5,7 @@ import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_CARDS, ADD_ALL } from "../utils/actions";
+import { ADD_CARDS } from "../utils/actions";
 
 const Collection = () => {
   const dispatch = useDispatch();

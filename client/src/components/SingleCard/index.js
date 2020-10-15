@@ -13,7 +13,9 @@ import RemoveCard from "../RemoveCard";
 
 function SingleCardModal({ show, setShow, card }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [inProp, setInProp] = useState(false);
+
+  const [, setInProp] = useState();
+
   const [isEdit, setIsEdit] = useState(false);
 
   const handleFlip = () => {
