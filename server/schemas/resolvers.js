@@ -126,6 +126,20 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    removeCard: async (parent, {_id}, context) => {
+      if(context.user) {
+        const card = await Card.findById({ _id: _id });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { collectedCards: card._id } },
+          { new: true }
+        );
+
+        return card;
+      }
+    throw new AuthenticationError('You need to be logged in!');
+  },
   },
 };
 

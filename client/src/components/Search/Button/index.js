@@ -22,7 +22,7 @@ const AddCardButton = ({ addCollectedCard, id }) => {
         <Button
         variant="primary"
         onClick={handleAddCollectedCard}
-        className='btn-border'
+        className='btn-border add-btn'
         >
             Add to Collection
         </Button>

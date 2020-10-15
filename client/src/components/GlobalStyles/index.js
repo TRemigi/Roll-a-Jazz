@@ -19,15 +19,33 @@ export const GlobalStyles = createGlobalStyle`
   .card-body {
     color: ${({ theme }) => theme.main}!important;
     background: ${({ theme }) => theme.text};
-    box-shadow: ${({ theme }) => theme.boxShadow
-  };
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
+
+  .card-contact {
+    margin: 0 30% 1% 30%;
+    border-bottom: 1px solid ${({ theme }) => theme.main};
+  }
+  
 
   button {
     background: ${({ theme }) => theme.main} !important;
     border: 1px solid ${({ theme }) => theme.accent}!important;
     color: ${({ theme }) => theme.text} !important;
     transition: all 2s ease-in;
+  }
+
+  .see-card-btn {
+    background: ${({ theme }) => theme.main} !important;
+    border: 1px solid ${({ theme }) => theme.accent}!important;
+    color: ${({ theme }) => theme.text} !important;
+    transition: all 2s ease-in;
+
+  }
+  
+  .add-btn:hover {
+    background: ${({ theme }) => theme.main} !important;
+    color: ${({ theme }) => theme.text} !important;
   }
 
   .start-btn {
@@ -66,7 +84,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .single-card {
-    height: 16rem;
+    height: 17rem;
     background-color: ${({ theme }) => theme.text}!important;
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
@@ -82,6 +100,18 @@ export const GlobalStyles = createGlobalStyle`
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
   
+  .remove-btn:hover {
+    background-color: ${({ theme }) => theme.main} !important;
+    border-color: 1px solid #d4af37 !important;
+    transition: none !important;
+  }
+
+  .modal-header {
+    background-color: ${({ theme }) => theme.main} !important;
+    border-bottom: 1px solid #1b1b1b;
+    box-shadow: inset -70px -55px 60px -70px var(--gold) !important;
+
+  }
   
   
 
