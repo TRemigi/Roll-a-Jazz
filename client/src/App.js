@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { useDarkMode } from "./components/useDarkMode";
 import { GlobalStyles } from "./components/GlobalStyles";
@@ -14,7 +14,6 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Collection from "./pages/Collection";
 import Create from "./pages/Create";
-import SingleCard from "./pages/SingleCard";
 import Contact from './pages/Contact'
 
 import Header from "./components/Header";
