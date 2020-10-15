@@ -7,17 +7,13 @@ import Button from "react-bootstrap/Button";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import QrCode from "../QrCode";
 import EditCardForm from "../EditCardForm";
-// import ReactCardFlip
-// docs: https://github.com/AaronCCWong/react-card-flip
 import ReactCardFlip from "react-card-flip";
 import DeleteCard from "../DeleteCard";
 import RemoveCard from "../RemoveCard";
 
 function SingleCardModal({ show, setShow, card }) {
   const [isFlipped, setIsFlipped] = useState(false);
-
   const [inProp, setInProp] = useState(false);
-
   const [isEdit, setIsEdit] = useState(false);
 
   const handleFlip = () => {
@@ -28,7 +24,7 @@ function SingleCardModal({ show, setShow, card }) {
   let isHome;
 
   const pageCheck = () => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/cards") {
       isHome = true;
     } else {
       isHome = false;

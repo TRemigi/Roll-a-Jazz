@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_MY_COLLECTION } from "../utils/queries";
 import { ADD_COLLECTED_CARD } from "../utils/mutations";
@@ -63,7 +63,7 @@ const Collection = () => {
         />
         <div className="container p-0">
           <h3 className="text-center mt-4 page-header">
-            Cards you've collected
+            Cards You've Collected
           </h3>
           <div>
             <div className="col-12 text-center list-container">

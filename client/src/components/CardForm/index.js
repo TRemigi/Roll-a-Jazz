@@ -6,6 +6,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import SuccessModal from "../SuccessModal";
 // i'll need to import validatePhone as well.
 import { validateEmail, validatePhone } from "../../utils/helpers";
+import NumberFormat from 'react-number-format';
 
 const CardForm = () => {
   const [formState, setFormState] = useState({
@@ -60,6 +61,7 @@ const CardForm = () => {
     const isValid = validatePhone(text);
     return isValid;
   };
+
 
   const isValidEmailInput = (text) => {
     const isValid = validateEmail(text);
@@ -235,15 +237,18 @@ const CardForm = () => {
             Phone Number:
           </Form.Label>
           <Col sm="10">
-            <Form.Control
+            <NumberFormat
               required
               placeholder="123-456-7890"
+              format='###-###-####'
               name="phone"
               type="phone"
               id="phone"
               value={formState.phone}
               onChange={handleChange}
-            ></Form.Control>
+              className='col-12 form-control'
+            >
+            </NumberFormat>
             <Form.Text id="phoneHelpBlock" muted>
               Required
             </Form.Text>
