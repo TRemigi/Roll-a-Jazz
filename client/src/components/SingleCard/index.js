@@ -7,17 +7,13 @@ import Button from "react-bootstrap/Button";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import QrCode from "../QrCode";
 import EditCardForm from "../EditCardForm";
-// import ReactCardFlip
-// docs: https://github.com/AaronCCWong/react-card-flip
 import ReactCardFlip from "react-card-flip";
 import DeleteCard from "../DeleteCard";
 import RemoveCard from "../RemoveCard";
 
-function SingleCardModal({ showBool, setShow, cardObject }) {
+function SingleCardModal({ show, setShow, card }) {
   const [isFlipped, setIsFlipped] = useState(false);
-
   const [inProp, setInProp] = useState(false);
-
   const [isEdit, setIsEdit] = useState(false);
 
   const handleFlip = () => {
@@ -28,7 +24,7 @@ function SingleCardModal({ showBool, setShow, cardObject }) {
   let isHome;
 
   const pageCheck = () => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/cards") {
       isHome = true;
     } else {
       isHome = false;
@@ -47,13 +43,13 @@ function SingleCardModal({ showBool, setShow, cardObject }) {
     <>
       {isEdit && (
         <div className="row justify-content-center">
-          <EditCardForm card={cardObject} setIsEdit={setIsEdit} />
+          <EditCardForm card={card} setIsEdit={setIsEdit} />
         </div>
       )}
       {!isEdit && (
         <Modal
           animation={false}
-          show={showBool}
+          show={show}
           onHide={() => setShow(false)}
           size="md"
           aria-labelledby="contained-modal-title-vcenter"
@@ -75,28 +71,28 @@ function SingleCardModal({ showBool, setShow, cardObject }) {
             >
               <Card
                 className="pointer border-0 single-card"
-                key={cardObject._id}
+                key={card._id}
                 key="front"
                 onClick={handleFlip}
               >
                 {/* <Card.Img variant="top" src={card.logoUrl} /> */}
                 <Card.Body className="text-center">
-                  <Card.Title>{cardObject.name}</Card.Title>
+                  <Card.Title>{card.name}</Card.Title>
                   <Card.Subtitle className=" card-sub mb-4">
-                    {cardObject.jobTitle}
+                    {card.jobTitle}
                   </Card.Subtitle>
-                  <Card.Subtitle>{cardObject.companyName}</Card.Subtitle>
-                  <Card.Link href={cardObject.website} target="_blank">
-                    {cardObject.website}
+                  <Card.Subtitle>{card.companyName}</Card.Subtitle>
+                  <Card.Link href={card.website} target="_blank">
+                    {card.website}
                   </Card.Link>
-                  <Card.Text>{cardObject.tagline}</Card.Text>
+                  <Card.Text>{card.tagline}</Card.Text>
                   <h5 className="card-contact ">Contact</h5>
-                  <Card.Link href={"mailto:" + cardObject.email}>
-                    {cardObject.email}
+                  <Card.Link href={"mailto:" + card.email}>
+                    {card.email}
                   </Card.Link>
                   <br />
-                  <Card.Link href={"tel:+" + cardObject.phone}>
-                    {cardObject.phone}
+                  <Card.Link href={"tel:+" + card.phone}>
+                    {card.phone}
                   </Card.Link>
                   {/* <QrCode cardId={card._id}/> */}
                 </Card.Body>
@@ -111,12 +107,12 @@ function SingleCardModal({ showBool, setShow, cardObject }) {
             >
               <Card
                 className="flip-in pointer border-0 single-card"
-                key={cardObject._id}
+                key={card._id}
                 key="back"
                 onClick={handleFlip}
               >
                 <Card.Body className="d-flex justify-content-center align-items-center qr-body">
-                  <QrCode cardId={cardObject._id} />
+                  <QrCode cardId={card._id} />
                 </Card.Body>
                 {/* Kailey's delete button will go here */}
                 {isHome ? (
@@ -126,17 +122,17 @@ function SingleCardModal({ showBool, setShow, cardObject }) {
                   >
                     <Button
                       className="edit-btn"
-                      value={cardObject}
+                      value={card}
                       variant="primary"
                       onClick={() => editCard()}
                     >
                       <img src="https://img.icons8.com/metro/36/d4af37/edit.png" />
                     </Button>
-                    <DeleteCard card={cardObject} />
+                    <DeleteCard card={card} />
                   </ButtonGroup>
                 ) : (
                   <ButtonGroup className="remove-btn" aria-label="home-btns">
-                    <RemoveCard card={cardObject} />
+                    <RemoveCard card={card} />
                   </ButtonGroup>
                 )}
               </Card>
