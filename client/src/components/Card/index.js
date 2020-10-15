@@ -39,7 +39,11 @@ const CardComponent = ({ card }) => {
             <Card.Subtitle className=" card-sub">
               {card.companyName}
             </Card.Subtitle>
-            <Card.Link href={card.website} target="_blank">
+            <Card.Link
+              rel={"external"}
+              href={"https://" + card.website}
+              target="_blank"
+            >
               {card.website}
             </Card.Link>
             <Card.Text>"{card.tagline}"</Card.Text>
