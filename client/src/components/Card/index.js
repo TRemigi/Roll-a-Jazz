@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import SingleCardModal from "../SingleCard";
-import QrCode from "../QrCode";
-import { useDispatch, useReducer } from "react-redux";
-import DeleteCard from "../DeleteCard";
-import RemoveCard from "../RemoveCard";
-import ResultsModal from "../SearchResultsModal";
 
 const CardComponent = ({ card }) => {
   const [show, setShow] = useState(false);
