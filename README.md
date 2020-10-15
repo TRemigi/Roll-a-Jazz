@@ -2,7 +2,7 @@
 
 ## Description
 
-A MERN stack application that creates and collects business cards with QR Codes. When a user visit the application for the first time, they are prompted to sign-up and create an account. Once the user has signed up or logged in, they can then create business cards with their company name, tagline, personal name, job title, company website url, phone number, and email address. Once the business card has been created, it will automatically be generated with a QR Code and be displayed on the "My Cards" page. The user can also search for other user's business cards by searching their name or scannng the users QR Code on the "Collection" page. User is able to delete and edit their personal business cards and remove cards that they have collected.
+A MERN stack application that creates and collects business cards with QR Codes. When a user visit the application for the first time, they are prompted to sign-up and create an account. Once the user has signed up or logged in, they can then create business cards with their company name, tagline, personal name, job title, company website url, phone number, and email address. Once the business card has been created, it will automatically be generated with a QR Code and be displayed on the "My Cards" page. The user can also search for other user's business cards by searching their name or scannng the users QR Code on the "Collection" page. User is able to delete and edit their personal business cards and remove cards that they have collected. The application also features a light and dark mode in which the user can choose which mode to display on their screen.
 
 **[Deployed Application]()**
 
