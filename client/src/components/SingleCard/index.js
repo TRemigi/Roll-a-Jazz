@@ -13,7 +13,9 @@ import RemoveCard from "../RemoveCard";
 
 function SingleCardModal({ show, setShow, card }) {
   const [isFlipped, setIsFlipped] = useState(false);
+
   const [, setInProp] = useState();
+
   const [isEdit, setIsEdit] = useState(false);
 
   const handleFlip = () => {
@@ -82,7 +84,11 @@ function SingleCardModal({ show, setShow, card }) {
                     {card.jobTitle}
                   </Card.Subtitle>
                   <Card.Subtitle>{card.companyName}</Card.Subtitle>
-                  <Card.Link href={card.website} target="_blank">
+                  <Card.Link 
+                    rel={"external"}
+                    href={"https://" + card.website} 
+                    target="_blank"
+                  >
                     {card.website}
                   </Card.Link>
                   <Card.Text>{card.tagline}</Card.Text>

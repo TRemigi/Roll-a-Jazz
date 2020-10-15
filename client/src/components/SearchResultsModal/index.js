@@ -23,6 +23,9 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
       <Modal.Body>
         <div className="container">
           <div className="row justify-content-start">
+            {!results.length && (
+              <h3 style={{ color: "black" }}>No results found...</h3>
+            )}
             {results.map((card) => (
               <div className="col-12 pb-2 text-center" key={card._id}>
                 <CardComponent card={card} />

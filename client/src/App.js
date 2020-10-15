@@ -19,6 +19,7 @@ import Contact from './pages/Contact'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+import Cards from "./pages/Cards";
 import Home from "./pages/Home";
 import { Provider } from 'react-redux';
 import store from './utils/store';
@@ -58,6 +59,7 @@ function App() {
 
                   <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route exact path="/cards" component={Cards} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/create" component={Create} />
