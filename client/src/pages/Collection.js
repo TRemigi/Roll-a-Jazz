@@ -16,7 +16,6 @@ const Collection = () => {
   });
 
   const { collectedCards } = state;
-  console.log(state);
 
   let collectedCardsData = data?.me.collectedCards || [];
 
