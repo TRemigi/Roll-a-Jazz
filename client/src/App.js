@@ -54,7 +54,7 @@ function App() {
             <div>
               <Provider store={store}>
                 <Header></Header>
-                <div>
+                <div >
                   <Toggle theme={theme} toggleTheme={themeToggler} />
 
                   <Switch>
