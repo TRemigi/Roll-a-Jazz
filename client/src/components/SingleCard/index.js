@@ -64,13 +64,13 @@ function SingleCardModal({ show, setShow, card }) {
             flipDirection="horizontal"
             containerStyle={{ backgroundColor: "rgb(14, 14, 14)" }}
           >
-            <OverlayTrigger
+            {/* <OverlayTrigger
               overlay={
                 <Tooltip id="tooltip">
                   <strong>Click</strong> again to flip to the back
                 </Tooltip>
               }
-            >
+            > */}
               <Card
                 className="pointer border-0 single-card"
                 key={card._id}
@@ -103,14 +103,14 @@ function SingleCardModal({ show, setShow, card }) {
                   {/* <QrCode cardId={card._id}/> */}
                 </Card.Body>
               </Card>
-            </OverlayTrigger>
-            <OverlayTrigger
+            {/* </OverlayTrigger> */}
+            {/* <OverlayTrigger
               overlay={
                 <Tooltip id="tooltip">
                   <strong>Click</strong> off of the card to dismiss
                 </Tooltip>
               }
-            >
+            > */}
               <Card
                 className="flip-in pointer border-0 single-card"
                 key={card._id}
@@ -142,7 +142,7 @@ function SingleCardModal({ show, setShow, card }) {
                   </ButtonGroup>
                 )}
               </Card>
-            </OverlayTrigger>
+            {/* </OverlayTrigger> */}
           </ReactCardFlip>
         </Modal>
       )}
