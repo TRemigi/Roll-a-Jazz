@@ -48,7 +48,7 @@ const Login = (props) => {
       <Container>
         <Row>
           <Col className="login mt-5">
-            <h4 >Login</h4>
+            <h4 className='p-3 mt-sm-2 page-header'>Login</h4>
             <Form className="login-form p-4" onSubmit={handleFormSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

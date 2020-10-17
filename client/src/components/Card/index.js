@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import SingleCardModal from "../SingleCard";
-import QrCode from "../QrCode";
-import { useDispatch, useReducer } from "react-redux";
-import DeleteCard from "../DeleteCard";
-import RemoveCard from "../RemoveCard";
-import ResultsModal from "../SearchResultsModal";
 
 const CardComponent = ({ card }) => {
   const [show, setShow] = useState(false);
@@ -18,13 +13,13 @@ const CardComponent = ({ card }) => {
   return (
     <div>
       <SingleCardModal show={show} setShow={setShow} card={card} />
-      <OverlayTrigger
+      {/* <OverlayTrigger
         overlay={
           <Tooltip id="tooltip">
             <strong>Click</strong> card to view
           </Tooltip>
         }
-      >
+      > */}
         <Card
           className="mt-1 mb-1 pointer"
           key={card._id}
@@ -39,7 +34,11 @@ const CardComponent = ({ card }) => {
             <Card.Subtitle className=" card-sub">
               {card.companyName}
             </Card.Subtitle>
-            <Card.Link href={card.website} target="_blank">
+            <Card.Link
+              rel={"external"}
+              href={"https://" + card.website}
+              target="_blank"
+            >
               {card.website}
             </Card.Link>
             <Card.Text>"{card.tagline}"</Card.Text>
@@ -50,7 +49,7 @@ const CardComponent = ({ card }) => {
             {/* <QrCode cardId={card._id}/> */}
           </Card.Body>
         </Card>
-      </OverlayTrigger>
+      {/* </OverlayTrigger> */}
     </div>
   );
 };

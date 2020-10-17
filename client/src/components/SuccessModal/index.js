@@ -38,15 +38,15 @@ function SuccessModal({ show, setShow, message }) {
                     {message}
                 </p>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className='justify-content-between'>
                 {isCreatePage ? (
                     <>
+                        <Button type='button' className='btn-border see-card-btn' variant="secondary" as={Link} to="/">View Cards</Button>
                         <Button className='btn-border mr-2' variant="secondary" onClick={() => setShow(false)}>Close</Button>
-                        <Button className='btn-border' variant="secondary" as={Link} to="/">View Cards</Button>
                     </>
                 ) : (
-                    <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
-                )}
+                        <Button className='btn-border' variant="secondary" onClick={() => setShow(false)}>Close</Button>
+                    )}
             </Modal.Footer>
         </Modal>
     );

@@ -7,8 +7,6 @@ import Button from "react-bootstrap/Button";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import QrCode from "../QrCode";
 import EditCardForm from "../EditCardForm";
-// import ReactCardFlip
-// docs: https://github.com/AaronCCWong/react-card-flip
 import ReactCardFlip from "react-card-flip";
 import DeleteCard from "../DeleteCard";
 import RemoveCard from "../RemoveCard";
@@ -16,7 +14,7 @@ import RemoveCard from "../RemoveCard";
 function SingleCardModal({ show, setShow, card }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const [inProp, setInProp] = useState(false);
+  const [, setInProp] = useState();
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -28,7 +26,7 @@ function SingleCardModal({ show, setShow, card }) {
   let isHome;
 
   const pageCheck = () => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/cards") {
       isHome = true;
     } else {
       isHome = false;
@@ -66,13 +64,13 @@ function SingleCardModal({ show, setShow, card }) {
             flipDirection="horizontal"
             containerStyle={{ backgroundColor: "rgb(14, 14, 14)" }}
           >
-            <OverlayTrigger
+            {/* <OverlayTrigger
               overlay={
                 <Tooltip id="tooltip">
                   <strong>Click</strong> again to flip to the back
                 </Tooltip>
               }
-            >
+            > */}
               <Card
                 className="pointer border-0 single-card"
                 key={card._id}
@@ -86,7 +84,11 @@ function SingleCardModal({ show, setShow, card }) {
                     {card.jobTitle}
                   </Card.Subtitle>
                   <Card.Subtitle>{card.companyName}</Card.Subtitle>
-                  <Card.Link href={card.website} target="_blank">
+                  <Card.Link 
+                    rel={"external"}
+                    href={"https://" + card.website} 
+                    target="_blank"
+                  >
                     {card.website}
                   </Card.Link>
                   <Card.Text>{card.tagline}</Card.Text>
@@ -101,14 +103,14 @@ function SingleCardModal({ show, setShow, card }) {
                   {/* <QrCode cardId={card._id}/> */}
                 </Card.Body>
               </Card>
-            </OverlayTrigger>
-            <OverlayTrigger
+            {/* </OverlayTrigger> */}
+            {/* <OverlayTrigger
               overlay={
                 <Tooltip id="tooltip">
                   <strong>Click</strong> off of the card to dismiss
                 </Tooltip>
               }
-            >
+            > */}
               <Card
                 className="flip-in pointer border-0 single-card"
                 key={card._id}
@@ -140,7 +142,7 @@ function SingleCardModal({ show, setShow, card }) {
                   </ButtonGroup>
                 )}
               </Card>
-            </OverlayTrigger>
+            {/* </OverlayTrigger> */}
           </ReactCardFlip>
         </Modal>
       )}

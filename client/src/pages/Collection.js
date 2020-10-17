@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_MY_COLLECTION } from "../utils/queries";
 import { ADD_COLLECTED_CARD } from "../utils/mutations";
 import CardList from "../components/CardList";
 import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_CARDS, ADD_ALL } from "../utils/actions";
+import { ADD_CARDS } from "../utils/actions";
 
 const Collection = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ const Collection = () => {
   });
 
   const { collectedCards } = state;
-  console.log(state);
 
   let collectedCardsData = data?.me.collectedCards || [];
 
@@ -55,7 +54,7 @@ const Collection = () => {
   return (
     <main className="container">
       <div className="row justify-content-center">
-        <h3 className="p-3 mt-sm-2 mt-5 page-header">Add to your collection</h3>
+        <h3 className="p-3 mt-sm-2 mt-5 page-header">Add to Your Collection</h3>
 
         <Search
           addCollectedCard={addCollectedCard}
@@ -63,7 +62,7 @@ const Collection = () => {
         />
         <div className="container p-0">
           <h3 className="text-center mt-4 page-header">
-            Cards you've collected
+            Cards You've Collected
           </h3>
           <div>
             <div className="col-12 text-center list-container">

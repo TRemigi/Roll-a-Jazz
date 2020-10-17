@@ -24,7 +24,8 @@
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "react-qr-reader": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'yantramanav';
-  src: url('https://fonts.googleapis.com/css2?family=Yantramanav&display=swap');
-  ;
+  font-family: "yantramanav";
+  src: url("https://fonts.googleapis.com/css2?family=Yantramanav&display=swap");
 }
 
 @font-face {
-  font-family: 'nexa';
-  src: local('nexa'), url(./assets/fonts/Nexa-Font/NexaRegular.otf) format('opentype');
+  font-family: "nexa";
+  src: local("nexa"),
+    url(./assets/fonts/Nexa-Font/NexaRegular.otf) format("opentype");
 }
 
 /* general styles */
@@ -24,7 +24,6 @@ main {
 
 /* end general styles */
 
-
 :root {
   --black: #1b1b1b;
   --gold: #d4af37;
@@ -34,7 +33,7 @@ main {
 /* dark mode */
 body,
 main {
-  font-family: 'nexa' !important;
+  font-family: "nexa" !important;
   /* color: var(--whitesmoke) !important; */
 }
 
@@ -48,7 +47,7 @@ header {
 }
 
 .page-header {
-  font-family: 'yantramanav' !important;
+  font-family: "yantramanav" !important;
   text-shadow: 1px 1px var(--gold);
   font-size: 2rem;
 }
@@ -61,7 +60,6 @@ header {
 }
 
 .navbar {
-  position: absolute;
   padding: 0 1rem !important;
   width: 100%;
   height: 100% !important;
@@ -89,7 +87,7 @@ header {
 span {
   color: var(--gold) !important;
   text-shadow: 0 0 10px var(--gold);
-  font-family: 'yantramanav';
+  font-family: "yantramanav";
   font-style: italic;
 }
 
@@ -98,7 +96,7 @@ form {
 }
 
 .form-css {
-  font-family: 'nexa' !important;
+  font-family: "nexa" !important;
   color: var(--whitesmoke) !important;
 }
 
@@ -115,8 +113,7 @@ form {
 }
 
 button {
-  padding: .2rem !important;
-
+  padding: 0.2rem !important;
 }
 
 button:focus {
@@ -124,13 +121,13 @@ button:focus {
 }
 
 .btn:hover {
-  transition: all .2s ease !important;
+  transition: all 0.2s ease !important;
   transform: scale(1.1);
   background: none !important;
 }
 
 .login-submit {
-  padding: .2rem !important;
+  padding: 0.2rem !important;
 }
 
 .car-view {
@@ -164,7 +161,7 @@ button:focus {
 
 .card-title {
   font-size: 2.5rem !important;
-  margin-bottom: .2rem !important;
+  margin-bottom: 0.2rem !important;
 }
 
 .card-link {
@@ -204,9 +201,8 @@ button:focus {
 }
 
 .navbar-toggler-icon {
-  background-image: url('./assets/images/gold.png') !important;
+  background-image: url("./assets/images/gold.png") !important;
 }
-
 
 /* utilities */
 /* .btn:focus {
@@ -273,7 +269,6 @@ button:focus {
   }
 
   .shiny {
-
     -webkit-transition: all 0.3s linear;
     -khtml-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -284,7 +279,13 @@ button:focus {
     /* Old browsers */
     background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd65e), color-stop(100%, #febf04));
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #ffd65e),
+      color-stop(100%, #febf04)
+    );
     /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #ffd65e 0%, #febf04 100%);
     /* Chrome10+,Safari5.1+ */
