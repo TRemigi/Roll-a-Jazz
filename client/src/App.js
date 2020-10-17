@@ -16,11 +16,13 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
-import Profile from "./pages/Profile";
+// import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Collection from "./pages/Collection";
 import Create from "./pages/Create";
 import Contact from "./pages/Contact";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 import Cards from "./pages/Cards";
 import Home from "./pages/Home";
@@ -61,9 +63,15 @@ function App() {
 
                   <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/cards" component={Cards} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/contact" component={Contact} />
+                    
+                    {Auth.loggedIn() ? (
+                      <Route exact path="/cards" component={Cards} />
+                    ) : (
+                      <Redirect to={{ pathname: "/login" }} />
+                    )}
                     {Auth.loggedIn() ? (
                       <Route exact path="/create" component={Create} />
                     ) : (
@@ -74,7 +82,7 @@ function App() {
                     ) : (
                       <Redirect to={{ pathname: "/login" }} />
                     )}
-                    {Auth.loggedIn() ? (
+                    {/* {Auth.loggedIn() ? (
                       <Route
                         exact
                         path="/profile:username?"
@@ -82,12 +90,7 @@ function App() {
                       />
                     ) : (
                       <Redirect to={{ pathname: "/login" }} />
-                    )}
-                    {Auth.loggedIn() ? (
-                      <Route exact path="/contact" component={Contact} />
-                    ) : (
-                      <Redirect to={{ pathname: "/login" }} />
-                    )}
+                    )} */}
                     {Auth.loggedIn() && <Route component={NoMatch} />}
                   </Switch>
                 </div>
