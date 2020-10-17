@@ -13,6 +13,7 @@ import Auth from "../utils/auth";
 import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
+import { idbPromise } from "../utils/helpers";
 
 const Cards = () => {
   const [viewSelected, setViewSelected] = useState(true);
@@ -40,6 +41,20 @@ const Cards = () => {
 
   useEffect(() => {
     addAll();
+    if(user.cards) {
+        idbPromise('username','put', user.username);    
+    }
+
+    if(user.cards) {
+      user.cards.forEach((card) => {
+        idbPromise('cards','put', card);    
+      })
+    }
+    if(user.collectedCards) {
+      user.collectedCards.forEach((collectedCard) => {
+        idbPromise('collectedCards', 'put', collectedCard)
+      })
+    }
   }, [user]);
 
   if (loading) {
