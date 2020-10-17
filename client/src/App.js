@@ -65,6 +65,8 @@ function App() {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/contact" component={Contact} />
+                    
                     {Auth.loggedIn() ? (
                       <Route exact path="/cards" component={Cards} />
                     ) : (
@@ -89,11 +91,6 @@ function App() {
                     ) : (
                       <Redirect to={{ pathname: "/login" }} />
                     )} */}
-                    {Auth.loggedIn() ? (
-                      <Route exact path="/contact" component={Contact} />
-                    ) : (
-                      <Redirect to={{ pathname: "/login" }} />
-                    )}
                     {Auth.loggedIn() && <Route component={NoMatch} />}
                   </Switch>
                 </div>
