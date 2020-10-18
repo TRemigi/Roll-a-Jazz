@@ -12,7 +12,7 @@ const Collection = () => {
   const state = useSelector((state) => state);
 
   const { loading, data } = useQuery(QUERY_MY_COLLECTION, {
-    pollInterval: 500,
+    pollInterval: 5000,
   });
 
   const { collectedCards } = state;
