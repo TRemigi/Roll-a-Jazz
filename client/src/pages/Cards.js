@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { DELETE_CARDS, ADD_ALL } from "../utils/actions";
-import { Button } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { Redirect, useParams } from "react-router-dom";
@@ -39,34 +39,59 @@ const Cards = () => {
     });
   };
 
+  // set up idbUser object
+  let idbUser = { username: "", cards: [], collectedCards: [] };
+
   useEffect(() => {
     addAll();
-    if(user.cards) {
-        idbPromise('username','put', user.username);    
-    }
-
-    if(user.cards) {
+    if (user.cards) {
+      // add username to idb object store
+      idbPromise("username", "put", user.username);
+      // add user's cards to idb object store
       user.cards.forEach((card) => {
-        idbPromise('cards','put', card);    
-      })
+        idbPromise("cards", "put", card);
+      });
     }
-    if(user.collectedCards) {
+    if (user.collectedCards) {
+      // add user's collected cards to idb object store
       user.collectedCards.forEach((collectedCard) => {
-        idbPromise('collectedCards', 'put', collectedCard)
-      })
+        idbPromise("collectedCards", "put", collectedCard);
+      });
+    } else if (!loading) {
+      // get cache from idb
+      idbPromise("cards", "get").then((indexedCards) => {
+        idbUser.cards = indexedCards;
+      });
+      idbPromise("collectedCards", "get").then((indexedCollectedCards) => {
+        idbUser.collectedCards = indexedCollectedCards;
+      });
+      idbPromise("username", "get").then((indexedUsername) => {
+        idbUser.username = indexedUsername;
+      });
+
+      // send indexedDB user data to global state
+      dispatch({
+        type: ADD_ALL,
+        cards: idbUser.cards,
+        collectedCards: idbUser.collectedCards,
+      });
+
+      console.log(
+        "You appear to be offline. Functionality will be limited until connection is restored."
+      );
     }
   }, [user]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <main className="container">
       <div className="justify-content-center mr-0">
         <div className="row justify-content-center">
           <h3 className="p-3 mt-sm-2 mt-5 page-header">
-            {user.username}'s cards {/*My created cards*/}
+            {user.username ? (
+              <>{user.username}'s Cards</>
+            ) : (
+              <> {idbUser.username}'s Cards</>
+            )}
           </h3>
         </div>
 
@@ -81,7 +106,11 @@ const Cards = () => {
           />
         </div>
         <div className="col-12 mt-0 p-0 text-center">
-          {loading && <div> Loading... </div>}
+          {loading && (
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          )}
           {viewSelected ? (
             <CardList cards={cards || []} />
           ) : (
