@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { DELETE_CARDS, ADD_ALL } from "../utils/actions";
+import { ADD_ALL } from "../utils/actions";
 import Spinner from "react-bootstrap/Spinner";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
-import { Redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-
-import Auth from "../utils/auth";
 
 import CardList from "../components/CardList";
 import CardCarousel from "../components/Carousel";
@@ -75,10 +72,6 @@ const Cards = () => {
         cards: idbUser.cards,
         collectedCards: idbUser.collectedCards,
       });
-
-      console.log(
-        "You appear to be offline. Functionality will be limited until connection is restored."
-      );
     }
   }, [user]);
 

@@ -23,9 +23,6 @@ export function idbPromise(storeName, method, object) {
       db.createObjectStore("cards", { autoIncrement: true });
       db.createObjectStore("collectedCards", { autoIncrement: true });
       db.createObjectStore("username", { autoIncrement: true });
-      db.createObjectStore("addNewCard", { autoIncrement: true });
-      db.createObjectStore("addNewCollectedCard", { autoIncrement: true });
-      // db.createObjectStore("addNewCard", { autoIncrement: true });
     };
 
     //handle any errors with connecting
