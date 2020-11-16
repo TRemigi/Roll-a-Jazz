@@ -204,6 +204,10 @@ button:focus {
   background-image: url("./assets/images/gold.png") !important;
 }
 
+.qr-code {
+  border: 6px solid white !important;
+}
+
 /* utilities */
 /* .btn:focus {
   outline: none !important;
