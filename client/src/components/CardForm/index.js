@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_CARD } from "../../utils/mutations";
 import { QUERY_CARDS, QUERY_ME } from "../../utils/queries";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import SuccessModal from "../SuccessModal";
+// import SuccessModal from "../SuccessModal";
 // i'll need to import validatePhone as well.
 import { validateEmail, validatePhone } from "../../utils/helpers";
-import NumberFormat from 'react-number-format';
+import NumberFormat from "react-number-format";
 
 const CardForm = () => {
+  const SuccessModal = lazy(() => import("../SuccessModal"));
+  const renderLoader = () => <p>Loading...</p>;
+
   const [formState, setFormState] = useState({
     // logoUrl: "",
     companyName: "",
@@ -61,7 +64,6 @@ const CardForm = () => {
     const isValid = validatePhone(text);
     return isValid;
   };
-
 
   const isValidEmailInput = (text) => {
     const isValid = validateEmail(text);
@@ -121,29 +123,15 @@ const CardForm = () => {
 
   return (
     <div>
-      <SuccessModal
-        show={show}
-        setShow={setShow}
-        message="Card successfully created!"
-      />
-
+      <Suspense fallback={renderLoader()}>
+        <SuccessModal
+          show={show}
+          setShow={setShow}
+          message="Card successfully created!"
+        />
+      </Suspense>
       <Form className=" p-4 m-lg-5 mr-2" onSubmit={handleFormSubmit}>
         <h3 className="pb-4">Fill out the form below</h3>
-        {/* <Form.Group as={Row}>
-          <Form.Label column sm="2">
-            Upload Company Logo:
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              type="file"
-              id="logoUrl"
-              name="logoUrl"
-              value={formState.logoUrl}
-              onChange={handleChange}
-            ></Form.Control>
-          </Col>
-        </Form.Group> */}
-
         <Form.Group as={Row}>
           <Form.Label column sm="2">
             Company Name:
@@ -240,15 +228,14 @@ const CardForm = () => {
             <NumberFormat
               required
               placeholder="123-456-7890"
-              format='###-###-####'
+              format="###-###-####"
               name="phone"
               type="phone"
               id="phone"
               value={formState.phone}
               onChange={handleChange}
-              className='col-12 form-control'
-            >
-            </NumberFormat>
+              className="col-12 form-control"
+            ></NumberFormat>
             <Form.Text id="phoneHelpBlock" muted>
               Required
             </Form.Text>
