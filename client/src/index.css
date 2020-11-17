@@ -52,7 +52,6 @@ header {
 
 .light-dark-btn {
   float: right;
-  position: absolute;
   margin-top: 1rem !important;
   margin-right: 1.2rem !important;
 }
@@ -228,10 +227,6 @@ button:focus {
 
   .title {
     font-size: 4rem !important;
-  }
-
-  .light-dark-btn {
-    position: absolute !important;
   }
 
   .carousel-item {
