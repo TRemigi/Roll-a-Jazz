@@ -1,12 +1,21 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import CardComponent from "../Card";
-import AddCardButton from "../Search/Button";
+import Spinner from "react-bootstrap/Spinner";
+// import CardComponent from "../Card";
+// import AddCardButton from "../Search/Button";
 
 // when using the success modal, the message you want displayed needs to be passed in through the message prop
 function ResultsModal({ show, setShow, results, addCollectedCard }) {
+  const CardComponent = lazy(() => import("../Card"));
+  const AddCardButton = lazy(() => import("../Search/Button"));
+  const renderLoader = () => (
+    <Spinner animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+  );
+
   return (
     <Modal
       show={show}
@@ -28,11 +37,13 @@ function ResultsModal({ show, setShow, results, addCollectedCard }) {
             )}
             {results.map((card) => (
               <div className="col-12 pb-2 text-center" key={card._id}>
-                <CardComponent card={card} />
-                <AddCardButton
-                  addCollectedCard={addCollectedCard}
-                  id={card._id}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <CardComponent card={card} />
+                  <AddCardButton
+                    addCollectedCard={addCollectedCard}
+                    id={card._id}
+                  />
+                </Suspense>
               </div>
             ))}
           </div>

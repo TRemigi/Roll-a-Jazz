@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_ALL } from "../utils/actions";
 import Spinner from "react-bootstrap/Spinner";
@@ -7,12 +7,17 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import CardList from "../components/CardList";
-import CardCarousel from "../components/Carousel";
+// import CardList from "../components/CardList";
+// import CardCarousel from "../components/Carousel";
 import CardToggle from "../components/CardToggle";
 import { idbPromise } from "../utils/helpers";
 
 const Cards = () => {
+  const CardList = lazy(() => import("../components/CardList"));
+  const CardCarousel = lazy(() => import("../components/Carousel"));
+
+  const renderLoader = () => <p>Loading...</p>;
+
   const [viewSelected, setViewSelected] = useState(true);
 
   const state = useSelector((state) => state);
@@ -105,9 +110,13 @@ const Cards = () => {
             </Spinner>
           )}
           {viewSelected ? (
-            <CardList cards={cards || []} />
+            <Suspense fallback={renderLoader()}>
+              <CardList cards={cards || []} />
+            </Suspense>
           ) : (
-            <CardCarousel cards={cards || []} />
+            <Suspense fallback={renderLoader()}>
+              <CardCarousel cards={cards || []} />
+            </Suspense>
           )}
         </div>
       </div>

@@ -1,11 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { QUERY_USER_CARDS } from "../../utils/queries";
 import { Form, Button } from "react-bootstrap";
-import ResultsModal from "../SearchResultsModal";
-import QrButton from "../QrButton";
+import Spinner from "react-bootstrap/Spinner";
+// import ResultsModal from "../SearchResultsModal";
+// import QrButton from "../QrButton";
 
 const Search = ({ addCollectedCard, collectedCards }) => {
+  const ResultsModal = lazy(() => import("../SearchResultsModal"));
+  const QrButton = lazy(() => import("../QrButton"));
+  const renderLoader = () => (
+    <Spinner animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+  );
+
   const [searchCards, { data }] = useLazyQuery(QUERY_USER_CARDS);
   const initialResults = data?.userCards || [];
 
@@ -58,13 +67,20 @@ const Search = ({ addCollectedCard, collectedCards }) => {
 
   return (
     <div className="col-12">
-      <ResultsModal
-        show={show}
-        setShow={setShow}
-        results={finalResults}
-        addCollectedCard={addCollectedCard}
-      />
-
+      <Suspense fallback={renderLoader()}>
+        <ResultsModal
+          show={show}
+          setShow={setShow}
+          results={finalResults}
+          addCollectedCard={addCollectedCard}
+        />
+      </Suspense>
+      <Suspense fallback={renderLoader()}>
+        <QrButton className="col-11 mb-3" style={{ width: "90%" }}>
+          Scan Code
+        </QrButton>
+      </Suspense>
+      <p className="text-center">or</p>
       <Form inline className="col-12 p-0 border-0" onSubmit={handleSubmit}>
         <Form.Label htmlFor="nameInput" srOnly>
           Name
@@ -78,10 +94,6 @@ const Search = ({ addCollectedCard, collectedCards }) => {
           Search
         </Button>
       </Form>
-      <p className="text-center">or</p>
-      <QrButton className="col-11 mb-3" style={{ width: "90%" }}>
-        Scan Code
-      </QrButton>
     </div>
   );
 };
