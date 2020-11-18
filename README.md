@@ -1,4 +1,4 @@
-<h1 align="center">ROLO Deck 🗃</h1>
+<h1 align="center">RoloDeck 🗃</h1>
 
 ## Description
 
