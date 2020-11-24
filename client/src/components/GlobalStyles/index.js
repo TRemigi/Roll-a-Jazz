@@ -12,6 +12,10 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 2s linear;
   }
 
+  .light-dark-btn {
+    background: ${({ theme }) => theme.text} !important;
+  }
+
   .card-title, card-sub {
     color: ${({ theme }) => theme.main}!important;
   }
