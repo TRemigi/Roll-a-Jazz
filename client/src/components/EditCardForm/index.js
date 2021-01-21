@@ -21,7 +21,7 @@ const EditCardForm = ({ card, setIsEdit }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [updateCard, { error }] = useMutation(UPDATE_CARD, {
+  const [updateCard] = useMutation(UPDATE_CARD, {
     update(cache, { data: { updateCard } }) {
       try {
         //could potentially not exist yet, so wrap in a try...catch
