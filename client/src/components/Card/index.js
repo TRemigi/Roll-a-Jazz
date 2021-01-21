@@ -1,11 +1,9 @@
 import React, { useState, lazy, Suspense } from "react";
 import "./style.css";
 import { Card } from "react-bootstrap";
+import SingleCardModal from "../SingleCard";
 
 const CardComponent = ({ card }) => {
-  const SingleCardModal = lazy(() => import("../SingleCard"));
-  const renderLoader = () => <p>Loading...</p>;
-
   const [show, setShow] = useState(false);
 
   const cardClickHandler = () => {
@@ -14,9 +12,7 @@ const CardComponent = ({ card }) => {
 
   return (
     <div>
-      <Suspense fallback={renderLoader()}>
-        <SingleCardModal show={show} setShow={setShow} card={card} />
-      </Suspense>
+      <SingleCardModal show={show} setShow={setShow} card={card} />
       <Card
         className="mt-1 mb-1 pointer"
         key={card._id}
